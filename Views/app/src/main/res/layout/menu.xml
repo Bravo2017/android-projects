@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="153dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="MENU"
+        android:id="@+id/textView6"
+        android:backgroundTint="@android:color/holo_blue_bright"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.03"
+        android:textAlignment="center" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        android:id="@+id/button8"
+        android:backgroundTint="@android:color/holo_blue_bright"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.11" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SIGN UP"
+        android:id="@+id/button9"
+        android:backgroundTint="@android:color/holo_blue_bright"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.10" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LOGIN "
+        android:id="@+id/button10"
+        android:backgroundTint="@android:color/holo_blue_bright"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.11" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CHAT"
+        android:id="@+id/button11"
+        android:backgroundTint="@android:color/holo_blue_bright"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.11" />
+</LinearLayout>
