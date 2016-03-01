@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
         smsIntent.setData(Uri.parse("smsto:"));
         smsIntent.setType("vnd.android-dir/mms-sms");
-        smsIntent.putExtra("address"  , new String ("0700415505"));
-        smsIntent.putExtra("sms_body"  , "Test ");
+        smsIntent.putExtra("address"  , new String ("0722732155"));
+        smsIntent.putExtra("sms_body"  , "Test");
 
         try {
             startActivity(smsIntent);
