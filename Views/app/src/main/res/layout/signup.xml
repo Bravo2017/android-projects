@@ -93,8 +93,8 @@
         android:layout_height="wrap_content"
         android:text="Back"
         android:id="@+id/button4"
-        android:backgroundTint="@android:color/holo_blue_light"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.36" />
+        android:background="@drawable/other_button"
+        style="@style/other_button"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

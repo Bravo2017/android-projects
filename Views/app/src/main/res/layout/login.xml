@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Login"
+        android:text="Enter Your Credentials"
         android:id="@+id/textView2"
         android:layout_gravity="center_horizontal" />
 
@@ -40,12 +40,20 @@
         android:textColor="#03659b" />
 
     <Button
-        android:layout_width="155dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:id="@+id/button12"
+        android:background="@drawable/other_button"
+        style="@style/other_button"
+        android:layout_gravity="right" />
+
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
         android:id="@+id/button3"
-        android:backgroundTint="@android:color/holo_blue_light"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.09" />
+        android:background="@drawable/other_button"
+        style="@style/other_button" />
 
 </LinearLayout>
