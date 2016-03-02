@@ -27,9 +27,9 @@
         </activity>
         <activity
             android:label="@string/app_name"
-            android:name=".fromhome" >
+            android:name=".backmenu" >
             <intent-filter>
-                <action android:name="android.intent.action.ACTIVITY002" />
+                <action android:name="android.intent.action.ACTIVITY006" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
