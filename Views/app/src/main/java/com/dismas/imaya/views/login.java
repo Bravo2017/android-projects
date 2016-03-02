@@ -21,22 +21,23 @@ public class login extends AppCompatActivity {
     }
     public void addListenerOnButton() {
 
-        final Context context = this;
-
         button = (Button) findViewById(R.id.button3);
-
+//        button.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View arg0) {
+//
+//                Intent intent = new Intent(context, backmenu.class);
+//                startActivity(intent);
+//
+//            }
+//
+//        });
         button.setOnClickListener(new View.OnClickListener() {
-
-            @Override
             public void onClick(View arg0) {
-
-                Intent intent = new Intent(context, backmenu.class);
-                startActivity(intent);
-
+                finish();
             }
-
         });
-
     }
 
 
