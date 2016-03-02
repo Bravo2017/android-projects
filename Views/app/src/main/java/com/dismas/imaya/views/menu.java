@@ -18,6 +18,9 @@ public class menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
         addListenerOnButton();
+        addListenerOnButton1();
+        addListenerOnButton2();
+        addListenerOnButton3();
     }
 
     public void addListenerOnButton() {
@@ -32,6 +35,63 @@ public class menu extends AppCompatActivity {
             public void onClick(View arg0) {
 
                 Intent intent = new Intent(context, home.class);
+                startActivity(intent);
+
+            }
+
+        });
+
+    }
+    public void addListenerOnButton1() {
+
+        final Context context = this;
+
+        button = (Button) findViewById(R.id.button9);
+
+        button.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                Intent intent = new Intent(context, signup.class);
+                startActivity(intent);
+
+            }
+
+        });
+
+    }
+    public void addListenerOnButton2() {
+
+        final Context context = this;
+
+        button = (Button) findViewById(R.id.button10);
+
+        button.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                Intent intent = new Intent(context, login.class);
+                startActivity(intent);
+
+            }
+
+        });
+
+    }
+    public void addListenerOnButton3() {
+
+        final Context context = this;
+
+        button = (Button) findViewById(R.id.button11);
+
+        button.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                Intent intent = new Intent(context, chat.class);
                 startActivity(intent);
 
             }
