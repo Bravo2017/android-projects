@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">Socrates</string>
     <string name="action_settings">Settings</string>
+    <string name="title1">Wisdom</string>
+    <string name="content1">1. The only true wisdom is in knowing you know nothing.</string>
+    <string name="content2">2. Be as you wish to seem.</string>
+    <string name="content3">3. True wisdom comes to each of us when we realize how little we understand about life, ourselves, and the world around us.</string>
+    <string name="content4">4. Wisdom begins in wonder.</string>
+    <string name="title2">Life</string>
+    <string name="content5">1. He is richest who is content with the least, for content is the wealth of nature.</string>
+    <string name="content6">2. I am the wisest man alive, for I know one thing, and that is that I know nothing.</string>
+    <string name="content7">3. He is a man of courage who does not run away, but remains at his post and fights against the enemy.</string>
+    <string name="content8">4. Wisdom begins in wonder.</string>
 </resources>
