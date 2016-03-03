@@ -20,7 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="6073dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:hint="@string/content21"
+                android:hint="@string/howhedied1"
                 android:id="@+id/textView20"
                 android:paddingStart="30dp"
                 android:paddingEnd="30dp" />

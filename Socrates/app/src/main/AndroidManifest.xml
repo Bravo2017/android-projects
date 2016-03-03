@@ -19,6 +19,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".home" >
+            <intent-filter >
+                <action android:name="android.intent.action.ACTIVITY000" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".about" >
+            <intent-filter >
+                <action android:name="android.intent.action.ACTIVITY001" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".quotes" >
+            <intent-filter >
+                <action android:name="android.intent.action.ACTIVITY002" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".howhedied" >
+            <intent-filter >
+                <action android:name="android.intent.action.ACTIVITY003" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
