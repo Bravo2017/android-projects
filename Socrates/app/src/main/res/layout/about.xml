@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:hint="@string/about1"
+                android:hint="@string/about2"
                 android:id="@+id/textView18"
                 android:layout_gravity="center_horizontal"
                 android:textAlignment="textStart"
