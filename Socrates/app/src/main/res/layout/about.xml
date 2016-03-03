@@ -5,7 +5,7 @@
     android:layout_marginBottom="270dp">
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/imageView2"
         android:src="@drawable/socrates"
@@ -13,8 +13,21 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:hint="@string/about"
-        android:id="@+id/textView16" />
+        android:id="@+id/textView16"
+        android:textColor="#006400"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:background="#544646"
+        android:textAlignment="center" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="269dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:hint="@string/about1"
+        android:id="@+id/textView17"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"/>
 </LinearLayout>

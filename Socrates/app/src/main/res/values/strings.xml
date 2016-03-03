@@ -18,5 +18,11 @@
     <string name="content12">4. If a man is proud of his wealth, he should not be praised until it is known how he employs it.</string>
     <string name="Socrates">image</string>
     <string name="about">ABOUT</string>
-    <string name="about1">ABOUT</string>
+    <string name="about1">Socrates was born circa 470 BC, in Athens, Greece. We know of his life through the writings of his students, including Plato and Xenophon. His "Socratic method," laid the groundwork for Western systems of logic and philosophy. When the political climate of Greece turned, Socrates was sentenced to death by hemlock poisoning in 399 BC. He accepted this judgment rather than fleeing into exile.</string>
+    <string name="homeabout">ABOUT</string>
+    <string name="homequotes">QUOTES</string>
+    <string name="homedied">HOW HE DIED</string>
+    <string name="content21">The jury was not swayed by Socrates's defense and convicted him by a vote of 280 to 221. Possibly the defiant tone of his defense contributed to the verdict and he made things worse during the deliberation over his punishment. Athenian law allowed a convicted citizen to propose an alternative punishment to the one called for by the prosecution and the jury would decide. Instead of proposing he be exiled, Socrates suggested he be honored by the city for his contribution to their enlightenment and be paid for his services. The jury was not amused and sentenced him to death by drinking a mixture of poison hemlock.
+
+Before Socrates's execution, friends offered to bribe the guards and rescue him so he could flee into exile. He declined, stating he wasn't afraid of death, felt he would be no better off if in exile and said he was still a loyal citizen of Athens, willing to abide by its laws, even the ones that condemned him to death. Plato described Socrates's execution in his Phaedo dialogue: Socrates drank the hemlock mixture without hesitation. Numbness slowly crept into his body until it reached his heart. Shortly before his final breath, Socrates described his death as a release of the soul from the body.</string>
 </resources>
