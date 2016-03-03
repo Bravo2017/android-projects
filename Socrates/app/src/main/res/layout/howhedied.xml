@@ -17,11 +17,29 @@
             android:weightSum="1">
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/howtitle"
+                android:id="@+id/textView19"
+                android:layout_weight="1.14"
+                android:textAlignment="center" />
+
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="6073dp"
+                android:layout_height="400dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:hint="@string/howhedied1"
                 android:id="@+id/textView20"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_weight="1.14" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="275dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:hint="@string/howhedied2"
+                android:id="@+id/textView21"
                 android:paddingStart="30dp"
                 android:paddingEnd="30dp" />
 
