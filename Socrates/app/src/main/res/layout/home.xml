@@ -21,25 +21,31 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:text="@string/homeabout"
+            android:layout_height="wrap_content"
+            android:hint="@string/homeabout"
             android:id="@+id/button2"
-            android:layout_weight="0.50" />
+            android:layout_weight="0.15"
+            android:background="@drawable/button"
+            style="@style/button_text" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/homequotes"
+            android:hint="@string/homequotes"
             android:id="@+id/button3"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="0.20" />
+            android:layout_weight="0.14"
+            android:background="@drawable/button"
+            style="@style/button_text" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/homedied"
+            android:hint="@string/homedied"
             android:id="@+id/button4"
-            android:layout_weight="0.23" />
+            android:layout_weight="0.11"
+            android:background="@drawable/button"
+            style="@style/button_text" />
 
     </LinearLayout>
 
