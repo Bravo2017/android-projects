@@ -56,9 +56,9 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, DownloadService.class);
         // add infos for the service which file to download and where to store
-        intent.putExtra(DownloadService.FILENAME, "index.html");
+        intent.putExtra(DownloadService.FILENAME, "pdf.pdf");
         intent.putExtra(DownloadService.URL,
-                "http://www.vogella.com/index.html");
+                "http://www.pdf995.com/samples/pdf.pdf");
         startService(intent);
         textView.setText("Service started");
     }
