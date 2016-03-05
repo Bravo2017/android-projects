@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Cardview</string>
+    <string name="Image" />
+    <string name="CardImage" />
+    <string name="cadImage" />
+    <string name="ImageCard" />
+    <string name="TitlePhoto" />
 </resources>
