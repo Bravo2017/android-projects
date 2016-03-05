@@ -22,7 +22,7 @@ public class DownloadService extends IntentService {
     public static final String FILENAME = "filename";
     public static final String FILEPATH = "filepath";
     public static final String RESULT = "result";
-    public static final String NOTIFICATION = "com.dismas.imaya.service.receiver";
+    public static final String NOTIFICATION = "com.dismas.imaya.service";
 
     public DownloadService() {
         super("DownloadService");
