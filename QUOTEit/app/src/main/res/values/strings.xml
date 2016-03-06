@@ -6,4 +6,7 @@
     <string name="kids">KIDS</string>
     <string name="sayings">SAYINGS</string>
     <string name="love">LOVE</string>
+    <string name="notstarted">Not started</string>
+    <string name="status">Status:  </string>
+    <string name="download">Download</string>
 </resources>
