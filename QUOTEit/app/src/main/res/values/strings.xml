@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">QUOTEit</string>
+    <string name="life">LIFE</string>
+    <string name="school">SCHOOL</string>
+    <string name="friends">FRIENDS</string>
+    <string name="kids">KIDS</string>
+    <string name="sayings">SAYINGS</string>
+    <string name="love">LOVE</string>
 </resources>
