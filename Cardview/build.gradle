@@ -15,10 +15,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile "com.android.support:appcompat-v7:18.0.+"
-}
+
     }
 }
 
