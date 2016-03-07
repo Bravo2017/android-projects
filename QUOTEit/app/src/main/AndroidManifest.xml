@@ -24,6 +24,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Friends" />
+        <activity android:name=".Kids" />
+        <activity android:name=".Life" />
+        <activity android:name=".Love" />
+        <activity android:name=".Sayings" />
+        <activity android:name=".School" />
     </application>
 
 </manifest>
