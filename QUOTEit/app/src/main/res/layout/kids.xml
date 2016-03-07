@@ -38,7 +38,7 @@
                         android:layout_height="190dp"
                         android:id="@+id/imageView"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/freind1"
+                        android:src="@drawable/kids1"
                         android:contentDescription="img" />
                     <Button
                         android:id="@+id/button1"
@@ -84,7 +84,7 @@
                         android:layout_height="190dp"
                         android:id="@+id/imageView1"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/friends2"
+                        android:src="@drawable/kids2"
                         android:contentDescription="img" />
                     <Button
                         android:id="@+id/button2"
