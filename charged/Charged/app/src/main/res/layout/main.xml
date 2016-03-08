@@ -11,71 +11,78 @@
         android:id="@+id/imageView"
         android:layout_alignParentTop="true"
         android:src="@drawable/logo"
-        android:paddingEnd="30dp"
-        android:paddingStart="30dp"
+        android:paddingEnd="50dp"
+        android:paddingStart="50dp"
         android:contentDescription="@string/logo" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:inputType="textPersonName"
-        android:text="@string/user"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="#7e7e7e"
-        android:textAlignment="center"
-        android:background="#fff" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:inputType="textPersonName"
-        android:text="@string/pass"
-        android:ems="10"
-        android:id="@+id/editText2"
-        android:layout_below="@+id/editText"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="center"
-        android:layout_marginTop="3dp"
-        android:background="#fff" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:text="@string/login"
-        android:id="@+id/button"
-        android:layout_below="@+id/editText2"
-        android:layout_alignStart="@+id/editText2"
-        android:layout_alignEnd="@+id/editText2"
-        android:layout_marginTop="10dp"
-        android:textColor="#fff"
-        android:background="#52d962" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Have an account?"
+        android:text="@string/account"
+        android:layout_marginLeft="65dp"
         android:id="@+id/textView"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"
-        android:layout_alignStart="@+id/button" />
+        android:layout_marginBottom="35dp"
+
+        android:textColor="#ffffff" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Login"
+        android:text="@string/login"
         android:id="@+id/textView2"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="35dp"
         android:textAlignment="textStart"
         android:singleLine="false"
         android:paddingStart="10dp"
         android:textColor="#0099CC" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:inputType="textPersonName"
+        android:text="@string/user"
+        android:ems="10"
+        android:layout_marginLeft="35dp"
+        android:id="@+id/editText"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="#ffffff"
+        android:textAlignment="center"
+        android:textColor="#545454"
+        android:password="false" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:inputType="textPersonName"
+        android:text="@string/pass"
+        android:ems="10"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="3dp"
+        android:id="@+id/editText2"
+        android:layout_below="@+id/editText"
+        android:layout_centerHorizontal="true"
+        android:textColor="#000000"
+        android:textAlignment="center"
+        android:background="#ffffff" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="@string/login"
+        android:id="@+id/button"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/editText2"
+        android:layout_centerHorizontal="true"
+        android:background="#22cb5d"
+        android:layout_marginLeft="35dp"
+        android:textColor="#ffffff" />
 
 </RelativeLayout>
