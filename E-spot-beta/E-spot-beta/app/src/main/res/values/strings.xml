@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">E-Spot</string>
+    <string name="movies">MOVIES</string>
+    <string name="series">SERIES</string>
+    <string name="animation">ANIMATIONS</string>
+    <string name="documentaries">DOCUMENTARIES</string>
+    <string name="about_us">ABOUT US</string>
+    <string name="title">Hi! Welcome</string>
+    <string name="description_1">Get Information on </string>
+    <string name="description_2">Upcoming in 2016</string>
+    <string name="description_3">Movies</string>
+    <string name="description_4">TV Series</string>
+    <string name="description_5">Animations</string>
+    <string name="description_6">Documentaries</string>
+</resources>

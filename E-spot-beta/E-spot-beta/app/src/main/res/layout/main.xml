@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:orientation="vertical"
+    android:layout_height="fill_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:orientation="vertical"
+        android:layout_height="fill_parent">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:hint="@string/movies"
+            android:id="@+id/button1"
+            android:layout_weight="0.15"
+            android:background="@drawable/button"
+            style="@style/button_text" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:hint="@string/series"
+            android:id="@+id/button2"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.14"
+            android:background="@drawable/button"
+            style="@style/button_text" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:hint="@string/animation"
+            android:id="@+id/button3"
+            android:layout_weight="0.11"
+            android:background="@drawable/button"
+            style="@style/button_text" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:hint="@string/documentaries"
+            android:id="@+id/button4"
+            android:layout_weight="0.11"
+            android:background="@drawable/button"
+            style="@style/button_text" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:hint="@string/about_us"
+            android:id="@+id/button5"
+            android:layout_weight="0.11"
+            android:background="@drawable/button"
+            style="@style/button_text" />
+
+    </LinearLayout>
+
+</RelativeLayout>
+
