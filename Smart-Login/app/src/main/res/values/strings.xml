@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Smart-Login</string>
+    <string name="facebook_app_id">466134383592007</string>
+    <string name="user_exists">User Exist</string>
 </resources>
