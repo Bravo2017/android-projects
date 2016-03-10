@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_id": "smart-login-7b76d",
+    "project_number": "287363019564",
+    "name": "Smart-Login"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287363019564:android:c9474aee445c67a0",
+        "client_id": "android:com.dismas.imaya.smart_login",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "com.dismas.imaya.smart_login",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "287363019564-ngkh68lke3savantubauivqoepinnpv4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dismas.imaya.smart_login",
+            "certificate_hash": "94FF158F6E746629FC4F07E5E6379ACF4D016297"
+          }
+        },
+        {
+          "client_id": "287363019564-7hvld82366k65h4cd34c4rtm3j5sbhia.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 2
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}
