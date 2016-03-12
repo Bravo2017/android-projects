@@ -23,7 +23,8 @@ public class Main extends AppCompatActivity {
         setContentView(R.layout.main);
 
         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(Config.API_URL).build();
-        SCService scService = restAdapter.create(SCService.class);
+        //SCService scService = restAdapter.create(SCService.class);
+        SCService scService = SoundCloud.getService();
         scService.getRecentTracks(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()), new Callback<List<Track>>() {
             @Override
             public void success(List<Track> tracks, Response response) {
