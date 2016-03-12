@@ -25,14 +25,15 @@
     android:layout_margin="8dp"
     android:clickable="true"
     android:src="@drawable/doge"
-    app:civ_border="true"
-    app:civ_borderColor="#FFFFFFFF"
-    app:civ_borderWidth="4dp"
-    app:civ_selector="true"
-    app:civ_selectorColor="#4403a9f4"
-    app:civ_selectorStrokeColor="#aa5677fc"
-    app:civ_selectorStrokeWidth="4dp"
-    app:civ_shadow="true" />
+     />
+    <!--app:civ_border="true"-->
+    <!--app:civ_borderColor="#FFFFFFFF"-->
+    <!--app:civ_borderWidth="4dp"-->
+    <!--app:civ_selector="true"-->
+    <!--app:civ_selectorColor="#4403a9f4"-->
+    <!--app:civ_selectorStrokeColor="#aa5677fc"-->
+    <!--app:civ_selectorStrokeWidth="4dp"-->
+    <!--app:civ_shadow="true"-->
 
   <TextView
     android:id="@+id/txtClick"
