@@ -1,5 +1,7 @@
 package com.dismas.imaya.soundcplayer;
 
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -28,11 +31,22 @@ public class Main extends AppCompatActivity {
     private SCTrackAdapter mAdapter;
     private TextView mSelectedTrackTitle;
     private ImageView mSelectedTrackImage;
+    private MediaPlayer mMediaPlayer;
+    private ImageView mPlayerControl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        mMediaPlayer = new MediaPlayer();
+        mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                togglePlayPause();
+            }
+        });
 
         mListItems = new ArrayList<Track>();
         ListView listView = (ListView)findViewById(R.id.track_list_view);
@@ -49,6 +63,24 @@ public class Main extends AppCompatActivity {
 
                 mSelectedTrackTitle.setText(track.getTitle());
                 Picasso.with(Main.this).load(track.getArtworkURL()).into(mSelectedTrackImage);
+                if (mMediaPlayer.isPlaying()) {
+                    mMediaPlayer.stop();
+                    mMediaPlayer.reset();
+                }
+
+                try {
+                    mMediaPlayer.setDataSource(track.getStreamURL() + "?client_id=" + Config.CLIENT_ID);
+                    mMediaPlayer.prepareAsync();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                mPlayerControl = (ImageView)findViewById(R.id.player_control);
+                mPlayerControl.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        togglePlayPause();
+                    }
+                });
 
             }
         });
@@ -70,5 +102,14 @@ public class Main extends AppCompatActivity {
         mListItems.clear();
         mListItems.addAll(tracks);
         mAdapter.notifyDataSetChanged();
+    }
+    private void togglePlayPause() {
+        if (mMediaPlayer.isPlaying()) {
+            mMediaPlayer.pause();
+            mPlayerControl.setImageResource(R.drawable.ic_play);
+        } else {
+            mMediaPlayer.start();
+            mPlayerControl.setImageResource(R.drawable.ic_pause);
+        }
     }
 }
