@@ -5,6 +5,8 @@ import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -48,13 +50,31 @@ public class Main extends AppCompatActivity {
             }
         });
 
+
+        mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mPlayerControl.setImageResource(R.drawable.ic_play);
+            }
+        });
+
+
         mListItems = new ArrayList<Track>();
         ListView listView = (ListView)findViewById(R.id.track_list_view);
         mAdapter = new SCTrackAdapter(this, mListItems);
         listView.setAdapter(mAdapter);
 
+
         mSelectedTrackTitle = (TextView)findViewById(R.id.selected_track_title);
         mSelectedTrackImage = (ImageView)findViewById(R.id.selected_track_image);
+        //mPlayerControl = (ImageView)findViewById(R.id.player_control);
+        mPlayerControl = (ImageView)findViewById(R.id.player_control);
+        mPlayerControl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                togglePlayPause();
+            }
+        });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -63,6 +83,7 @@ public class Main extends AppCompatActivity {
 
                 mSelectedTrackTitle.setText(track.getTitle());
                 Picasso.with(Main.this).load(track.getArtworkURL()).into(mSelectedTrackImage);
+
                 if (mMediaPlayer.isPlaying()) {
                     mMediaPlayer.stop();
                     mMediaPlayer.reset();
@@ -74,14 +95,6 @@ public class Main extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                mPlayerControl = (ImageView)findViewById(R.id.player_control);
-                mPlayerControl.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        togglePlayPause();
-                    }
-                });
-
             }
         });
 
@@ -98,12 +111,16 @@ public class Main extends AppCompatActivity {
             }
         });
     }
+
+
     private void loadTracks(List<Track> tracks) {
         mListItems.clear();
         mListItems.addAll(tracks);
         mAdapter.notifyDataSetChanged();
     }
     private void togglePlayPause() {
+
+
         if (mMediaPlayer.isPlaying()) {
             mMediaPlayer.pause();
             mPlayerControl.setImageResource(R.drawable.ic_play);
@@ -111,5 +128,31 @@ public class Main extends AppCompatActivity {
             mMediaPlayer.start();
             mPlayerControl.setImageResource(R.drawable.ic_pause);
         }
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+
+        return super.onOptionsItemSelected(item);
     }
 }

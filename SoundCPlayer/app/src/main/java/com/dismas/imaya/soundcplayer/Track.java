@@ -14,10 +14,11 @@ public class Track {
     private int mID;
 
     @SerializedName("stream_url")
-    private String mStreamURL = "http://api.soundcloud.com/tracks/13158665.json?client_id=6879e13702256246d424c35face10dad";
+    private String mStreamURL;
+    //private String mStreamURL = "http://api.soundcloud.com/tracks/13158665.json?client_id=6879e13702256246d424c35face10dad";
 
     @SerializedName("artwork_url")
-    private String mArtworkURL = "http://api.soundcloud.com/tracks/13158665.json?client_id=6879e13702256246d424c35face10dad";
+    private String mArtworkURL;
 
     public String getTitle() {
         return mTitle;
