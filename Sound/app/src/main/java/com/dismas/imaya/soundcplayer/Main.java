@@ -33,30 +33,30 @@ public class Main extends AppCompatActivity {
     private SCTrackAdapter mAdapter;
     private TextView mSelectedTrackTitle;
     private ImageView mSelectedTrackImage;
-    private MediaPlayer mMediaPlayer;
-    private ImageView mPlayerControl;
+//    private MediaPlayer mMediaPlayer;
+//    private ImageView mPlayerControl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        mMediaPlayer = new MediaPlayer();
-        mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                togglePlayPause();
-            }
-        });
-
-
-        mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                mPlayerControl.setImageResource(R.drawable.ic_play);
-            }
-        });
+//        mMediaPlayer = new MediaPlayer();
+//        mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+//        mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+//            @Override
+//            public void onPrepared(MediaPlayer mp) {
+//                togglePlayPause();
+//            }
+//        });
+//
+//
+//        mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//            @Override
+//            public void onCompletion(MediaPlayer mp) {
+//                mPlayerControl.setImageResource(R.drawable.ic_play);
+//            }
+//        });
 
 
         mListItems = new ArrayList<Track>();
@@ -68,13 +68,13 @@ public class Main extends AppCompatActivity {
         mSelectedTrackTitle = (TextView)findViewById(R.id.selected_track_title);
         mSelectedTrackImage = (ImageView)findViewById(R.id.selected_track_image);
         //mPlayerControl = (ImageView)findViewById(R.id.player_control);
-        mPlayerControl = (ImageView)findViewById(R.id.player_control);
-        mPlayerControl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                togglePlayPause();
-            }
-        });
+//        mPlayerControl = (ImageView)findViewById(R.id.player_control);
+//        mPlayerControl.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                togglePlayPause();
+//            }
+//        });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -84,17 +84,17 @@ public class Main extends AppCompatActivity {
                 mSelectedTrackTitle.setText(track.getTitle());
                 Picasso.with(Main.this).load(track.getArtworkURL()).into(mSelectedTrackImage);
 
-                if (mMediaPlayer.isPlaying()) {
-                    mMediaPlayer.stop();
-                    mMediaPlayer.reset();
-                }
-
-                try {
-                    mMediaPlayer.setDataSource(track.getStreamURL() + "?client_id=" + Config.CLIENT_ID);
-                    mMediaPlayer.prepareAsync();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+//                if (mMediaPlayer.isPlaying()) {
+//                    mMediaPlayer.stop();
+//                    mMediaPlayer.reset();
+//                }
+//
+//                try {
+//                    mMediaPlayer.setDataSource(track.getStreamURL() + "?client_id=" + Config.CLIENT_ID);
+//                    mMediaPlayer.prepareAsync();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
             }
         });
 
@@ -118,41 +118,16 @@ public class Main extends AppCompatActivity {
         mListItems.addAll(tracks);
         mAdapter.notifyDataSetChanged();
     }
-    private void togglePlayPause() {
+//    private void togglePlayPause() {
+//
+//
+//        if (mMediaPlayer.isPlaying()) {
+//            mMediaPlayer.pause();
+//            mPlayerControl.setImageResource(R.drawable.ic_play);
+//        } else {
+//            mMediaPlayer.start();
+//            mPlayerControl.setImageResource(R.drawable.ic_pause);
+//        }
+//    }
 
-
-        if (mMediaPlayer.isPlaying()) {
-            mMediaPlayer.pause();
-            mPlayerControl.setImageResource(R.drawable.ic_play);
-        } else {
-            mMediaPlayer.start();
-            mPlayerControl.setImageResource(R.drawable.ic_pause);
-        }
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-
-        return super.onOptionsItemSelected(item);
-    }
 }
