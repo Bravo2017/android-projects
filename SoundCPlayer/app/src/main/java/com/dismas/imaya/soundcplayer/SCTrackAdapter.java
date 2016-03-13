@@ -19,8 +19,7 @@ public class SCTrackAdapter extends BaseAdapter {
 
     private Context mContext;
     private List<Track> mTracks;
-    private List<Track> mListItems;
-    private SCTrackAdapter mAdapter;
+
 
     public SCTrackAdapter(Context context, List<Track> tracks) {
         mContext = context;

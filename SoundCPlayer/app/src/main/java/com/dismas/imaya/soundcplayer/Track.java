@@ -15,7 +15,6 @@ public class Track {
 
     @SerializedName("stream_url")
     private String mStreamURL;
-    //private String mStreamURL = "http://api.soundcloud.com/tracks/13158665.json?client_id=6879e13702256246d424c35face10dad";
 
     @SerializedName("artwork_url")
     private String mArtworkURL;
@@ -36,3 +35,4 @@ public class Track {
         return mArtworkURL;
     }
 }
+//= "http://api.soundcloud.com/tracks/13158665.json?client_id=78306edcef4347cdf16bc899c37d6cf0"
