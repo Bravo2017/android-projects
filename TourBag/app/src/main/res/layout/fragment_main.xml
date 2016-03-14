@@ -1,23 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <io.codetail.widget.RevealFrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#9D82C4">
 
 
-    <FrameLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
+    <!--<FrameLayout-->
+        <!--android:id="@+id/container"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+
+        <!--<ImageView-->
+            <!--android:scaleType="fitXY"-->
+            <!--android:id="@+id/image_content"-->
+            <!--android:src="@drawable/content_films"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"/>-->
+
+
+    <!--</FrameLayout>-->
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ScrollView xmlns="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:textAlignment="center"
+            android:fillViewport="false"
+            android:layout_alignParentEnd="false"
+            tools:ignore="MissingPrefix">
 
-        <ImageView
-            android:scaleType="fitXY"
-            android:id="@+id/image_content"
-            android:src="@drawable/content_films"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/container"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Large Text"
+                    android:id="@+id/TextView"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="117dp" />
+                <ImageView
+                android:scaleType="fitXY"
+                android:id="@+id/image_content"
+                android:src="@drawable/content_films"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            </LinearLayout>
+        </ScrollView>
 
 
-    </FrameLayout>
+    </RelativeLayout>
 </io.codetail.widget.RevealFrameLayout>
