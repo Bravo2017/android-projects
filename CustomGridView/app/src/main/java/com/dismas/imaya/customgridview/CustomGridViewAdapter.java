@@ -3,6 +3,7 @@ package com.dismas.imaya.customgridview;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.ClipData;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,13 +15,13 @@ import android.widget.TextView;
 /**
  * Created by imaya on 3/15/16.
  */
-public class CustomGridViewAdapter extends ArrayAdapter<Item> {
+public class CustomGridViewAdapter extends ArrayAdapter<ClipData.Item> {
     Context context;
     int layoutResourceId;
-    ArrayList<Item> data = new ArrayList<Item>();
+    ArrayList<ClipData.Item> data = new ArrayList<ClipData.Item>();
 
     public CustomGridViewAdapter(Context context, int layoutResourceId,
-                                 ArrayList<Item> data) {
+                                 ArrayList<ClipData.Item> data) {
         super(context, layoutResourceId, data);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
@@ -44,7 +45,7 @@ public class CustomGridViewAdapter extends ArrayAdapter<Item> {
             holder = (RecordHolder) row.getTag();
         }
 
-        Item item = data.get(position);
+        ClipData.Item item = data.get(position);
         holder.txtTitle.setText(item.getTitle());
         holder.imageItem.setImageBitmap(item.getImage());
         return row;
