@@ -9,8 +9,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.dismas.imaya.customgridview.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <GridView
+        android:id="@+id/gridView1"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_margin="4dp"
+        android:columnWidth="80dp"
+        android:gravity="center"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth" >
+    </GridView>
+
 </RelativeLayout>
