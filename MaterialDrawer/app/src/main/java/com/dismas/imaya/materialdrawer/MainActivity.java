@@ -3,7 +3,6 @@ package com.dismas.imaya.materialdrawer;
 import android.graphics.Color;
 import android.os.Bundle;
 
-
 import de.madcyph3r.example.example.FragmentInstruction;
 import de.madcyph3r.example.fragment.BackPatternFragment;
 import de.madcyph3r.example.fragment.DrawerTypesFragment;
@@ -20,31 +19,24 @@ import de.madcyph3r.materialnavigationdrawer.menu.item.section.MaterialItemSecti
 import de.madcyph3r.materialnavigationdrawer.menu.item.style.MaterialItemDevisor;
 import de.madcyph3r.materialnavigationdrawer.menu.item.style.MaterialItemLabel;
 
-
 public class MainActivity extends MaterialNavNoHeaderActivity {
 
-
     private MaterialNavigationDrawer drawer = null;
-
 
     @Override
     protected boolean finishActivityOnNewIntent() {
         return false;
     }
 
-
     @Override
     protected int getNewIntentRequestCode(Class clazz) {
         return 0;
     }
 
-
     @Override
     public void init(Bundle savedInstanceState) {
 
-
         drawer = this;
-
 
         // create menu
         MaterialMenu menu = new MaterialMenu();
@@ -60,27 +52,21 @@ public class MainActivity extends MaterialNavNoHeaderActivity {
         menu.add(new MaterialItemSectionFragment(this, "Listener", new ListenerFragment(), "Listener").setSectionColor(Color.parseColor("#9D8C84")));
         menu.add(new MaterialItemSectionFragment(this, "Functionally", new FunctionallyFragment(), "Functionally").setSectionColor(Color.parseColor("#F1C40F")));
 
-
         // actionbar overlay
         this.setActionBarOverlay(true);
-
 
         // load menu
         this.loadMenu(menu);
 
-
         // load first MaterialItemSectionFragment in the menu, because there is no start position
         this.loadStartFragmentFromMenu(menu);
-
 
         // set back pattern
         this.setBackPattern(MaterialNavigationDrawer.BACKPATTERN_LAST_SECTION_FRAGMENT);
     }
 
-
     @Override
     public void afterInit(Bundle savedInstanceState) {
-
 
     }
 }
