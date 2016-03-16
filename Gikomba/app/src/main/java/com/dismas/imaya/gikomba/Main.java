@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v4.app.Fragment;
@@ -56,7 +57,7 @@ public class Main extends MaterialNavHeadItemActivity {
         // create menu
         MaterialMenu menu = new MaterialMenu();
         menu.add(new MaterialItemSectionFragment(this, "Instruction", fragmentInstruction, "Head Item Style (One Item)"));
-        menu.add(new MaterialItemSectionFragment(this, "Section 1", new FirstFragment(), "Section 1"));
+        menu.add(new MaterialItemSectionFragment(this, "Section 5", new FirstFragment(), "Section 1"));
         menu.add(new MaterialItemSectionFragment(this, "Section 2", new SecondFragment(), "Section 2"));
         menu.add(new MaterialItemSectionFragment(this, "Section 3", new ThirdFragment(), "Section 3"));
         menu.add(new MaterialItemSectionFragment(this, "Section 4", new Items(), "Section 4"));
