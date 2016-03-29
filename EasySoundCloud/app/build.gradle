@@ -5,22 +5,18 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.dismas.imaya.easysoundcloud"
-        minSdkVersion 19
+        applicationId "com.dismas.imaya.easysoundroid"
+        minSdkVersion 14
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+        versionCode 2
+        versionName "1.1"
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+    compile 'com.android.support:recyclerview-v7:23.1.1'
+    compile 'com.github.bumptech.glide:glide:3.6.1'
+    compile project(':library')
 }

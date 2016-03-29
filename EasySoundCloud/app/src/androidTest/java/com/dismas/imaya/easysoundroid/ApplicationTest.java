@@ -1,4 +1,4 @@
-package com.dismas.imaya.easysoundcloud;
+package com.dismas.imaya.easysoundroid;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

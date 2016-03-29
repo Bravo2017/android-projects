@@ -1,4 +1,4 @@
-package com.dismas.imaya.easysoundcloud;
+package com.dismas.imaya.easysoundroid;
 
 import org.junit.Test;
 
