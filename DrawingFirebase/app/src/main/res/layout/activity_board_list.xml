@@ -7,7 +7,7 @@
     android:theme="@style/Theme.AppCompat.Light"
     android:icon="@drawable/firebase_logo"
     android:logo="@drawable/firebase_logo"
-    tools:context="com.firebase.drawing.BoardListActivity">
+    tools:context="com.dismas.imaya.drawingfirebase.BoardListActivity">
 
     <ListView
         android:layout_width="wrap_content"
