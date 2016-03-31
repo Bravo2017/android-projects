@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <com.blogspot.tonyatkins.recorder.views.RecorderTimerView
+    <com.dismas.imaya.soundapp.RecorderTimerView
         android:id="@+id/timerView"
         style="@android:style/TextAppearance.Large"
         android:layout_width="match_parent"
@@ -84,7 +84,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <com.blogspot.tonyatkins.recorder.views.VolumeBarGraphView
+    <com.dismas.imaya.soundapp.VolumeBarGraphView
         android:id="@+id/volumeBarGraphView"
         android:layout_width="fill_parent"
         android:layout_height="100dip"
