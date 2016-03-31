@@ -8,54 +8,44 @@ import android.widget.TextView;
 /**
  * Created by imaya on 3/31/16.
  */
-public class RecorderTimerView extends TextView {
-    private static final long LIVE_REFRESH_INTERVAL = 100;
+public class VolumePercentView extends TextView {
+    private static final float MAX_POSSIBLE_AMPLITUDE = 32768F;
     private static final long IDLE_REFRESH_INTERVAL = 1000;
+    private static final long LIVE_REFRESH_INTERVAL = 100;
     private int volumePercentage = 0;
     private InstrumentedRecorder recorder;
-    private String mTimerFormat;
 
-
-
-    public RecorderTimerView(Context context, AttributeSet attrs, int defStyle) {
+    public VolumePercentView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        initResources();
-        updateTimer();
+        setPercentageText();
     }
 
-    public RecorderTimerView(Context context, AttributeSet attrs) {
+    public VolumePercentView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initResources();
-        updateTimer();
+        setPercentageText();
     }
 
-    public RecorderTimerView(Context context) {
+    public VolumePercentView(Context context) {
         super(context);
-        initResources();
-        updateTimer();
-    }
-
-    private void initResources() {
-        mTimerFormat = getResources().getString(com.dismas.imaya.soundapp.R.string.timer_format);
+        setPercentageText();
     }
 
     public void setRecorder(InstrumentedRecorder recorder) {
         this.recorder = recorder;
     }
 
-    private void updateTimer() {
-        Float time = 0f;
+    private void setPercentageText() {
         if (recorder != null && recorder.getState() == InstrumentedRecorder.RECORDING_STATE) {
-            time = recorder.progress();
+            float volumePercentageDouble = (recorder.getMaxAmplitude() / MAX_POSSIBLE_AMPLITUDE) * 100;
+            volumePercentage = Math.round(volumePercentageDouble);
         }
-        String timeStr = String.format(mTimerFormat, (int) (time/60), (int) (time%60), (int) (time%1 * 100));
-        setText(timeStr);
+        setText(volumePercentage + "%");
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         if (recorder != null && recorder.getState() == InstrumentedRecorder.RECORDING_STATE) {
-            updateTimer();
+            setPercentageText();
             postInvalidateDelayed(LIVE_REFRESH_INTERVAL);
         }
         else {
