@@ -35,13 +35,14 @@ public class BoardListActivity extends ActionBarActivity {
 
     private Firebase mRef;
     private Firebase mBoardsRef;
-    private Firebase mSegmentsRef;
+    public Firebase mSegmentsRef;
     private FirebaseListAdapter<HashMap> mBoardListAdapter;
     private ValueEventListener mConnectedListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Firebase.setAndroidContext(this);
         mRef = new Firebase(FIREBASE_URL);
         mBoardsRef = mRef.child("boardmetas");
         mBoardsRef.keepSynced(true); // keep the board list in sync
