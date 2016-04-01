@@ -1,4 +1,4 @@
-package com.dismas.imaya.bits;
+package com.dismas.imaya.squarecamera;
 
 import android.content.Context;
 import android.util.AttributeSet;

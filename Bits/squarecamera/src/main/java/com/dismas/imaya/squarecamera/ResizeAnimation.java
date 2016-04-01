@@ -1,4 +1,4 @@
-package com.dismas.imaya.bits;
+package com.dismas.imaya.squarecamera;
 
 import android.support.annotation.NonNull;
 import android.view.View;
