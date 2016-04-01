@@ -21,7 +21,7 @@ import com.dismas.imaya.squarecamera.CameraActivity;
 import com.dismas.imaya.squarecamera.ImageUtility;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainCamera extends AppCompatActivity {
 
     private static final int REQUEST_CAMERA = 0;
     private static final int REQUEST_CAMERA_PERMISSION = 1;
@@ -52,9 +52,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void requestForCameraPermission(View view) {
         final String permission = Manifest.permission.CAMERA;
-        if (ContextCompat.checkSelfPermission(MainActivity.this, permission)
+        if (ContextCompat.checkSelfPermission(MainCamera.this, permission)
                 != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, permission)) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(MainCamera.this, permission)) {
                 showPermissionRationaleDialog("Test", permission);
             } else {
                 requestForPermission(permission);
@@ -65,12 +65,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showPermissionRationaleDialog(final String message, final String permission) {
-        new AlertDialog.Builder(MainActivity.this)
+        new AlertDialog.Builder(MainCamera.this)
                 .setMessage(message)
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        MainActivity.this.requestForPermission(permission);
+                        MainCamera.this.requestForPermission(permission);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void requestForPermission(final String permission) {
-        ActivityCompat.requestPermissions(MainActivity.this, new String[]{permission}, REQUEST_CAMERA_PERMISSION);
+        ActivityCompat.requestPermissions(MainCamera.this, new String[]{permission}, REQUEST_CAMERA_PERMISSION);
     }
 
     private void launch() {
