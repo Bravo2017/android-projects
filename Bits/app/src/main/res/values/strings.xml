@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Bits</string>
+    <string name="app_cam">Take Photo</string>
 </resources>
