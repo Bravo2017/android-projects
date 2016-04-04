@@ -58,6 +58,14 @@
             android:name="com.jmolsmobile.landscapevideocapture.VideoCaptureActivity"
             android:screenOrientation="sensor">
         </activity>
+        <activity
+            android:name=".RecordSoundActivity"
+            android:label="@string/recorder_event_activity_label" >
+            <intent-filter>
+                <action android:name="android.provider.MediaStore.RECORD_SOUND" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
     </application>
 
