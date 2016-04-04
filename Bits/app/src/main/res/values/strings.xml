@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="http://schemas.android.com/tools">
     <string name="app_name">Bits</string>
     <string name="app_cam">Take Photo</string>
     <string name="capture_video">Capture video</string>
@@ -18,4 +18,6 @@
     <string name="github">show on GitHub</string>
     <string name="github_url">https://github.com/jmolsmobile/LandscapeVideoCamera</string>
     <string name="video_name">Capture Video</string>
+    <string name="recorder_event_activity_label">Record Voice</string>
+    <string name="timer_format" translatable="false"><xliff:g id="format">%02d:%02d.%02d</xliff:g></string>
 </resources>
