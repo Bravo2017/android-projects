@@ -36,6 +36,7 @@ public class AllBits extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_allbits);
         addListenerOnButton();
+        addListenerOnButton1();
 
         Display display = getWindowManager().getDefaultDisplay();
         mSize = new Point();
@@ -54,6 +55,25 @@ public class AllBits extends AppCompatActivity {
             public void onClick(View arg0) {
 
                 Intent intent = new Intent(context, MainVideoCamera.class);
+                startActivity(intent);
+
+            }
+
+        });
+
+    }
+    public void addListenerOnButton1() {
+
+        final Context context = this;
+
+        button = (Button) findViewById(R.id.button3);
+
+        button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                Intent intent = new Intent(context, RecordSoundActivity.class);
                 startActivity(intent);
 
             }
