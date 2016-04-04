@@ -45,6 +45,20 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".MainVideoCamera"
+            android:label="@string/video_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.jmolsmobile.landscapevideocapture.VideoCaptureActivity"
+            android:screenOrientation="sensor">
+        </activity>
+
     </application>
 
 </manifest>

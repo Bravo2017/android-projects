@@ -17,4 +17,5 @@
     <string name="advanced">advanced</string>
     <string name="github">show on GitHub</string>
     <string name="github_url">https://github.com/jmolsmobile/LandscapeVideoCamera</string>
+    <string name="video_name">Capture Video</string>
 </resources>
