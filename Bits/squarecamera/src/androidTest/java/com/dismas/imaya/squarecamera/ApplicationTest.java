@@ -1,4 +1,4 @@
-package com.desmond.squarecamera;
+package com.dismas.imaya.squarecamera;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

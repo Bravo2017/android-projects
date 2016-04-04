@@ -13,7 +13,7 @@ public class CameraSettingPreferences {
     private static final String FLASH_MODE = "squarecamera__flash_mode";
 
     private static SharedPreferences getCameraSettingPreferences(@NonNull final Context context) {
-        return context.getSharedPreferences("com.desmond.squarecamera", Context.MODE_PRIVATE);
+        return context.getSharedPreferences("com.dismas.imaya.squarecamera", Context.MODE_PRIVATE);
     }
 
     protected static void saveCameraFlashMode(@NonNull final Context context, @NonNull final String cameraFlashMode) {
