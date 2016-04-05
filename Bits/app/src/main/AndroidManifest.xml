@@ -47,7 +47,8 @@
 
         <activity
             android:name=".MainVideoCamera"
-            android:label="@string/video_name">
+            android:label="@string/video_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -63,6 +64,18 @@
             android:label="@string/recorder_event_activity_label" >
             <intent-filter>
                 <action android:name="android.provider.MediaStore.RECORD_SOUND" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainDrawing"
+            android:label="@string/app_draw"
+            android:screenOrientation="portrait"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

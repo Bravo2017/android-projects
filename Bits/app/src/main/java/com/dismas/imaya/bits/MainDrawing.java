@@ -25,7 +25,7 @@ public class MainDrawing extends AppCompatActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_drawing);
 
         mDrawingView = (DrawingView)findViewById(R.id.drawing);
         // Getting the initial paint color.
