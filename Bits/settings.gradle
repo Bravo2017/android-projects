@@ -1,2 +1,2 @@
 include ':app',':squarecamera'
-include ':library'
+include ':library',':libraryFloat'
