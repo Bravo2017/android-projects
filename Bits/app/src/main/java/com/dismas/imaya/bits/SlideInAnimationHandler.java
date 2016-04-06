@@ -9,6 +9,9 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 
+import com.imaya.circularfloatingactionmenu.libraryFloat.FloatingActionMenu;
+import com.imaya.circularfloatingactionmenu.libraryFloat.MenuAnimationHandler;
+
 /**
  * Created by imaya on 4/6/16.
  */

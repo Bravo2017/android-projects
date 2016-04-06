@@ -8,7 +8,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+
+import com.imaya.circularfloatingactionmenu.libraryFloat.FloatingActionButton;
+import com.imaya.circularfloatingactionmenu.libraryFloat.FloatingActionMenu;
+import com.imaya.circularfloatingactionmenu.libraryFloat.SubActionButton;
 
 /**
  * Created by imaya on 4/6/16.
@@ -70,11 +75,11 @@ public class MenuWithCustomAnimationActivity extends ActionBarActivity {
 
             SubActionButton.Builder rLSubBuilder = new SubActionButton.Builder(getActivity())
                     .setTheme(SubActionButton.THEME_DARK);
-            ImageView rlIcon1 = new ImageView(getActivity());
-            ImageView rlIcon2 = new ImageView(getActivity());
-            ImageView rlIcon3 = new ImageView(getActivity());
-            ImageView rlIcon4 = new ImageView(getActivity());
-            ImageView rlIcon5 = new ImageView(getActivity());
+            ImageButton rlIcon1 = new ImageButton(getActivity());
+            ImageButton rlIcon2 = new ImageButton(getActivity());
+            ImageButton rlIcon3 = new ImageButton(getActivity());
+            ImageButton rlIcon4 = new ImageButton(getActivity());
+            ImageButton rlIcon5 = new ImageButton(getActivity());
 
             rlIcon1.setImageDrawable(getResources().getDrawable(R.drawable.ic_action_chat));
             rlIcon2.setImageDrawable(getResources().getDrawable(R.drawable.ic_action_camera));

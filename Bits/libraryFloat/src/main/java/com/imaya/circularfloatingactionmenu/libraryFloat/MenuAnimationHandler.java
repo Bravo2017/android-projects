@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
-import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
+import com.imaya.circularfloatingactionmenu.libraryFloat.FloatingActionMenu;
 
 /**
  * An abstract class that is a prototype for the actual animation handlers
