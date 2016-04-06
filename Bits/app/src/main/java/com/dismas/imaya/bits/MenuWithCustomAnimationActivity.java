@@ -132,7 +132,7 @@ public class MenuWithCustomAnimationActivity extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
 
-                    Intent intent = new Intent(getActivity(), MainSound.class);
+                    Intent intent = new Intent(getActivity(), RecordSoundActivity.class);
                     startActivity(intent);
                 }
             });
@@ -141,7 +141,7 @@ public class MenuWithCustomAnimationActivity extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
 
-                    Intent intent = new Intent(getActivity(), MainSound.class);
+                    Intent intent = new Intent(getActivity(), RecordSoundActivity.class);
                     startActivity(intent);
                 }
             });
