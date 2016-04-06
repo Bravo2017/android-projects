@@ -1,6 +1,7 @@
 package com.dismas.imaya.bits;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
@@ -99,6 +100,51 @@ public class MenuWithCustomAnimationActivity extends ActionBarActivity {
                     .addSubActionView(rLSubBuilder.setContentView(rlIcon5).build())
                     .attachTo(darkButton)
                     .build();
+
+            rlIcon1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(getActivity(), MainDrawing.class);
+                    startActivity(intent);
+                }
+            });
+
+            rlIcon2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(getActivity(), MainCamera.class);
+                    startActivity(intent);
+                }
+            });
+
+            rlIcon3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(getActivity(), MainVideoCamera.class);
+                    startActivity(intent);
+                }
+            });
+
+            rlIcon4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(getActivity(), MainSound.class);
+                    startActivity(intent);
+                }
+            });
+
+            rlIcon5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(getActivity(), MainSound.class);
+                    startActivity(intent);
+                }
+            });
 
             return rootView;
         }
