@@ -14,14 +14,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1st Value:"
-        android:textSize="20sp" />
+        android:textSize="30sp" />
     <EditText
         android:id="@+id/value1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:layout_alignTop="@+id/textView"
-        android:layout_toEndOf="@+id/textView">
+        android:layout_toEndOf="@+id/textView"
+        android:textSize="25sp">
         <requestFocus />
     </EditText>
     <TextView
@@ -29,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="2nd Value:"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:layout_marginTop="60dp" />
     <EditText
         android:id="@+id/value2"
@@ -38,7 +39,9 @@
         android:ems="10"
         android:layout_alignTop="@+id/textView1"
         android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/textView1">
+        android:layout_toEndOf="@+id/textView1"
+        android:textSize="25sp"
+        android:textIsSelectable="false">
         <requestFocus />
     </EditText>
 
