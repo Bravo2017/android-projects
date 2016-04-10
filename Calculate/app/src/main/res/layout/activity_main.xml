@@ -45,11 +45,20 @@
         android:layout_height="wrap_content"
         android:text="Add"
         android:id="@+id/button"
-        android:layout_below="@+id/value2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="38dp"
         android:background="#600"
         android:textColor="#fff"
+        android:textSize="30sp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sum:"
+        android:id="@+id/sum"
+        android:layout_above="@+id/button"
+        android:layout_toStartOf="@+id/button"
+        android:layout_marginBottom="50dp"
         android:textSize="30sp" />
 
 
