@@ -34,7 +34,7 @@ public class MainActivity extends ActionBarActivity {
 
         click = (Button) findViewById(R.id.button);
         tv = (TextView) findViewById(R.id.tv);
-        edit_user = (EditText) findViewById(R.id.edit);
+        edit_user = (EditText) findViewById(R.id.username);
         pbar = (ProgressBar) findViewById(R.id.pb);
         pbar.setVisibility(View.INVISIBLE);
 
