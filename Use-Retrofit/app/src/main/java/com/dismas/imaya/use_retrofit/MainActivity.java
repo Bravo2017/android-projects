@@ -58,7 +58,7 @@ public class MainActivity extends ActionBarActivity {
                     public void success(gitmodel gitmodel, Response response) {
                         //we get json object from github server to our POJO or model class
 
-                        tv.setText("Github Name: "+gitmodel.getName()+"\nEmail: "+gitmodel.getEmail()+"\nWeb: "+gitmodel.getBlog()+"\nTown: "+gitmodel.getLocation()+"\nPublic Repos: "+gitmodel.getPublicRepos()+"\nLast Profile Update: "+gitmodel.getUpdatedAt());
+                        tv.setText("Github Name: "+gitmodel.getName()+"\nEmail: "+gitmodel.getEmail()+"\nWeb: "+gitmodel.getBlog()+"\nTown: "+gitmodel.getLocation()+"\nPublic Repos: "+gitmodel.getPublicRepos()+"\nFollowers: "+gitmodel.getFollowers()+"\nFollowing: "+gitmodel.getFollowing()+"\nLogin: "+gitmodel.getLogin()+"\nAvailability: "+gitmodel.getHireable()+"\nGravatar Id: "+gitmodel.getGravatarId()+"\nHash Code: "+gitmodel.hashCode());
 
                         pbar.setVisibility(View.INVISIBLE);                               //disable progressbar
                     }
