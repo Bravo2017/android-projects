@@ -64,6 +64,7 @@ public class MainActivity extends ActionBarActivity {
                     }
 
                     @Override
+
                     public void failure(RetrofitError error) {
                         tv.setText(error.getMessage());
                         pbar.setVisibility(View.INVISIBLE);                               //disable progressbar

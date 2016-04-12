@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/res/merged/debug/drawable-nodpi-v4/profilepic.jpg",
+        "source": "/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/src/main/res/drawable-nodpi/profilepic.jpg"
+    },
+    {
+        "merged": "/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/res/merged/debug/drawable-nodpi-v4/profilepic_bg.9.png",
+        "source": "/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/src/main/res/drawable-nodpi/profilepic_bg.9.png"
+    },
+    {
+        "merged": "/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/res/merged/debug/drawable-nodpi-v4/profilepic_mask.9.png",
+        "source": "/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/src/main/res/drawable-nodpi/profilepic_mask.9.png"
+    },
+    {
+        "merged": "/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/res/merged/debug/drawable-nodpi-v4/profilepic_over.9.png",
+        "source": "/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/src/main/res/drawable-nodpi/profilepic_over.9.png"
+    }
+]

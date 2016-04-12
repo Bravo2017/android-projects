@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ActionBar.Solid.Demos" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@drawable/ab_solid_demos</item>
+        <item name="android:backgroundStacked">@drawable/ab_stacked_solid_demos</item>
+        <item name="android:backgroundSplit">@drawable/ab_bottom_solid_demos</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Demos</item>
+    </style>
+    <style name="ActionBar.Transparent.Demos" parent="@style/Widget.AppCompat.ActionBar">
+        <item name="android:background">@drawable/ab_transparent_demos</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Demos</item>
+    </style>
+    <style name="Base.Theme.AppCompat" parent="Base.V14.Theme.AppCompat">
+        <item name="android:actionModeCutDrawable">?actionModeCutDrawable</item>
+        <item name="android:actionModeCopyDrawable">?actionModeCopyDrawable</item>
+        <item name="android:actionModePasteDrawable">?actionModePasteDrawable</item>
+        <item name="android:actionModeSelectAllDrawable">?actionModeSelectAllDrawable</item>
+        <item name="android:actionModeShareDrawable">?actionModeShareDrawable</item>
+    </style>
+    <style name="Base.Theme.AppCompat.Dialog" parent="Base.V14.Theme.AppCompat.Dialog">
+        <item name="android:actionModeCutDrawable">?actionModeCutDrawable</item>
+        <item name="android:actionModeCopyDrawable">?actionModeCopyDrawable</item>
+        <item name="android:actionModePasteDrawable">?actionModePasteDrawable</item>
+        <item name="android:actionModeSelectAllDrawable">?actionModeSelectAllDrawable</item>
+        <item name="android:actionModeShareDrawable">?actionModeShareDrawable</item>
+    </style>
+    <style name="Base.Theme.AppCompat.Light" parent="Base.V14.Theme.AppCompat.Light">
+        <item name="android:actionModeCutDrawable">?actionModeCutDrawable</item>
+        <item name="android:actionModeCopyDrawable">?actionModeCopyDrawable</item>
+        <item name="android:actionModePasteDrawable">?actionModePasteDrawable</item>
+        <item name="android:actionModeSelectAllDrawable">?actionModeSelectAllDrawable</item>
+        <item name="android:actionModeShareDrawable">?actionModeShareDrawable</item>
+    </style>
+    <style name="Base.Theme.AppCompat.Light.Dialog" parent="Base.V14.Theme.AppCompat.Light.Dialog">
+        <item name="android:actionModeCutDrawable">?actionModeCutDrawable</item>
+        <item name="android:actionModeCopyDrawable">?actionModeCopyDrawable</item>
+        <item name="android:actionModePasteDrawable">?actionModePasteDrawable</item>
+        <item name="android:actionModeSelectAllDrawable">?actionModeSelectAllDrawable</item>
+        <item name="android:actionModeShareDrawable">?actionModeShareDrawable</item>
+    </style>
+    <style name="Base.V14.Theme.AppCompat" parent="Base.V11.Theme.AppCompat"/>
+    <style name="Base.V14.Theme.AppCompat.Dialog" parent="Base.V11.Theme.AppCompat.Dialog"/>
+    <style name="Base.V14.Theme.AppCompat.Light" parent="Base.V11.Theme.AppCompat.Light"/>
+    <style name="Base.V14.Theme.AppCompat.Light.Dialog" parent="Base.V11.Theme.AppCompat.Light.Dialog"/>
+    <style name="Theme.Demos" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:actionBarItemBackground">@drawable/selectable_background_demos</item>
+        <item name="android:popupMenuStyle">@style/PopupMenu.Demos</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Demos</item>
+        <item name="android:actionBarTabStyle">@style/ActionBarTabStyle.Demos</item>
+        <item name="android:actionDropDownStyle">@style/DropDownNav.Demos</item>
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Demos</item>
+        <item name="android:actionModeBackground">@drawable/cab_background_top_demos</item>
+        <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_demos</item>
+        <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Demos</item>
+        
+                <!-- Light.DarkActionBar specific -->
+        <item name="android:actionBarWidgetTheme">@style/Theme.Demos.Widget</item>
+
+    </style>
+    <style name="Theme.Demos.Widget" parent="@style/Theme.AppCompat">
+        <item name="android:popupMenuStyle">@style/PopupMenu.Demos</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Demos</item>
+    </style>
+</resources>

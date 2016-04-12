@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Default-Skin/Default-Skin.iml" filepath="$PROJECT_DIR$/Default-Skin/Default-Skin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Layouts-Demo/Layouts-Demo.iml" filepath="$PROJECT_DIR$/Layouts-Demo/Layouts-Demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LayoutsDemos.iml" filepath="$PROJECT_DIR$/LayoutsDemos.iml" />
+    </modules>
+  </component>
+</project>
