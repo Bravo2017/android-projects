@@ -11,7 +11,6 @@
 package com.droidux.demos.layouts;
 
 import android.app.Application;
-import com.droidux.core.components.DroidUxLibrary;
 
 /**
  *
@@ -21,6 +20,5 @@ public class LayoutsSampleApp extends Application {
     public void onCreate() {
         super.onCreate();
 
-        DroidUxLibrary.register("enter-your-api-key-here", this);
     }
 }

@@ -12,18 +12,17 @@ package com.droidux.demos.layouts;
 
 import android.os.Bundle;
 import android.widget.ImageView;
-import com.droidux.ui.widgets.layout.drawable.ReflectionDrawable;
+
 
 /**
  *
  */
 public class ReflectionDrawableTest extends BaseTestActivity {
-    private ReflectionDrawable mReflectionDrawable;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ImageView iv = (ImageView) findViewById(R.id.image1);
-        mReflectionDrawable = new ReflectionDrawable(getResources().getDrawable(R.drawable.profilepic));
-        iv.setImageDrawable(mReflectionDrawable);
+
     }
 
     @Override
@@ -31,11 +30,5 @@ public class ReflectionDrawableTest extends BaseTestActivity {
         return R.layout.activity_reflectiondrawabletest;
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (mReflectionDrawable != null) {
-            mReflectionDrawable.cleanup();
-        }
-    }
+
 }

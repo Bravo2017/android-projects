@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/jars/libs/internal_impl-21.0.3.jar"
+        jumboMode="true"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/pre-dexed/debug/internal_impl-21.0.3_db5668ad1c40a7397e3f3c63dc9706df0cfc6782.jar" />
+    </item>
+    <item
+        jar="/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/jars/classes.jar"
+        jumboMode="true"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/pre-dexed/debug/com.android.support-support-v4-21.0.3_08808c37a96d9ccefd16897a16be37b87dd6c9ff.jar" />
+    </item>
+    <item
+        jar="/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="21.1.2"
+        sha1="1d8f6efce9331b23dc8525de6b056726c3fac975">
+        <dex dex="/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/pre-dexed/debug/instant-run-bootstrap_c4938d2453cd66da2a0a3691f344baf9510ba7ee.jar" />
+    </item>
+    <item
+        jar="/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="21.1.2"
+        sha1="625ab95f073aaff3fd53b5299adbb5b411220e8f">
+        <dex dex="/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/pre-dexed/debug/instant-run_920d68ef97d80150693eb68bf3b8ebac41a57adc.jar" />
+    </item>
+    <item
+        jar="/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/jars/classes.jar"
+        jumboMode="true"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-21.0.3_3f695acd8cf12f5aa4d15665e902e34c7190fc54.jar" />
+    </item>
+    <item
+        jar="/home/imaya/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="true"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/pre-dexed/debug/support-annotations-21.0.3_14b5ace78a6e90e733d145c6cd9318c23219cea3.jar" />
+    </item>
+
+</items>

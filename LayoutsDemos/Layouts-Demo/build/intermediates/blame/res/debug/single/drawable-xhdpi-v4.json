@@ -48,12 +48,12 @@
         "source": "/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/drawable-xhdpi/abc_list_longpressed_holo.9.png"
     },
     {
-        "merged": "/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_switch_track_mtrl_alpha.9.png",
-        "source": "/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/drawable-xhdpi/abc_switch_track_mtrl_alpha.9.png"
-    },
-    {
         "merged": "/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png",
         "source": "/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/drawable-xhdpi/abc_btn_switch_to_on_mtrl_00012.9.png"
+    },
+    {
+        "merged": "/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_switch_track_mtrl_alpha.9.png",
+        "source": "/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/drawable-xhdpi/abc_switch_track_mtrl_alpha.9.png"
     },
     {
         "merged": "/home/imaya/android-projects/LayoutsDemos/Layouts-Demo/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png",

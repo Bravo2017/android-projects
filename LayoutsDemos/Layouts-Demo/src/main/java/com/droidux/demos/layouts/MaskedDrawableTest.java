@@ -14,7 +14,6 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.widget.ImageView;
-import com.droidux.ui.widgets.layout.drawable.MaskedDrawable;
 
 /**
  *
@@ -23,7 +22,7 @@ public class MaskedDrawableTest extends BaseTestActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ImageView iv = (ImageView) findViewById(R.id.image1);
-        iv.setImageDrawable(new MaskedDrawable(getResources().getDrawable(R.drawable.profilepic), new ShapeDrawable(new OvalShape())));
+
 
     }
 

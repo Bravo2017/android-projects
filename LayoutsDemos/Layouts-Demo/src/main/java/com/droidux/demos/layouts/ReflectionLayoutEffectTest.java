@@ -19,7 +19,7 @@ import android.view.View;
 import android.view.animation.Animation;
 
 import com.droidux.demos.layouts.anim.BounceAnimation;
-import com.droidux.ui.widgets.layout.ReflectionLayout;
+
 
 /**
  *
@@ -49,8 +49,7 @@ public class ReflectionLayoutEffectTest extends BaseTestActivity {
         ColorMatrixColorFilter cf = new ColorMatrixColorFilter(matrix);
         effectPaint.setColorFilter(cf);
 
-        ReflectionLayout rl = (ReflectionLayout) findViewById(R.id.reflectionLayout);
-        rl.setEffectPaint(effectPaint);
+
 
         // animation
         Animation bounce = new BounceAnimation(0.4f, Animation.RELATIVE_TO_SELF);
