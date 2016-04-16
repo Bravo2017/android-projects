@@ -42,10 +42,10 @@ public class MainActivity extends AppCompatActivity {
                 //we get json object from github server to our POJO or model class
                 tv.setMovementMethod(new ScrollingMovementMethod());
                 for (int i = 0; i < GitModel.size(); i++) {
-                    tv.append("" + GitModel.get(i).getName() + "\t id: "
-                            + GitModel.get(i).getId() + "\t full name: "
-                            + GitModel.get(i).getfullName() + "\t Avatar Url: "
-                            + GitModel.get(i).getOwner().getAvatar_url() + "\n");
+                    tv.append("" + GitModel.get(i).getName() + "\n id: "
+                            + GitModel.get(i).getId() + "\n full name: "
+                            + GitModel.get(i).getfullName() + "\n Avatar Url: "
+                            + GitModel.get(i).getOwner().getAvatar_url() + "\n\n\n");
                 }
             }
         });
