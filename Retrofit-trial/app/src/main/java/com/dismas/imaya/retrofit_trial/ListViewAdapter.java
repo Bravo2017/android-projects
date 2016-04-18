@@ -1,5 +1,7 @@
 package com.dismas.imaya.retrofit_trial;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +23,12 @@ public class ListViewAdapter extends BaseAdapter {
 
     LayoutInflater inflater;
     List<GitModel> gitModelList;
+    Context context;
 
-    public ListViewAdapter(LayoutInflater inflater, List<GitModel> gitModelList){
-        this.inflater = inflater;
+    public ListViewAdapter(List<GitModel> gitModelList, Context context){
+        this.inflater = LayoutInflater.from(context);
         this.gitModelList = gitModelList;
+        this.context = context;
     }
 
     @Override
@@ -44,27 +48,31 @@ public class ListViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
 
+        ViewHolder holder;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.activity_list_view, parent, false);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
+
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-
         Picasso.with(inflater.getContext())
-                .load(gitModelList.get(position).getOwner().getAvatar_url())
+                .load(gitModelList.get(position).getOwner().getAvatar_url()) //""+gitmodelList.get(position).getOwner().getAvatar_url()
                 .into(holder.image);
 
         holder.text.setText(" Name: "+gitModelList.get(position).getName()
                 +"\t id: "+gitModelList.get(position).getId()+"\n");
+
         holder.texttwo.setText(gitModelList.get(position).getOwner().getAvatar_url());
 
+        holder.image.setOnClickListener(new MyOnClickListener(gitModelList, position));
+        holder.text.setOnClickListener(new MyOnClickListener(gitModelList, position));
+        holder.texttwo.setOnClickListener(new MyOnClickListener(gitModelList, position));
         return convertView;
-    }
 
+    }
     static class ViewHolder{
         @Bind(R.id.image_in_item)
         ImageView image;
@@ -86,6 +94,46 @@ public class ListViewAdapter extends BaseAdapter {
 
     public void clearGitmodel(){
         this.gitModelList.clear();
+
     }
+
+    private class MyOnClickListener implements View.OnClickListener {
+        List<GitModel> gitModelList;
+        int position;
+
+        private MyOnClickListener(List<GitModel> gitModelList, int position) {
+            this.gitModelList = gitModelList;
+            this.position = position;
+        }
+
+        @Override
+        public void onClick(View view) {
+
+
+            if (view instanceof ImageView) {
+
+                String name = gitModelList.get(position).getOwner().getLogin();
+
+                // Launching new Activity on selecting single List Item
+                Intent i = new Intent(context, UserProfile.class);
+                // sending data to new activity
+                i.putExtra("name", name);
+                view.getContext().startActivity(i);
+
+
+
+            } else if(view instanceof TextView){
+                String url = gitModelList.get(position).getOwner().getHtml_url();
+
+                // Launching new Activity on selecting single List Item
+                Intent i = new Intent(context, SingleListItem.class);
+                // sending data to new activity
+                i.putExtra("url", url);
+                view.getContext().startActivity(i);
+            }
+
+        }
+    }
+
 }
 

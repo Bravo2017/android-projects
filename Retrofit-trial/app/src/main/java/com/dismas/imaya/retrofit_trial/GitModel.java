@@ -20,6 +20,10 @@ public class GitModel {
     @Expose
     private Owner owner;
 
+    @SerializedName("html_url")
+    @Expose
+    private String htmlUrl;
+
     public String getLogin() {
         return login;
     }
@@ -49,5 +53,12 @@ public class GitModel {
     }
     public void setOwner(Owner owner) {
         this.owner = owner;
+    }
+    public String getHtmlUrl() {
+        return htmlUrl;
+    }
+
+    public void setHtmlUrl(String htmlUrl) {
+        this.htmlUrl = htmlUrl;
     }
 }

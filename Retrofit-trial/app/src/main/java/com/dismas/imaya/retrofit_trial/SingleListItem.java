@@ -26,4 +26,3 @@ public class SingleListItem extends Activity {
         browser.loadUrl(url);
     }
 }
- 

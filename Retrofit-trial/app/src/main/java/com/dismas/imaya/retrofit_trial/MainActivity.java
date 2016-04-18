@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 
         placeholderModel = new ArrayList<>();
-        listAdapter = new ListViewAdapter(inflater, placeholderModel);
+        listAdapter = new ListViewAdapter(placeholderModel, this);
 
         list.setAdapter(listAdapter);
         RestAdapter restAdapter = new RestAdapter.Builder()

@@ -16,6 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SingleListItem"
+        android:label="Single Item Selected"></activity>
+
+        <activity android:name=".UserProfile"
+            android:label="User Profile"></activity>
     </application>
 
 </manifest>
