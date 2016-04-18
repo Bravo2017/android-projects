@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.app.Dialog;
 
 import com.squareup.picasso.Picasso;
 
@@ -108,7 +109,9 @@ public class ListViewAdapter extends BaseAdapter {
 
         @Override
         public void onClick(View view) {
-
+//            DialogTask loadDialog = new DialogTask(gitModelList,position,view);
+//
+//            loadDialog.execute();
 
             if (view instanceof ImageView) {
 
