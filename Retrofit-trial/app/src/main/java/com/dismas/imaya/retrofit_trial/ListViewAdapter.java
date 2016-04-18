@@ -6,12 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.app.Dialog;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -20,26 +22,30 @@ import butterknife.ButterKnife;
 /**
  * Created by imaya on 4/16/16.
  */
-public class ListViewAdapter extends BaseAdapter {
+public class ListViewAdapter extends BaseAdapter implements Filterable {
 
     LayoutInflater inflater;
     List<GitModel> gitModelList;
+    List<GitModel> filteredGitModelList;
     Context context;
 
-    public ListViewAdapter(List<GitModel> gitModelList, Context context){
+    private ItemFilter mFilter = new ItemFilter();
+
+    public ListViewAdapter(List<GitModel> gitModelList, Context context) {
         this.inflater = LayoutInflater.from(context);
         this.gitModelList = gitModelList;
+        this.filteredGitModelList = gitModelList;
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return gitModelList.size();
+        return filteredGitModelList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return gitModelList.get(position);
+        return filteredGitModelList.get(position);
     }
 
     @Override
@@ -60,21 +66,22 @@ public class ListViewAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         Picasso.with(inflater.getContext())
-                .load(gitModelList.get(position).getOwner().getAvatar_url()) //""+gitmodelList.get(position).getOwner().getAvatar_url()
+                .load(filteredGitModelList.get(position).getOwner().getAvatar_url()) //""+gitmodelList.get(position).getOwner().getAvatar_url()
+                .placeholder(R.drawable.placeholder)
                 .into(holder.image);
 
-        holder.text.setText(" Name: "+gitModelList.get(position).getName()
-                +"\t id: "+gitModelList.get(position).getId()+"\n");
+        holder.text.setText(" Name: " + filteredGitModelList.get(position).getName()
+                + "\t id: " + filteredGitModelList.get(position).getId() + "\n");
 
-        holder.texttwo.setText(gitModelList.get(position).getOwner().getAvatar_url());
+        holder.texttwo.setText(filteredGitModelList.get(position).getOwner().getLogin());
 
-        holder.image.setOnClickListener(new MyOnClickListener(gitModelList, position));
-        holder.text.setOnClickListener(new MyOnClickListener(gitModelList, position));
-        holder.texttwo.setOnClickListener(new MyOnClickListener(gitModelList, position));
+        holder.image.setOnClickListener(new MyOnClickListener(filteredGitModelList, position));
+        holder.text.setOnClickListener(new MyOnClickListener(filteredGitModelList, position));
+        holder.texttwo.setOnClickListener(new MyOnClickListener(filteredGitModelList, position));
         return convertView;
-
     }
-    static class ViewHolder{
+
+    static class ViewHolder {
         @Bind(R.id.image_in_item)
         ImageView image;
         @Bind(R.id.textview_in_item)
@@ -82,20 +89,21 @@ public class ListViewAdapter extends BaseAdapter {
         @Bind(R.id.textview_in_item_two)
         TextView texttwo;
 
-        public ViewHolder(View view){
+        public ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
     }
 
-    public void setGitmodel(List<GitModel> gitModelList){
+    public void setGitmodel(List<GitModel> gitModelList) {
         clearGitmodel();
         this.gitModelList = gitModelList;
+        this.filteredGitModelList = gitModelList;
         notifyDataSetChanged();
     }
 
-    public void clearGitmodel(){
+    public void clearGitmodel() {
         this.gitModelList.clear();
-
+        this.filteredGitModelList.clear();
     }
 
     private class MyOnClickListener implements View.OnClickListener {
@@ -109,33 +117,70 @@ public class ListViewAdapter extends BaseAdapter {
 
         @Override
         public void onClick(View view) {
-//            DialogTask loadDialog = new DialogTask(gitModelList,position,view);
-//
-//            loadDialog.execute();
+
 
             if (view instanceof ImageView) {
 
-                String name = gitModelList.get(position).getOwner().getLogin();
-
-                // Launching new Activity on selecting single List Item
-                Intent i = new Intent(context, UserProfile.class);
-                // sending data to new activity
-                i.putExtra("name", name);
-                view.getContext().startActivity(i);
-
-
-
-            } else if(view instanceof TextView){
                 String url = gitModelList.get(position).getOwner().getHtml_url();
 
                 // Launching new Activity on selecting single List Item
-                Intent i = new Intent(context, SingleListItem.class);
+                Intent i = new Intent(context, GitRepoWebActivity.class);
                 // sending data to new activity
                 i.putExtra("url", url);
+                view.getContext().startActivity(i);
+
+            } else if (view instanceof TextView) {
+                String name = gitModelList.get(position).getOwner().getLogin();
+
+                // Launching new Activity on selecting single List Item
+                Intent i = new Intent(context, UserProfileActivity.class);
+                // sending data to new activity
+                i.putExtra("name", name);
                 view.getContext().startActivity(i);
             }
 
         }
+    }
+
+    public Filter getFilter() {
+        return mFilter;
+    }
+
+    private class ItemFilter extends Filter {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+
+            String filterString = constraint.toString().toLowerCase();
+
+            FilterResults results = new FilterResults();
+
+            final List<GitModel> list = gitModelList;
+
+            int count = list.size();
+            final ArrayList<GitModel> nlist = new ArrayList<GitModel>(count);
+
+            GitModel filterableGitModel;
+
+            for (int i = 0; i < count; i++) {
+                filterableGitModel = list.get(i);
+                if (filterableGitModel.getOwner().getLogin().toLowerCase().contains(filterString)) {
+                    nlist.add(filterableGitModel);
+                }
+            }
+
+            results.values = nlist;
+            results.count = nlist.size();
+
+            return results;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected void publishResults(CharSequence constraint, Filter.FilterResults results) {
+            filteredGitModelList = (ArrayList<GitModel>) results.values;
+            notifyDataSetChanged();
+        }
+
     }
 
 }

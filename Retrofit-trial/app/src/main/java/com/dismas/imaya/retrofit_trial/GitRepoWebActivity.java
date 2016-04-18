@@ -11,14 +11,14 @@ import butterknife.ButterKnife;
 /**
  * Created by imaya on 4/18/16.
  */
-public class SingleListItem extends Activity {
+public class GitRepoWebActivity extends Activity {
     @Bind(R.id.webview)
     WebView browser;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.single_list_item);
+        setContentView(R.layout.repo_webview);
         ButterKnife.bind(this);
 
         Intent i = getIntent();

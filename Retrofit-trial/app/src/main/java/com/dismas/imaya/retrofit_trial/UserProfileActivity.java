@@ -1,6 +1,7 @@
 package com.dismas.imaya.retrofit_trial;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,9 +28,10 @@ import retrofit.client.Response;
 /**
  * Created by imaya on 4/18/16.
  */
-public class UserProfile extends Activity implements Validator.ValidationListener {
-    static final String API = "https://api.github.com";        //BASE URL
+public class UserProfileActivity extends Activity implements Validator.ValidationListener {
+    static final String API = "https://api.github.com";                         //BASE URL
     Validator validator;
+    private ProgressDialog mProgressDialog;
 
 
     @Bind(R.id.profile_image)
@@ -102,6 +104,18 @@ public class UserProfile extends Activity implements Validator.ValidationListene
         validator.setValidationListener(this);
         // Code…
 
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setMessage("Please wait. Loading...");
+        mProgressDialog.setCancelable(true);
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        // Need this to avoid crashes when backing out of web activity too fast
+        if (!isFinishing()) {
+            mProgressDialog.show();
+        }
+
+        Picasso.with(getApplicationContext())
+                .load(R.drawable.placeholder)
+                .into(image);
 
         Intent i = getIntent();
         String name = i.getStringExtra("name");
@@ -115,6 +129,19 @@ public class UserProfile extends Activity implements Validator.ValidationListene
         git.getUser(name, new Callback<User>() {
             @Override
             public void failure(RetrofitError error) {
+                mProgressDialog.dismiss();
+                Toast.makeText(getApplicationContext(), "Failed to load", Toast.LENGTH_SHORT).show();
+                done_button.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(), "Cannot validate unloaded content", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                cancel_button.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        finish();
+                    }
+                });
+
 
             }
 
@@ -143,9 +170,8 @@ public class UserProfile extends Activity implements Validator.ValidationListene
                     }
                 });
 
+                mProgressDialog.dismiss();
             }
-
-
         });
     }
 }
