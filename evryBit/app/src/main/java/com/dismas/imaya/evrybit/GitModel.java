@@ -17,6 +17,9 @@ public class GitModel {
     @Expose
     private String fullName;
 
+    @Expose
+    private Owner owner;
+
     public String getLogin() {
         return login;
     }
@@ -40,5 +43,11 @@ public class GitModel {
     }
     public void setfullName(String fullName) {
         this.fullName = fullName;
+    }
+    public Owner getOwner() {
+        return owner;
+    }
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 }
