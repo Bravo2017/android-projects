@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.widget.TextView;
 
 import java.util.List;
@@ -18,7 +19,7 @@ import retrofit.client.Response;
 public class MainActivity extends ActionBarActivity {
     @Bind(R.id.texv)
     TextView tv;
-    String API = "https://api.github.com";                         //BASE URL
+    String API = "http://api.getevrybit.com/";                         //BASE URL
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +39,16 @@ public class MainActivity extends ActionBarActivity {
             }
 
             @Override
-            public void success(List<GitModel> GitModel, Response response) {
+            public void success(List<GitModel> users, Response response) {
                 //we get json object from github server to our POJO or model class
+//                Log.d("success","got data");
                 tv.setMovementMethod(new ScrollingMovementMethod());
-                for (int i = 0; i < GitModel.size(); i++) {
-                    tv.append("" + GitModel.get(i).getName() + "\t id: "
-                            + GitModel.get(i).getId() + "\t full name: "
-                            + GitModel.get(i).getfullName() + "\t Avatar Url: "
-                            + GitModel.get(i).getOwner().getAvatar_url() + "\n");
+                for (int i = 0; i < users.size(); i++) {
+//                    tv.append("\n Email: "
+//                            + GitModel.get(i).getEmail() + "\n Created: "
+//                            + GitModel.get(i).getCreated() + "\n Resource Uri: "
+//                            + GitModel.get(i).getResource_uri() + "\n");
+                    tv.append(users.get(i).toString());
                 }
             }
         });
