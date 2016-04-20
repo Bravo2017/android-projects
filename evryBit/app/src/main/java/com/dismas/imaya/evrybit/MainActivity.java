@@ -7,6 +7,9 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,26 +36,27 @@ public class MainActivity extends ActionBarActivity {
 
         GitApi git = restAdapter.create(GitApi.class);                            //creating a service for adapter with our GET class
 
-        git.getFeed(new Callback<List<GitModel>>() {
+
+        git.getFeed(new Callback<List<InnerResponse>>() {
 
             @Override
-            public void failure(RetrofitError error) {
-                tv.setText(error.getMessage());
-            }
-
-            @Override
-
             public void success(List<GitModel> gitModels, Response response) {
                 //we get json object from github server to our POJO or model class
 //                Log.d("success","got data");
                 tv.setMovementMethod(new ScrollingMovementMethod());
-                tv.append(gitModels.get(1).getOwner().getIntro());
-//                for (int i = 0; i < gitModels.size(); i++) {
-//                    tv.append("Title: " + gitModels.get(i).getOwner().getTitle()+ "\n Email: "
-//                            + gitModels.get(i).getOwner().getUser_id() + "\n Content: "
-//                            + gitModels.get(i).getOwner().getIntro() + "\n");
-//                }
+
+                for (int i = 0; i < gitModels.size(); i++) {
+                    tv.append("Title: " + GitModel.InnerResponse.class+ "\n Email: "
+                            + gitModels.get(i).getOwner().getUser_id() + "\n Content: "
+                            + gitModels.get(i).getOwner().getIntro() + "\n");
+                }
+            }
+            @Override
+            public void failure(RetrofitError error) {
+                tv.setText(error.getMessage());
             }
         });
     }
+
+
 }
