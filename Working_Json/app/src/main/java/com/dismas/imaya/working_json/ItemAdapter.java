@@ -12,17 +12,17 @@ import java.util.List;
 /**
  * Created by imaya on 4/22/16.
  */
-public class ItemAdapter extends ArrayAdapter<ClipData.Item> {
+public class ItemAdapter extends ArrayAdapter<Item> {
 
-    public ItemAdapter(Context c, List<ClipData.Item> items) {
+    public ItemAdapter(Context c, List<Item> items) {
         super(c, 0, items);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        MenuView.ItemView itemView = (MenuView.ItemView)convertView;
+        ItemView itemView = (ItemView)convertView;
         if (null == itemView)
-            itemView = MenuView.ItemView.inflate(parent);
+            itemView = ItemView.inflate(parent);
         itemView.setItem(getItem(position));
         return itemView;
     }
