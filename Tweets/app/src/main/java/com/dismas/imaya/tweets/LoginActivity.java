@@ -1,6 +1,7 @@
 package com.dismas.imaya.tweets;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -39,7 +40,7 @@ public class LoginActivity extends Activity {
         loginButton = (TwitterLoginButton)findViewById(R.id.twitter_login_button);
         loginButton.setCallback(new LoginHandler());
         status = (TextView)findViewById(R.id.status);
-        status.setText("Status: Ready");
+//        status.setText("Status: Ready");
     }
 
     @Override
@@ -52,13 +53,15 @@ public class LoginActivity extends Activity {
         @Override
         public void success(Result<TwitterSession> twitterSessionResult) {
 
-            String output = "Status: " +
-                    "Your login was successful " +
-                    twitterSessionResult.data.getUserName() +
-                    "\nAuth Token Received: " +
-                    twitterSessionResult.data.getAuthToken().token;
-
-            status.setText(output);
+//            String output = "Status: " +
+//                    "Your login was successful " +
+//                    twitterSessionResult.data.getUserName() +
+//                    "\nAuth Token Received: " +
+//                    twitterSessionResult.data.getAuthToken().token;
+//
+//            status.setText(output);
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
 
         }
 
