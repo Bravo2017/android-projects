@@ -10,6 +10,7 @@ import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterAuthToken;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
@@ -60,6 +61,10 @@ public class LoginActivity extends Activity {
 //                    twitterSessionResult.data.getAuthToken().token;
 //
 //            status.setText(output);
+            TwitterSession session = Twitter.getSessionManager().getActiveSession();
+            TwitterAuthToken authToken = session.getAuthToken();
+            String token = authToken.token;
+            String secret = authToken.secret;
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
 
