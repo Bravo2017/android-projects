@@ -2,27 +2,30 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <item android:title="Inbox"
+    <item android:title="Playlist"
         android:id="@+id/nav_item_inbox"
         android:icon="@drawable/ic_inbox_black_24dp"/>
 
-    <item android:title="Sent"
+    <item android:title="All Music"
         android:id="@+id/nav_item_sent"
         android:icon="@drawable/ic_present_to_all_black_24dp"/>
 
-    <item android:title="Drafts"
+    <item android:title="Audio"
         android:id="@+id/nav_item_draft"
+        android:icon="@drawable/ic_drafts_black_24dp"/>
+    <item android:title="Video"
+        android:id="@+id/nav_item_draft1"
         android:icon="@drawable/ic_drafts_black_24dp"/>
 
 
 
-    <item android:title="Others">
+    <item android:title="Online">
         <menu>
             <item
-                android:title="Spam"
+                android:title="Stream Audio"
                 android:icon="@drawable/ic_drafts_black_24dp"/>
             <item
-                android:title="Bin"
+                android:title="Stream Video"
                 android:icon="@drawable/ic_drafts_black_24dp"/>
         </menu>
     </item>
