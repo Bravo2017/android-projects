@@ -71,8 +71,10 @@ public class SplashFragment extends Fragment {
         switch (sectionNumber) {
             case 1:
                 txtSplashTitle.setText(R.string.splash_title_1);
+                txtSplashTitle.setTextColor(ContextCompat.getColor(getActivity(), R.color.green_2));
                 txtSplashDesc.setText(R.string.splash_desc_1);
-                imgSplash.setImageResource(R.drawable.splash_1);
+                txtSplashDesc.setTextColor(ContextCompat.getColor(getActivity(), R.color.green_2));
+                //imgSplash.setImageResource(R.drawable.splash_1);
                 //relativeLayoutSplash.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.md_deep_own_50));
                 imgSelectedDot1.setVisibility(View.VISIBLE);
                 imgSelectedDot2.setVisibility(View.INVISIBLE);
@@ -80,9 +82,9 @@ public class SplashFragment extends Fragment {
                 break;
             case 2:
                 txtSplashTitle.setText(R.string.splash_title_2);
-                txtSplashTitle.setTextColor(ContextCompat.getColor(getActivity(), R.color.green_one));
+                txtSplashTitle.setTextColor(ContextCompat.getColor(getActivity(), R.color.green_2));
                 txtSplashDesc.setText(R.string.splash_desc_2);
-                txtSplashDesc.setTextColor(ContextCompat.getColor(getActivity(), R.color.green_one));
+                txtSplashDesc.setTextColor(ContextCompat.getColor(getActivity(), R.color.green_2));
                 imgSplash.setImageResource(R.drawable.splash_2);
                 //relativeLayoutSplash.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.md_deep_own_500));
                 imgSelectedDot1.setVisibility(View.INVISIBLE);
@@ -91,7 +93,9 @@ public class SplashFragment extends Fragment {
                 break;
             case 3:
                 txtSplashTitle.setText(R.string.splash_title_3);
+                txtSplashTitle.setTextColor(ContextCompat.getColor(getActivity(), R.color.green_2));
                 txtSplashDesc.setText(R.string.splash_desc_3);
+                txtSplashDesc.setTextColor(ContextCompat.getColor(getActivity(), R.color.green_2));
                 imgSplash.setImageResource(R.drawable.splash_3);
                 //relativeLayoutSplash.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
                 imgSelectedDot1.setVisibility(View.INVISIBLE);

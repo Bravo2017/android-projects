@@ -13,8 +13,8 @@
     <string name="splash_title_2">Audio Music on Fan4Fun</string>
     <string name="splash_title_3">Video Music on Fan4Fun</string>
     <string name="splash_desc_1">Streaming audio and video music just became a lot more fun! </string>
-    <string name="splash_desc_2">Discover easily thousands of music across all genre.Listen to the music of your choice and Cheer your favourite artist</string>
-    <string name="splash_desc_3">Easily search videos music of your favourite artist, watch and download</string>
+    <string name="splash_desc_2">Discover easily thousands of music across all genre.\n Listen to the music of your choice and Cheer your favourite artist</string>
+    <string name="splash_desc_3">Search easily millions of  videos music of your favourite artist across all genre. \n Watch their performances and download</string>
 
     <!-- Strings related to Settings -->
     <string name="perf_ui">User Interface</string>
