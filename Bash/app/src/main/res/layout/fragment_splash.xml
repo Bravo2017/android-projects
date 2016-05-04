@@ -4,7 +4,8 @@
     android:id="@+id/relative_layout_fragment_splash"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dismas.imaya.bash.SplashActivity$PlaceholderFragment">
+    tools:context="com.dismas.imaya.bash.SplashActivity$PlaceholderFragment"
+    android:clickable="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
