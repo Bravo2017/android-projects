@@ -6,6 +6,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+
 /**
  * Created by imaya on 5/4/16.
  */

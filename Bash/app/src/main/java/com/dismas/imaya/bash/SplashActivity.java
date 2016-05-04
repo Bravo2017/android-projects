@@ -48,7 +48,7 @@ public class SplashActivity extends AppCompatActivity implements ViewPager.OnPag
 
     private void runOnce() {
         if (!SettingsPreferences.isNewInstall(SplashActivity.this)) {
-            runIntent(HomeActivity.class);
+            runIntent(MainActivity.class);
             finish();
         }
     }
@@ -82,7 +82,7 @@ public class SplashActivity extends AppCompatActivity implements ViewPager.OnPag
     public void OnNext() {
         if (viewPager.getCurrentItem() == 2) {
             SettingsPreferences.setNewInstall(SplashActivity.this);
-            runIntent(HomeActivity.class);
+            runIntent(MainActivity.class);
             finish();
         } else if (viewPager.getCurrentItem() < 2) {
             viewPager.setCurrentItem(viewPager.getCurrentItem() + 1, true);
