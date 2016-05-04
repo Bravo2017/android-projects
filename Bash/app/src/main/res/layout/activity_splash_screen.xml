@@ -2,24 +2,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash_now22"
+    android:background="@color/white"
     android:orientation="vertical"
     >
 
     <ImageView
         android:layout_width="220dp"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:id="@+id/imageView"
         android:src="@drawable/splash_1"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
+        android:elevation="50dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/app_name"
         android:id="@+id/textView2"
         android:layout_alignEnd="@+id/imageView"
@@ -28,7 +28,7 @@
         android:layout_alignParentEnd="false"
         android:layout_alignParentStart="false"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/md_grey_400"
         android:textSize="50sp"
         android:layout_marginBottom="10dp"
         android:singleLine="false" />
