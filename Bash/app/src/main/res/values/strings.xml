@@ -142,4 +142,43 @@
 
     <string name="change_log">Change Log</string>
     <string name="change_log_desc"><b>Version 0.41</b>\n\nMinor bug fixes.\n\n<b>Version 0.40</b>\n\nAdded sync feature. Now you can synchronize feeds in background and application will save all of the data for offline reading.\n\n<b>Version 0.33</b>\n\nAdded white icons in dark theme(only in category list and sources list) so they are easier to see.\n\nRemoved shadow from toolbars as it was glitching in dark theme.\n\n<b>Version 0.32</b>\n\nMinor bug fixes.\n\nAdded shadow to toolbars.\n\nAdded option to delete the feed from article.\n\n<b>Version 0.31</b>\n\nMinor bug fix, which was making the settings menu crash on some devices.\n\n<b>Version 0.30</b>\n\nAdded Opml integration.\n\nAdded <i>Read External Storage</i> permission so that user can import opml feeds via file stored in SD Card or internal storage.\n\nAdded Curated feeds and option to submit your own feeds to the curated list.\n\nAdded Sorting option, now user can sort the feeds by random, title, category and date.\n\nMinor bug fixes.\n\n<b>Version 0.22</b>\n\nMade circular reveal animation optional, you can disable it in settings.\n\n<b>Version 0.21</b>\n\nFixed a bug in which white screen was shown on splash screen.\n\nAdded the option to rate, view source code and view licence in About screen.\n\n<b>Version 0.20</b>\n\nAdded dark theme.\n\n<b>Version 0.11</b>\n\nRemoved duplicate entries in settings menu.\n\n<b>Version 0.10</b>\n\nReleased initial version.</string>
+
+    <!-- Content descriptions (for better accessibility) -->
+    <string name="list_thumbnail_view_description">Video preview thumbnail</string>
+
+    <string name="duration_live">live</string>
+
+    <!-- error strings -->
+    <string name="general_error">Error</string>
+    <string name="network_error">Network error</string>
+    <string name="could_not_load_thumbnails">Could not load all Thumbnails</string>
+    <string name="youtube_signature_decryption_error">Could not decrypt video url signature.</string>
+    <string name="parsing_error">Could not parse website.</string>
+    <string name="light_parsing_error">Could not parse website complete.</string>
+    <string name="content_not_available">Content not available.</string>
+    <string name="blocked_by_gema">Blocked by GEMA.</string>
+    <string name="could_not_setup_download_menu">Could not setup download menu.</string>
+    <string name="live_streams_not_supported">This is a LIVE STREAM. These are not yet supported.</string>
+    <string name="could_not_get_stream">Could not get any stream.</string>
+
+    <!-- error activity -->
+    <string name="sorry_string">Sorry that should not happen.</string>
+    <string name="guru_meditation" translatable="false">Guru Meditation.</string>
+    <string name="error_report_button_text">Report error via mail</string>
+    <string name="error_snackbar_message">Sorry some errors occurred.</string>
+    <string name="error_snackbar_action">REPORT</string>
+    <string name="what_device_headline">Info:</string>
+    <string name="what_happened_headline">What happened:</string>
+    <string name="info_labels">What:\\nRequest:\\nContent Lang:\\nService:\\nGMT Time:\\nVersion:\\nOS version:\\nGlob. IP range:</string>
+    <string name="info_searched_lbl">Searched for:</string>
+    <string name="info_requested_stream_lbl">Requested stream:</string>
+    <string name="your_comment">Your comment (in English):</string>
+    <string name="error_details_headline">Details:</string>
+
+    <string name="share">Share</string>
+    <string name="share_dialog_title">Share with:</string>
+
+    <string name="did_you_mean">Did you mean: %1$s ?</string>
+    <string name="search_page">Search page: </string>
+
 </resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="show_next_video_key">show_next_video</string>
+    <string name="default_language_value">en</string>
+    <string name="search_language_key">search_language</string>
+</resources>
