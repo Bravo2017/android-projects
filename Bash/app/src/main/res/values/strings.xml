@@ -233,7 +233,10 @@
     <string name="play_btn_text">Play</string>
     <string name="show_age_restricted_content_title">Show age restricted content</string>
     <string name="video_is_age_restricted">Video is Age restricted. Enable age restricted videos in the settings first.</string>
-    <string name="duration_live">live</string>
+
+    <string name="use_exoplayer_title">Use ExoPlayer</string>
+    <string name="use_exoplayer_summary">Experimental</string>
+
 
     <!-- error activity -->
     <string name="sorry_string">Sorry that should not happen.</string>
@@ -249,10 +252,10 @@
     <string name="your_comment">Your comment (in English):</string>
     <string name="error_details_headline">Details:</string>
 
-    <string name="share">Share</string>
-    <string name="share_dialog_title">Share with:</string>
+    <string name="use_tor_title">Use Tor</string>
+    <string name="use_tor_summary">(Experimental) Force download traffic through Tor for increased privacy (streaming videos not yet supported).</string>
 
-    <string name="did_you_mean">Did you mean: %1$s ?</string>
-    <string name="search_page">Search page: </string>
+    <string name="content">Content</string>
+
 
 </resources>
