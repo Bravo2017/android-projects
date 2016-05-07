@@ -3,4 +3,15 @@
     <string name="show_next_video_key">show_next_video</string>
     <string name="default_language_value">en</string>
     <string name="search_language_key">search_language</string>
+
+    <string name="default_resolution_key">default_resolution_preference</string>
+    <string name="default_resolution_value">360p</string>
+    <string-array name="resolution_list">
+        <item>720p</item>
+        <item>360p</item>
+        <item>240p</item>
+        <item>144p</item>
+    </string-array>
+
+    <string name="show_play_with_kodi_key">show_play_with_kodi</string>
 </resources>
