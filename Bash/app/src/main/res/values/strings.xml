@@ -256,6 +256,7 @@
     <string name="use_tor_summary">(Experimental) Force download traffic through Tor for increased privacy (streaming videos not yet supported).</string>
 
     <string name="content">Content</string>
+    <string name="settings">Settings</string>
 
 
 </resources>
