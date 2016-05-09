@@ -36,10 +36,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dismas.imaya.bash.extractor.AudioStream;
+import com.dismas.imaya.bash.extractor.MediaFormat;
 import com.dismas.imaya.bash.extractor.ParsingException;
+import com.dismas.imaya.bash.extractor.ServiceList;
 import com.dismas.imaya.bash.extractor.StreamExtractor;
 import com.dismas.imaya.bash.extractor.StreamInfo;
+import com.dismas.imaya.bash.extractor.StreamPreviewInfo;
 import com.dismas.imaya.bash.extractor.StreamingService;
+import com.dismas.imaya.bash.extractor.VideoStream;
+import com.dismas.imaya.bash.player.exoplayer.BackgroundPlayer;
 import com.dismas.imaya.bash.services.youtube.YoutubeStreamExtractor;
 import com.google.android.exoplayer.util.Util;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -50,6 +56,8 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
+
+import static com.dismas.imaya.bash.R.id.detailThumbnailView;
 
 /**
  * Created by imaya on 5/7/16.
@@ -426,7 +434,7 @@ public class VideoItemDetailFragment extends Fragment {
     }
 
     private void initThumbnailViews(StreamInfo info, View nextVideoFrame) {
-        ImageView videoThumbnailView = (ImageView) activity.findViewById(R.id.detailThumbnailView);
+        ImageView videoThumbnailView = (ImageView) activity.findViewById(detailThumbnailView);
         ImageView uploaderThumb
                 = (ImageView) activity.findViewById(R.id.detailUploaderThumbnailView);
         ImageView nextVideoThumb =
@@ -697,7 +705,7 @@ public class VideoItemDetailFragment extends Fragment {
     private void onErrorBlockedByGema() {
         Button backgroundButton = (Button)
                 activity.findViewById(R.id.detailVideoThumbnailWindowBackgroundButton);
-        ImageView thumbnailView = (ImageView) activity.findViewById(R.id.detailThumbnailView);
+        ImageView thumbnailView = (ImageView) activity.findViewById(detailThumbnailView);
 
         progressBar.setVisibility(View.GONE);
         thumbnailView.setImageBitmap(BitmapFactory.decodeResource(
@@ -717,7 +725,7 @@ public class VideoItemDetailFragment extends Fragment {
     }
 
     private void onNotSpecifiedContentError() {
-        ImageView thumbnailView = (ImageView) activity.findViewById(R.id.detailThumbnailView);
+        ImageView thumbnailView = (ImageView) activity.findViewById(detailThumbnailView);
         progressBar.setVisibility(View.GONE);
         thumbnailView.setImageBitmap(BitmapFactory.decodeResource(
                 getResources(), R.drawable.not_available_monkey));
@@ -726,7 +734,7 @@ public class VideoItemDetailFragment extends Fragment {
     }
 
     private void onNotSpecifiedContentErrorWithMessage(int resourceId) {
-        ImageView thumbnailView = (ImageView) activity.findViewById(R.id.detailThumbnailView);
+        ImageView thumbnailView = (ImageView) activity.findViewById(detailThumbnailView);
         progressBar.setVisibility(View.GONE);
         thumbnailView.setImageBitmap(BitmapFactory.decodeResource(
                 getResources(), R.drawable.not_available_monkey));
@@ -800,7 +808,7 @@ public class VideoItemDetailFragment extends Fragment {
             }
 
             if(Build.VERSION.SDK_INT >= 18) {
-                ImageView thumbnailView = (ImageView) activity.findViewById(R.id.detailThumbnailView);
+                ImageView thumbnailView = (ImageView) activity.findViewById(detailThumbnailView);
                 thumbnailView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
                     // This is used to synchronize the thumbnailWindowButton and the playVideoButton
                     // inside the ScrollView with the actual size of the thumbnail.
