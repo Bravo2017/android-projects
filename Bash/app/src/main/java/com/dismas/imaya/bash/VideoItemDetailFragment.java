@@ -40,6 +40,7 @@ import com.dismas.imaya.bash.extractor.ParsingException;
 import com.dismas.imaya.bash.extractor.StreamExtractor;
 import com.dismas.imaya.bash.extractor.StreamInfo;
 import com.dismas.imaya.bash.extractor.StreamingService;
+import com.dismas.imaya.bash.services.youtube.YoutubeStreamExtractor;
 import com.google.android.exoplayer.util.Util;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -126,7 +127,7 @@ public class VideoItemDetailFragment extends Fragment {
                     }
 
                     Activity a = getActivity();
-                    View rootView = a != null ? a.findViewById(R.id.videoitem_detail) : null;
+                    View rootView = a != null ? a.findViewById(R.id.videoitem_list) : null;
                     ErrorActivity.reportError(h, getActivity(),
                             streamInfo.errors, null, rootView,
                             ErrorActivity.ErrorInfo.make(ErrorActivity.REQUESTED_STREAM,
