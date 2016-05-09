@@ -258,5 +258,16 @@
     <string name="content">Content</string>
     <string name="settings">Settings</string>
 
+    <!-- Content descriptions (for better accessibility) -->
+    <string name="detail_thumbnail_view_description">Video preview thumbnail</string>
+    <string name="detail_uploader_thumbnail_view_description">Uploader\'s userpic thumbnail</string>
+    <string name="detail_likes_img_view_description">Likes</string>
+    <string name="detail_dislikes_img_view_description">Dislikes</string>
+    <string name="report_error">Report an Error</string>
+    <string name="user_report">User report</string>
+
+    <string name="err_dir_create">Cannot create download directory \'%1$s\'</string>
+    <string name="info_dir_created">Created download directory \'%1$s\'</string>
+
 
 </resources>
