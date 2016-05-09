@@ -46,6 +46,7 @@ import com.dismas.imaya.bash.extractor.StreamPreviewInfo;
 import com.dismas.imaya.bash.extractor.StreamingService;
 import com.dismas.imaya.bash.extractor.VideoStream;
 import com.dismas.imaya.bash.player.exoplayer.BackgroundPlayer;
+import com.dismas.imaya.bash.player.exoplayer.ExoPlayerActivity;
 import com.dismas.imaya.bash.services.youtube.YoutubeStreamExtractor;
 import com.google.android.exoplayer.util.Util;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
