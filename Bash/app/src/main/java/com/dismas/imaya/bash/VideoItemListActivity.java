@@ -1,6 +1,30 @@
 package com.dismas.imaya.bash;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
+
+import com.dismas.imaya.bash.extractor.ExtractionException;
+import com.dismas.imaya.bash.extractor.SearchEngine;
+import com.dismas.imaya.bash.extractor.ServiceList;
+import com.dismas.imaya.bash.extractor.StreamingService;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Vector;
+import java.util.logging.Handler;
 
 /**
  * Created by imaya on 5/5/16.
@@ -63,8 +87,6 @@ public class VideoItemListActivity extends AppCompatActivity
             } catch(Exception e) {
                 e.printStackTrace();
             }
-            View bg = findViewById(R.id.mainBG);
-            bg.setVisibility(View.GONE);
             return true;
         }
 
@@ -117,7 +139,7 @@ public class VideoItemListActivity extends AppCompatActivity
     private class SuggestionSearchRunnable implements Runnable{
         private final int serviceId;
         private final String query;
-        final Handler h = new Handler();
+        final android.os.Handler h = new android.os.Handler();
         private Context context;
         private SuggestionSearchRunnable(int serviceId, String query) {
             this.serviceId = serviceId;
@@ -160,11 +182,9 @@ public class VideoItemListActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_videoitem_list);
         StreamingService streamingService = null;
-
-        View bg = findViewById(R.id.mainBG);
-        bg.setVisibility(View.VISIBLE);
 
         try {
             //------ todo: remove this line when multiservice support is implemented ------
@@ -354,7 +374,7 @@ public class VideoItemListActivity extends AppCompatActivity
 
     }
 
-    private void postNewErrorToast(Handler h, final int stringResource) {
+    private void postNewErrorToast(android.os.Handler h, final int stringResource) {
         h.post(new Runnable() {
             @Override
             public void run() {

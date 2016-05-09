@@ -23,7 +23,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +33,20 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.view.MenuItem;
 import android.widget.Toast;
+
+import java.io.IOException;
+
+import com.google.android.exoplayer.util.Util;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+
+import java.util.ArrayList;
+import java.util.Vector;
+
 
 import com.dismas.imaya.bash.extractor.AudioStream;
 import com.dismas.imaya.bash.extractor.MediaFormat;
@@ -45,18 +57,12 @@ import com.dismas.imaya.bash.extractor.StreamInfo;
 import com.dismas.imaya.bash.extractor.StreamPreviewInfo;
 import com.dismas.imaya.bash.extractor.StreamingService;
 import com.dismas.imaya.bash.extractor.VideoStream;
-import com.dismas.imaya.bash.player.exoplayer.BackgroundPlayer;
-import com.dismas.imaya.bash.player.exoplayer.ExoPlayerActivity;
 import com.dismas.imaya.bash.services.youtube.YoutubeStreamExtractor;
-import com.google.android.exoplayer.util.Util;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+import com.dismas.imaya.bash.player.exoplayer.BackgroundPlayer;
+import com.dismas.imaya.bash.player.exoplayer.PlayVideoActivity;
+import com.dismas.imaya.bash.player.exoplayer.ExoPlayerActivity;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Vector;
+
 
 import static com.dismas.imaya.bash.R.id.detailThumbnailView;
 
