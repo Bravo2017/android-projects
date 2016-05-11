@@ -10,5 +10,5 @@ import retrofit.http.GET;
  */
 public interface StoryApi {
     @GET("/evrybit/api/v2/story/")      //here is the other url part for the API
-    public void getFeed(Callback<List<StoryModel>> response);
+    public void getFeed(Callback<All> response);
 }

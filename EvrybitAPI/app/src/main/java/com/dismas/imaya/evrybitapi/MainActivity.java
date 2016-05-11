@@ -32,20 +32,22 @@ public class MainActivity extends AppCompatActivity {
         StoryApi story = restAdapter.create(StoryApi.class);                            //creating a service for adapter with our GET class
 
 
-        story.getFeed(new Callback<List<StoryModel>>() {
+        story.getFeed(new Callback<All>() {
 
             @Override
-            public void success(List<StoryModel> storyModels, Response response) {
+            public void success(All all, Response response) {
                 //we get json object from github server to our POJO or model class
 //                Log.d("success","got data");
                 txtResult.setMovementMethod(new ScrollingMovementMethod());
 
-                for (int i = 0; i < storyModels.size(); i++) {
-                    txtResult.append("Title: " + storyModels.get(i).getOwner()+ "\n Email: "
-                            + storyModels.get(i).getOwner().getUser_id() + "\n Content: "
-                            + storyModels.get(i).getOwner().getIntro() + "\n");
+                for (int i = 0; i < all.objects.size(); i++) {
+                    txtResult.append("Title: " + all.objects.get(i).getTitle() + "\n Email: "
+                            + all.objects.get(i).getUser_id() + "\n Content: "
+                            + all.objects.get(i).getIntro() + "\n");
                 }
+
             }
+
             @Override
             public void failure(RetrofitError error) {
                 txtResult.setText(error.getMessage());
