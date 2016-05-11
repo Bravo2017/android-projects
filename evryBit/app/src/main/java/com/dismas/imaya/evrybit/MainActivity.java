@@ -37,7 +37,7 @@ public class MainActivity extends ActionBarActivity {
         GitApi git = restAdapter.create(GitApi.class);                            //creating a service for adapter with our GET class
 
 
-        git.getFeed(new Callback<List<InnerResponse>>() {
+        git.getFeed(new Callback<List<GitModel>>() {
 
             @Override
             public void success(List<GitModel> gitModels, Response response) {
@@ -46,7 +46,7 @@ public class MainActivity extends ActionBarActivity {
                 tv.setMovementMethod(new ScrollingMovementMethod());
 
                 for (int i = 0; i < gitModels.size(); i++) {
-                    tv.append("Title: " + GitModel.InnerResponse.class+ "\n Email: "
+                    tv.append("Title: " + gitModels.get(i).getOwner()+ "\n Email: "
                             + gitModels.get(i).getOwner().getUser_id() + "\n Content: "
                             + gitModels.get(i).getOwner().getIntro() + "\n");
                 }
