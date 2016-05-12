@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < all.objects.size(); i++) {
                     txtResult.append("Title: " + all.objects.get(i).getTitle() + "\n Email: "
                             + all.objects.get(i).getUser_id() + "\n Content: "
-                            + all.objects.get(i).getIntro() + "\n");
+                            + all.objects.get(i).getIntro() + "\n\n");
                 }
 
             }
