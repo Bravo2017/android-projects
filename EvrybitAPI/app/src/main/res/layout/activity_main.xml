@@ -14,10 +14,11 @@
         android:id="@+id/image_in_item"
         android:layout_width="match_parent"
         android:clickable="true"
-        android:layout_height="500dp"/>
+        android:layout_height="230dp" />
 
     <TextView
         android:id="@+id/txtResult"
+        android:layout_below="@+id/image_in_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxLines = "100"

@@ -26,6 +26,6 @@ public class StoryObjects {
         return this.intro;
     }
     public String getAvatar(){
-        return media_url;
+        return this.media_url;
     }
 }

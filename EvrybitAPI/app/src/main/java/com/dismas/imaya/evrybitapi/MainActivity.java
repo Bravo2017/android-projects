@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -41,17 +40,21 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void success(All all, Response response) {
-                //we get json object from github server to our POJO or model class
-//                Log.d("success","got data");
-                txtResult.setMovementMethod(new ScrollingMovementMethod());
 
-//                filteredGitModelList.get(position).getOwner().getAvatar_url()
+                txtResult.setMovementMethod(new ScrollingMovementMethod());
+//                Picasso.with(getApplicationContext())
+//                        .load(all.objects.get(0).getAvatar())
+//                        .placeholder(R.drawable.placeholder)
+//                        .into(image_in_item);
+
+//                filteredGitModelList.get(position).getOwner().getAvatar_url() 
 
                 for (int i = 0; i < all.objects.size(); i++) {
                     Picasso.with(getApplicationContext())
-                            .load(all.objects.get(i).getAvatar())
+                            .load(all.objects.get(0).getAvatar())
                             .placeholder(R.drawable.placeholder)
                             .into(image_in_item);
+
                     txtResult.append("Title: " + all.objects.get(i).getTitle() + "\n Email: "
                             + all.objects.get(i).getUser_id() + "\n Content: "
                             + all.objects.get(i).getIntro() + "\n\n");
@@ -66,4 +69,4 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-}
+} 
