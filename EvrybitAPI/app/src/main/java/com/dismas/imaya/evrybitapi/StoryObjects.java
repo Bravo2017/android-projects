@@ -12,6 +12,8 @@ public class StoryObjects {
     private String user_id;
     @Expose
     private String intro;
+    @Expose
+    private String media_url;
 
 
     public String getTitle() {
@@ -22,5 +24,8 @@ public class StoryObjects {
     }
     public String getIntro() {
         return this.intro;
+    }
+    public String getAvatar(){
+        return media_url;
     }
 }
