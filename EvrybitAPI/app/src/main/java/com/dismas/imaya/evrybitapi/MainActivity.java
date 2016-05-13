@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < all.objects.size(); i++) {
                     Picasso.with(getApplicationContext())
                             .load(all.objects.get(0).getAvatar())
-                            .placeholder(R.drawable.placeholder)
+
                             .into(image_in_item);
 
                     txtResult.append("Title: " + all.objects.get(i).getTitle() + "\n Email: "

@@ -16,13 +16,13 @@
         <ImageView
             android:id="@+id/story_media"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="230dp"
             android:contentDescription="@string/image_view"
             android:layout_centerInParent="true"
             android:scaleType="centerCrop" />
 
         <TextView
-            android:id="@+id/country_name"
+            android:id="@+id/story_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
