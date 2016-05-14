@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     card_view:cardUseCompatPadding="true"
+    card_view:cardElevation="5dp"
     card_view:cardCornerRadius="8dp"
     android:layout_marginBottom="16dp">
 
@@ -16,7 +17,7 @@
         <ImageView
             android:id="@+id/story_media"
             android:layout_width="match_parent"
-            android:layout_height="230dp"
+            android:layout_height="240dp"
             android:contentDescription="@string/image_view"
             android:layout_centerInParent="true"
             android:scaleType="centerCrop" />

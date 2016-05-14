@@ -94,16 +94,11 @@ public class MainActivity extends ActionBarActivity {
             public void success(All all, Response response) {
 
 
-
-                ImageView imageView = (ImageView) findViewById(R.id.story_media);
-                for (int i = 0; i < 10; i++) {
+                for (int i = 0; i < 100; i++) {
                     String name = all.objects.get(i).getTitle();
 //                    int num = R.drawable.canada;
-                    int pic = Integer.parseInt(all.objects.get(i).getMedia());
-//                    int num = Picasso.with(getApplicationContext())
-//                            .load(all.objects.get(i).getMedia())
-//                            .placeholder(R.drawable.placeholder)
-//                            .into(imageView);
+                    String pic = all.objects.get(i).getMedia();
+
                     allItems.add(new ItemObject(name, pic));
 
 //                    allItems.add(new ItemObject(name, num));
@@ -117,11 +112,6 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-//        allItems.add(new ItemObject("United States", R.drawable.newyork));
-//        allItems.add(new ItemObject("Canada", R.drawable.canada));
-//        allItems.add(new ItemObject("United Kingdom", R.drawable.uk));
-//        allItems.add(new ItemObject("Germany", R.drawable.germany));
-//        allItems.add(new ItemObject("Sweden", R.drawable.sweden));
 
         return allItems;
     }

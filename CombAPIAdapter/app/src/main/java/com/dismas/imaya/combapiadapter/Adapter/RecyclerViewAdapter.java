@@ -1,12 +1,15 @@
 package com.dismas.imaya.combapiadapter.Adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.dismas.imaya.combapiadapter.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -33,8 +36,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
     @Override
     public void onBindViewHolder(RecyclerViewHolders holder, int position) {
-        holder.storyTitle.setText(itemList.get(position).get_title());
-        holder.storyMedia.setImageResource(itemList.get(position).get_media());
+        holder.storyTitle.setText(itemList.get(position).get_title());//setImageBitmap(itemList.get(position).get_media());
+        //holder.storyMedia.setImageDrawable(Drawable.createFromPath(itemList.get(position).get_media()));
+        Picasso.with(context)
+                            .load(itemList.get(position).get_media())
+                            .placeholder(R.drawable.placeholder)
+                            .into(holder.storyMedia);
     }
 
     @Override
