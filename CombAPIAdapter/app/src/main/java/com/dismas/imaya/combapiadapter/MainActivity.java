@@ -1,5 +1,6 @@
 package com.dismas.imaya.combapiadapter;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -65,6 +66,18 @@ public class MainActivity extends ActionBarActivity implements SwipeRefreshLayou
 
     @Override
     public void onRefresh() {
+
+//        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//        startActivity(intent);
+
+        List<ItemObject> rowListItem = getAllItemList();
+        lLayout = new LinearLayoutManager(MainActivity.this);
+
+        RecyclerView rView = (RecyclerView)findViewById(R.id.recycler_view);
+        rView.setLayoutManager(lLayout);
+
+        RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(MainActivity.this, rowListItem);
+        rView.setAdapter(rcAdapter);
         final List<ItemObject> allItems = new ArrayList<ItemObject>();
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint(API).build();
@@ -75,7 +88,7 @@ public class MainActivity extends ActionBarActivity implements SwipeRefreshLayou
             @Override
             public void success(All all, Response response) {
                 mSwipeRefreshLayout.setRefreshing(false);
-                for (int i = 0; i < 100; i++) {
+                for (int i = 0; i < 10; i++) {
 //                    Reads the data into a variable
                     String ti_tle = all.objects.get(i).getTitle();
 //                    int num = R.drawable.canada;
@@ -123,6 +136,8 @@ public class MainActivity extends ActionBarActivity implements SwipeRefreshLayou
             Toast.makeText(MainActivity.this, "Refresh App", Toast.LENGTH_LONG).show();
         }
         if(id == R.id.action_new){
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
             Toast.makeText(MainActivity.this, "Create Text", Toast.LENGTH_LONG).show();
         }
 
