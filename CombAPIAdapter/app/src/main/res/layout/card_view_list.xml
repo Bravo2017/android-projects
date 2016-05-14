@@ -36,17 +36,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Date"
             android:id="@+id/story_date"
             android:textColor="@color/accent_color"
-            android:paddingLeft="20dp"
+            android:paddingLeft="25dp"
             android:layout_marginTop="200dp"
             android:layout_alignParentStart="true" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Place"
             android:id="@+id/story_location"
             android:textColor="@color/accent_color"
             android:layout_marginTop="200dp"

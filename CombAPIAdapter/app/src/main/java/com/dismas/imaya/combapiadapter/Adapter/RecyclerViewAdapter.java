@@ -42,6 +42,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
                             .load(itemList.get(position).get_media())
                             .placeholder(R.drawable.placeholder)
                             .into(holder.storyMedia);
+        holder.storyDate.setText(itemList.get(position).get_timestamp());
+        holder.storyLocation.setText(itemList.get(position).get_location());
     }
 
     @Override

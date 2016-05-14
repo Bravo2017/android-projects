@@ -76,11 +76,16 @@ public class MainActivity extends ActionBarActivity implements SwipeRefreshLayou
             public void success(All all, Response response) {
                 mSwipeRefreshLayout.setRefreshing(false);
                 for (int i = 0; i < 100; i++) {
-                    String name = all.objects.get(i).getTitle();
+//                    Reads the data into a variable
+                    String ti_tle = all.objects.get(i).getTitle();
 //                    int num = R.drawable.canada;
                     String pic = all.objects.get(i).getMedia();
+                    String time_stamp = all.objects.get(i).getTimestamp();
+                    String loca_tion = all.objects.get(i).getLocation();
 
-                    allItems.add(new ItemObject(name, pic));
+
+//                    Puts the data into another list for cardviews
+                    allItems.add(new ItemObject(ti_tle, pic, time_stamp, loca_tion));
 
 //                    allItems.add(new ItemObject(name, num));
                 }
@@ -142,12 +147,15 @@ public class MainActivity extends ActionBarActivity implements SwipeRefreshLayou
 
                 for (int i = 0; i < 10; i++) {
 //                    Reads the data into a variable
-                    String name = all.objects.get(i).getTitle();
+                    String ti_tle = all.objects.get(i).getTitle();
 //                    int num = R.drawable.canada;
                     String pic = all.objects.get(i).getMedia();
+                    String time_stamp = all.objects.get(i).getTimestamp();
+                    String loca_tion = all.objects.get(i).getLocation();
+
 
 //                    Puts the data into another list for cardviews
-                    allItems.add(new ItemObject(name, pic));
+                    allItems.add(new ItemObject(ti_tle, pic, time_stamp, loca_tion));
 
 //                    allItems.add(new ItemObject(name, num));
                 }

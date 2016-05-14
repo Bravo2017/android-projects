@@ -12,10 +12,14 @@ import com.squareup.picasso.RequestCreator;
 public class ItemObject {
     private String title;
     private String media;
+    private String timestamp;
+    private String location;
 
-    public ItemObject(String title, String media) {
+    public ItemObject(String title, String media, String timestamp, String location) {
         this.title = title;
         this.media = media;
+        this.timestamp = timestamp;
+        this.location = location;
     }
 
     public String get_title() {
@@ -32,6 +36,20 @@ public class ItemObject {
 
     public void set_media(String media) {
         this.media = media;
+    }
+    public String get_timestamp() {
+        return timestamp;
+    }
+
+    public void set_timestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+    public String get_location() {
+        return location;
+    }
+
+    public void set_location(String location) {
+        this.location = location;
     }
 
 

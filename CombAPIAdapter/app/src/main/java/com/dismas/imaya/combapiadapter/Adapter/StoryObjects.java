@@ -14,6 +14,10 @@ public class StoryObjects {
     private String intro;
     @Expose
     private String media_url;
+    @Expose
+    private String timestamp;
+    @Expose
+    private String location;
 
 
     public String getTitle() {
@@ -27,5 +31,11 @@ public class StoryObjects {
     }
     public String getMedia(){
         return this.media_url;
+    }
+    public String getTimestamp() {
+        return this.timestamp;
+    }
+    public String getLocation() {
+        return this.location;
     }
 }

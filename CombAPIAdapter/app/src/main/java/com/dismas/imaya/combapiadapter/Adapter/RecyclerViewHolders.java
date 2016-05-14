@@ -15,12 +15,16 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
 
     public TextView storyTitle;
     public ImageView storyMedia;
+    public TextView storyDate;
+    public TextView storyLocation;
 
     public RecyclerViewHolders(View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
         storyTitle = (TextView)itemView.findViewById(R.id.story_title);
         storyMedia = (ImageView)itemView.findViewById(R.id.story_media);
+        storyDate = (TextView)itemView.findViewById(R.id.story_date);
+        storyLocation = (TextView)itemView.findViewById(R.id.story_location);
     }
 
     @Override
