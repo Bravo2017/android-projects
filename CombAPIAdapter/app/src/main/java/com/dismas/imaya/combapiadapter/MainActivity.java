@@ -1,6 +1,7 @@
 package com.dismas.imaya.combapiadapter;
 
 import android.graphics.drawable.Drawable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,20 +21,30 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     private LinearLayoutManager lLayout;
     String API = "http://52.37.33.186/";
+    @Bind(R.id.swipe_container)
+    SwipeRefreshLayout mSwipeRefreshLayout;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ButterKnife.bind(this);
+
+        mSwipeRefreshLayout.setOnRefreshListener(this);
 
         setTitle(null);
 
@@ -50,6 +61,38 @@ public class MainActivity extends ActionBarActivity {
 
         RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(MainActivity.this, rowListItem);
         rView.setAdapter(rcAdapter);
+    }
+
+    @Override
+    public void onRefresh() {
+        final List<ItemObject> allItems = new ArrayList<ItemObject>();
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setEndpoint(API).build();
+
+        final StoryApi story = restAdapter.create(StoryApi.class);
+
+        story.getStory(new Callback<All>() {
+            @Override
+            public void success(All all, Response response) {
+                mSwipeRefreshLayout.setRefreshing(false);
+                for (int i = 0; i < 100; i++) {
+                    String name = all.objects.get(i).getTitle();
+//                    int num = R.drawable.canada;
+                    String pic = all.objects.get(i).getMedia();
+
+                    allItems.add(new ItemObject(name, pic));
+
+//                    allItems.add(new ItemObject(name, num));
+                }
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                mSwipeRefreshLayout.setRefreshing(false);
+                Toast.makeText(getApplicationContext(), "Failed to load", Toast.LENGTH_SHORT).show();
+            }
+
+        });
     }
 
     @Override
@@ -82,7 +125,9 @@ public class MainActivity extends ActionBarActivity {
 
     private List<ItemObject> getAllItemList(){
 
-        final List<ItemObject> allItems = new ArrayList<ItemObject>();
+        final List<ItemObject> allItems = new ArrayList<ItemObject>();//Data put in a list after retreiving from an api
+
+        /*Reads data from an API*/
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint(API).build();
 
@@ -95,10 +140,12 @@ public class MainActivity extends ActionBarActivity {
 
 
                 for (int i = 0; i < 100; i++) {
+//                    Reads the data into a variable
                     String name = all.objects.get(i).getTitle();
 //                    int num = R.drawable.canada;
                     String pic = all.objects.get(i).getMedia();
 
+//                    Puts the data into another list for cardviews
                     allItems.add(new ItemObject(name, pic));
 
 //                    allItems.add(new ItemObject(name, num));
@@ -109,6 +156,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void failure(RetrofitError error) {
                 //story_title.setText(error.getMessage());
+                Toast.makeText(getApplicationContext(), "Failed to load", Toast.LENGTH_SHORT).show();
             }
         });
 
