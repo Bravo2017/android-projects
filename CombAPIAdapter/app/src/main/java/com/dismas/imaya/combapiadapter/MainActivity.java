@@ -114,6 +114,7 @@ public class MainActivity extends ActionBarActivity implements SwipeRefreshLayou
             Toast.makeText(MainActivity.this, "Settings", Toast.LENGTH_LONG).show();
         }
         if(id == R.id.action_refresh){
+            onRefresh();
             Toast.makeText(MainActivity.this, "Refresh App", Toast.LENGTH_LONG).show();
         }
         if(id == R.id.action_new){
@@ -139,7 +140,7 @@ public class MainActivity extends ActionBarActivity implements SwipeRefreshLayou
             public void success(All all, Response response) {
 
 
-                for (int i = 0; i < 100; i++) {
+                for (int i = 0; i < 10; i++) {
 //                    Reads the data into a variable
                     String name = all.objects.get(i).getTitle();
 //                    int num = R.drawable.canada;
