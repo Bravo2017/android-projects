@@ -41,10 +41,6 @@ public class MainActivity extends ActionBarActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //ButterKnife.bind(this);
-
-        //mSwipeRefreshLayout.setOnRefreshListener(this);
-
         setTitle(null);
 
         Toolbar topToolBar = (Toolbar)findViewById(R.id.toolbar);
@@ -62,54 +58,8 @@ public class MainActivity extends ActionBarActivity{
         rView.setAdapter(rcAdapter);
     }
 
-//    @Override
-//    public void onRefresh() {
-//
-////        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-////        startActivity(intent);
-//
-//        List<ItemObject> rowListItem = getAllItemList();
-//        lLayout = new LinearLayoutManager(MainActivity.this);
-//
-//        RecyclerView rView = (RecyclerView)findViewById(R.id.recycler_view);
-//        rView.setLayoutManager(lLayout);
-//
-//        RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(MainActivity.this, rowListItem);
-//        rView.setAdapter(rcAdapter);
-//        final List<ItemObject> allItems = new ArrayList<ItemObject>();
-//        RestAdapter restAdapter = new RestAdapter.Builder()
-//                .setEndpoint(API).build();
-//
-//        final StoryApi story = restAdapter.create(StoryApi.class);
-//
-//        story.getStory(new Callback<All>() {
-//            @Override
-//            public void success(All all, Response response) {
-//                mSwipeRefreshLayout.setRefreshing(false);
-//                for (int i = 0; i < 10; i++) {
-////                    Reads the data into a variable
-//                    String ti_tle = all.objects.get(i).getTitle();
-////                    int num = R.drawable.canada;
-//                    String pic = all.objects.get(i).getMedia();
-//                    String time_stamp = all.objects.get(i).getTimestamp();
-//                    String loca_tion = all.objects.get(i).getLocation();
-//
-//
-////                    Puts the data into another list for cardviews
-//                    allItems.add(new ItemObject(ti_tle, pic, time_stamp, loca_tion));
-//
-////                    allItems.add(new ItemObject(name, num));
-//                }
-//            }
-//
-//            @Override
-//            public void failure(RetrofitError error) {
-//                mSwipeRefreshLayout.setRefreshing(false);
-//                Toast.makeText(getApplicationContext(), "Failed to load", Toast.LENGTH_SHORT).show();
-//            }
-//
-//        });
-//    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -133,8 +83,8 @@ public class MainActivity extends ActionBarActivity{
             Toast.makeText(MainActivity.this, "Refresh App", Toast.LENGTH_LONG).show();
         }
         if(id == R.id.action_new){
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//            startActivity(intent);
             Toast.makeText(MainActivity.this, "Create Text", Toast.LENGTH_LONG).show();
         }
 
@@ -157,7 +107,7 @@ public class MainActivity extends ActionBarActivity{
             public void success(All all, Response response) {
 
 
-                for (int i = 0; i < 10; i++) {
+                for (int i = 0; i < all.objects.size(); i++) {
 //                    Reads the data into a variable
                     String ti_tle = all.objects.get(i).getTitle();
 //                    String pic = R.drawable.canada;
