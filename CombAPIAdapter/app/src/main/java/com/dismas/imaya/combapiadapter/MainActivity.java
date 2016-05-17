@@ -29,12 +29,10 @@ import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class MainActivity extends ActionBarActivity implements SwipeRefreshLayout.OnRefreshListener {
+public class MainActivity extends ActionBarActivity{
 
     private LinearLayoutManager lLayout;
     String API = "http://52.37.33.186/";
-    @Bind(R.id.swipe_container)
-    SwipeRefreshLayout mSwipeRefreshLayout;
 
 
 
@@ -43,9 +41,9 @@ public class MainActivity extends ActionBarActivity implements SwipeRefreshLayou
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ButterKnife.bind(this);
+        //ButterKnife.bind(this);
 
-        mSwipeRefreshLayout.setOnRefreshListener(this);
+        //mSwipeRefreshLayout.setOnRefreshListener(this);
 
         setTitle(null);
 
@@ -64,54 +62,54 @@ public class MainActivity extends ActionBarActivity implements SwipeRefreshLayou
         rView.setAdapter(rcAdapter);
     }
 
-    @Override
-    public void onRefresh() {
-
-//        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//        startActivity(intent);
-
-        List<ItemObject> rowListItem = getAllItemList();
-        lLayout = new LinearLayoutManager(MainActivity.this);
-
-        RecyclerView rView = (RecyclerView)findViewById(R.id.recycler_view);
-        rView.setLayoutManager(lLayout);
-
-        RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(MainActivity.this, rowListItem);
-        rView.setAdapter(rcAdapter);
-        final List<ItemObject> allItems = new ArrayList<ItemObject>();
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint(API).build();
-
-        final StoryApi story = restAdapter.create(StoryApi.class);
-
-        story.getStory(new Callback<All>() {
-            @Override
-            public void success(All all, Response response) {
-                mSwipeRefreshLayout.setRefreshing(false);
-                for (int i = 0; i < 10; i++) {
-//                    Reads the data into a variable
-                    String ti_tle = all.objects.get(i).getTitle();
-//                    int num = R.drawable.canada;
-                    String pic = all.objects.get(i).getMedia();
-                    String time_stamp = all.objects.get(i).getTimestamp();
-                    String loca_tion = all.objects.get(i).getLocation();
-
-
-//                    Puts the data into another list for cardviews
-                    allItems.add(new ItemObject(ti_tle, pic, time_stamp, loca_tion));
-
-//                    allItems.add(new ItemObject(name, num));
-                }
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                mSwipeRefreshLayout.setRefreshing(false);
-                Toast.makeText(getApplicationContext(), "Failed to load", Toast.LENGTH_SHORT).show();
-            }
-
-        });
-    }
+//    @Override
+//    public void onRefresh() {
+//
+////        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+////        startActivity(intent);
+//
+//        List<ItemObject> rowListItem = getAllItemList();
+//        lLayout = new LinearLayoutManager(MainActivity.this);
+//
+//        RecyclerView rView = (RecyclerView)findViewById(R.id.recycler_view);
+//        rView.setLayoutManager(lLayout);
+//
+//        RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(MainActivity.this, rowListItem);
+//        rView.setAdapter(rcAdapter);
+//        final List<ItemObject> allItems = new ArrayList<ItemObject>();
+//        RestAdapter restAdapter = new RestAdapter.Builder()
+//                .setEndpoint(API).build();
+//
+//        final StoryApi story = restAdapter.create(StoryApi.class);
+//
+//        story.getStory(new Callback<All>() {
+//            @Override
+//            public void success(All all, Response response) {
+//                mSwipeRefreshLayout.setRefreshing(false);
+//                for (int i = 0; i < 10; i++) {
+////                    Reads the data into a variable
+//                    String ti_tle = all.objects.get(i).getTitle();
+////                    int num = R.drawable.canada;
+//                    String pic = all.objects.get(i).getMedia();
+//                    String time_stamp = all.objects.get(i).getTimestamp();
+//                    String loca_tion = all.objects.get(i).getLocation();
+//
+//
+////                    Puts the data into another list for cardviews
+//                    allItems.add(new ItemObject(ti_tle, pic, time_stamp, loca_tion));
+//
+////                    allItems.add(new ItemObject(name, num));
+//                }
+//            }
+//
+//            @Override
+//            public void failure(RetrofitError error) {
+//                mSwipeRefreshLayout.setRefreshing(false);
+//                Toast.makeText(getApplicationContext(), "Failed to load", Toast.LENGTH_SHORT).show();
+//            }
+//
+//        });
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -132,7 +130,6 @@ public class MainActivity extends ActionBarActivity implements SwipeRefreshLayou
             Toast.makeText(MainActivity.this, "Settings", Toast.LENGTH_LONG).show();
         }
         if(id == R.id.action_refresh){
-            onRefresh();
             Toast.makeText(MainActivity.this, "Refresh App", Toast.LENGTH_LONG).show();
         }
         if(id == R.id.action_new){
@@ -163,7 +160,7 @@ public class MainActivity extends ActionBarActivity implements SwipeRefreshLayou
                 for (int i = 0; i < 10; i++) {
 //                    Reads the data into a variable
                     String ti_tle = all.objects.get(i).getTitle();
-//                    int num = R.drawable.canada;
+//                    String pic = R.drawable.canada;
                     String pic = all.objects.get(i).getMedia();
                     String time_stamp = all.objects.get(i).getTimestamp();
                     String loca_tion = all.objects.get(i).getLocation();
