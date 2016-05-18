@@ -17,7 +17,7 @@
 
     <!-- The navigation drawer -->
 
-    <com.dmplayer.uicomponent.ScrimInsetsFrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <com.dismas.imaya.musicapp.uicomponent.ScrimInsetsFrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/scrimInsetsFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -40,5 +40,5 @@
 
         </LinearLayout>
 
-    </com.dmplayer.uicomponent.ScrimInsetsFrameLayout>
+    </com.dismas.imaya.musicapp.uicomponent.ScrimInsetsFrameLayout>
 </android.support.v4.widget.DrawerLayout>

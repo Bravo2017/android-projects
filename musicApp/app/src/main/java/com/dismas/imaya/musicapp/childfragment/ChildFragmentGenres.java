@@ -5,13 +5,13 @@
  */
 package com.dismas.imaya.musicapp.childfragment;
 
-import com.dmplayer.R;
-import com.dmplayer.activities.AlbumAndArtisDetailsActivity;
-import com.dmplayer.adapter.CursorRecyclerViewAdapter;
-import com.dmplayer.utility.LogWriter;
-import com.dmplayer.phonemidea.DMPlayerUtility;
-import com.dmplayer.phonemidea.MusicAlphabetIndexer;
-import com.dmplayer.phonemidea.PhoneMediaControl;
+import com.dismas.imaya.musicapp.R;
+import com.dismas.imaya.musicapp.activities.AlbumAndArtisDetailsActivity;
+import com.dismas.imaya.musicapp.adapter.CursorRecyclerViewAdapter;
+import com.dismas.imaya.musicapp.utility.LogWriter;
+import com.dismas.imaya.musicapp.phonemidea.DMPlayerUtility;
+import com.dismas.imaya.musicapp.phonemidea.MusicAlphabetIndexer;
+import com.dismas.imaya.musicapp.phonemidea.PhoneMediaControl;
 
 import android.app.Activity;
 import android.content.AsyncQueryHandler;
