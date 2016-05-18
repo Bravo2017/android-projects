@@ -11,11 +11,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class MusicActivity extends Activity {
-    ListView musiclist;
-    Cursor musiccursor;
-    int music_column_index;
-    int count;
-    MediaPlayer mMediaPlayer;
+    public ListView musiclist;
+    public Cursor musiccursor;
+    public int music_column_index;
+    public int count;
+    public MediaPlayer mMediaPlayer;
 
     /** Called when the activity is first created. */
     @Override
