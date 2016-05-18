@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(MainActivity.this, rowListItem);
         rView.setAdapter(rcAdapter);
 
+        Toast.makeText(getApplicationContext(), "Swipe down to refresh", Toast.LENGTH_LONG).show();
+
         mSwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,

@@ -29,13 +29,13 @@
                     android:scrollbars="vertical" />
             </android.support.v4.widget.SwipeRefreshLayout>
 
-            <TextView
-                android:id="@+id/empty"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:gravity="center"
-                android:text="Swipe down to refresh!"
-                android:textSize="26sp" />
+            <!--<TextView-->
+                <!--android:id="@+id/empty"-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="fill_parent"-->
+                <!--android:gravity="center"-->
+                <!--android:text="Swipe down to refresh!"-->
+                <!--android:textSize="16sp" />-->
 
         </RelativeLayout>
 
