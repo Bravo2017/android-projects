@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     @Bind(R.id.swipe_container)
     SwipeRefreshLayout mSwipeRefreshLayout;
 
-    List<ItemObject> allItems = new ArrayList<ItemObject>();
+    List<ItemObject> allItems = new ArrayList<ItemObject>(); //holds data read from the api
 
     /*Reads data from an API*/
     RestAdapter restAdapter = new RestAdapter.Builder()
@@ -120,12 +120,13 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             Toast.makeText(MainActivity.this, "Settings", Toast.LENGTH_LONG).show();
         }
         if(id == R.id.action_refresh){
-            Toast.makeText(MainActivity.this, "Refresh App", Toast.LENGTH_LONG).show();
+            onRefresh();
+            Toast.makeText(MainActivity.this, "Refreshing", Toast.LENGTH_LONG).show();
         }
         if(id == R.id.action_new){
 //            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 //            startActivity(intent);
-            Toast.makeText(MainActivity.this, "Create Text", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Create a story", Toast.LENGTH_LONG).show();
         }
 
         return super.onOptionsItemSelected(item);
