@@ -1,7 +1,7 @@
 package com.dismas.imaya.combapiadapter;
 
 import android.os.Bundle;
-import android.os.Parcelable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,22 +18,28 @@ import com.dismas.imaya.combapiadapter.Adapter.StoryApi;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener{
 
     private LinearLayoutManager lLayout;
     String API = "http://52.37.33.186/";
+
+    @Bind(R.id.swipe_container)
+    SwipeRefreshLayout mSwipeRefreshLayout;
+
     List<ItemObject> allItems = new ArrayList<ItemObject>();
 
     /*Reads data from an API*/
     RestAdapter restAdapter = new RestAdapter.Builder()
             .setEndpoint(API).build();
 
-    List<ItemObject> rowListItem = getAllItemList();
+
 
 
 
@@ -41,8 +47,10 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         setTitle(null);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
 
         Toolbar topToolBar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(topToolBar);
@@ -51,6 +59,7 @@ public class MainActivity extends AppCompatActivity{
 
 
         lLayout = new LinearLayoutManager(MainActivity.this);
+        List<ItemObject> rowListItem = getAllItemList();
 
         RecyclerView rView = (RecyclerView)findViewById(R.id.recycler_view);
         rView.setLayoutManager(lLayout);
@@ -58,22 +67,37 @@ public class MainActivity extends AppCompatActivity{
         RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(MainActivity.this, rowListItem);
         rView.setAdapter(rcAdapter);
 
+        mSwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
     }
 
-//    //Use onSaveInstanceState(Bundle) and onRestoreInstanceState
-//
-//    @Override
-//    public void onSaveInstanceState(Bundle savedInstanceState) {
-//
-//        savedInstanceState.putParcelableArrayList("data", (ArrayList<? extends Parcelable>) rowListItem);
-//        super.onSaveInstanceState(savedInstanceState);
-//    }
-//    //onRestoreInstanceState
-//    @Override
-//    public void onRestoreInstanceState(Bundle savedInstanceState) {
-//        super.onRestoreInstanceState(savedInstanceState);
-//        rowListItem = savedInstanceState.getParcelableArrayList("data");
-//    }
+    @Override
+    public void onRefresh() {
+        StoryApi story = restAdapter.create(StoryApi.class);
+        story.getStory(new Callback<All>() {
+            @Override
+            public void failure(RetrofitError error) {
+                mSwipeRefreshLayout.setRefreshing(false);
+                Toast.makeText(getApplicationContext(), "Failed to load", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void success(All all, Response response) {
+                mSwipeRefreshLayout.setRefreshing(false);
+                lLayout = new LinearLayoutManager(MainActivity.this);
+                List<ItemObject> rowListItem = getAllItemList();
+
+                RecyclerView rView = (RecyclerView)findViewById(R.id.recycler_view);
+                rView.setLayoutManager(lLayout);
+
+                RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(MainActivity.this, rowListItem);
+                rView.setAdapter(rcAdapter);
+            }
+        });
+    }
 
 
 
@@ -110,7 +134,6 @@ public class MainActivity extends AppCompatActivity{
     public List<ItemObject> getAllItemList(){
 
         StoryApi story = restAdapter.create(StoryApi.class);
-
         story.getStory(new Callback<All>() {
 
             @Override
