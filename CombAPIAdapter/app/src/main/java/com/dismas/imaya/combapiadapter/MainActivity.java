@@ -1,38 +1,39 @@
 package com.dismas.imaya.combapiadapter;
 
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.dismas.imaya.combapiadapter.Adapter.All;
 import com.dismas.imaya.combapiadapter.Adapter.ItemObject;
 import com.dismas.imaya.combapiadapter.Adapter.RecyclerViewAdapter;
 import com.dismas.imaya.combapiadapter.Adapter.StoryApi;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class MainActivity extends ActionBarActivity{
+public class MainActivity extends AppCompatActivity{
 
     private LinearLayoutManager lLayout;
     String API = "http://52.37.33.186/";
+    List<ItemObject> allItems = new ArrayList<ItemObject>();
+
+    /*Reads data from an API*/
+    RestAdapter restAdapter = new RestAdapter.Builder()
+            .setEndpoint(API).build();
+
+    List<ItemObject> rowListItem = getAllItemList();
 
 
 
@@ -48,7 +49,7 @@ public class MainActivity extends ActionBarActivity{
         topToolBar.setLogo(R.drawable.logo);
         topToolBar.setLogoDescription(getResources().getString(R.string.logo_desc));
 
-        List<ItemObject> rowListItem = getAllItemList();
+
         lLayout = new LinearLayoutManager(MainActivity.this);
 
         RecyclerView rView = (RecyclerView)findViewById(R.id.recycler_view);
@@ -56,8 +57,23 @@ public class MainActivity extends ActionBarActivity{
 
         RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(MainActivity.this, rowListItem);
         rView.setAdapter(rcAdapter);
+
     }
 
+//    //Use onSaveInstanceState(Bundle) and onRestoreInstanceState
+//
+//    @Override
+//    public void onSaveInstanceState(Bundle savedInstanceState) {
+//
+//        savedInstanceState.putParcelableArrayList("data", (ArrayList<? extends Parcelable>) rowListItem);
+//        super.onSaveInstanceState(savedInstanceState);
+//    }
+//    //onRestoreInstanceState
+//    @Override
+//    public void onRestoreInstanceState(Bundle savedInstanceState) {
+//        super.onRestoreInstanceState(savedInstanceState);
+//        rowListItem = savedInstanceState.getParcelableArrayList("data");
+//    }
 
 
 
@@ -91,21 +107,14 @@ public class MainActivity extends ActionBarActivity{
         return super.onOptionsItemSelected(item);
     }
 
-    private List<ItemObject> getAllItemList(){
+    public List<ItemObject> getAllItemList(){
 
-        final List<ItemObject> allItems = new ArrayList<ItemObject>();//Data put in a list after retreiving from an api
-
-        /*Reads data from an API*/
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint(API).build();
-
-        final StoryApi story = restAdapter.create(StoryApi.class);
+        StoryApi story = restAdapter.create(StoryApi.class);
 
         story.getStory(new Callback<All>() {
 
             @Override
             public void success(All all, Response response) {
-
 
                 for (int i = 0; i < all.objects.size(); i++) {
 //                    Reads the data into a variable
