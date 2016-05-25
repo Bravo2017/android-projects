@@ -61,13 +61,13 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         lLayout = new LinearLayoutManager(MainActivity.this);
         //List<ItemObject> rowListItem = getAllItemList();
-        All all = new All();
+        List<StoryObjects> objects = null;
 
         RecyclerView rView = (RecyclerView)findViewById(R.id.recycler_view);
         rView.setLayoutManager(lLayout);
 
         //RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(MainActivity.this, rowListItem);
-        RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(MainActivity.this, all.objects);
+        RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(MainActivity.this, objects);
         rView.setAdapter(rcAdapter);
 
         Toast.makeText(getApplicationContext(), "Swipe down to refresh", Toast.LENGTH_LONG).show();
