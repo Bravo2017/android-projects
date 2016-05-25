@@ -1,4 +1,4 @@
-package com.dismas.imaya.combapiadapter.Adapter;
+package com.dismas.imaya.directapi.Adapter;
 
 import com.google.gson.annotations.Expose;
 

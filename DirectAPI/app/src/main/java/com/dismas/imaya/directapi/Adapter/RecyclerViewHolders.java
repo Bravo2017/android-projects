@@ -1,4 +1,4 @@
-package com.dismas.imaya.combapiadapter.Adapter;
+package com.dismas.imaya.directapi.Adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

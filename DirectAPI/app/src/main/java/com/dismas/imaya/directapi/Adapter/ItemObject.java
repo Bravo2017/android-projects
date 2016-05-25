@@ -1,4 +1,4 @@
-package com.dismas.imaya.combapiadapter.Adapter;
+package com.dismas.imaya.directapi.Adapter;
 
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
