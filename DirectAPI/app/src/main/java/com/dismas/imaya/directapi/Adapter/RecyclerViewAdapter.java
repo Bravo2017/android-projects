@@ -1,14 +1,12 @@
 package com.dismas.imaya.directapi.Adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.dismas.imaya.combapiadapter.R;
+import com.dismas.imaya.directapi.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -18,10 +16,10 @@ import java.util.List;
  */
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolders> {
 
-    private List<ItemObject> itemList;
+    private List<StoryObjects> itemList;
     private Context context;
 
-    public RecyclerViewAdapter(Context context, List<ItemObject> itemList) {
+    public RecyclerViewAdapter(Context context, List<StoryObjects> itemList) {
         this.itemList = itemList;
         this.context = context;
     }
@@ -36,14 +34,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
     @Override
     public void onBindViewHolder(RecyclerViewHolders holder, int position) {
-        holder.storyTitle.setText(itemList.get(position).get_title());//setImageBitmap(itemList.get(position).get_media());
+        //holder.storyTitle.setText(itemList.get(position).get_title());//setImageBitmap(itemList.get(position).get_media());
+        holder.storyTitle.setText(itemList.get(position).getTitle());
         //holder.storyMedia.setImageDrawable(Drawable.createFromPath(itemList.get(position).get_media()));
         Picasso.with(context)
-                            .load(itemList.get(position).get_media())
+                            .load(itemList.get(position).getMedia())
                             .placeholder(R.drawable.placeholder)
                             .into(holder.storyMedia);
-        holder.storyDate.setText(itemList.get(position).get_timestamp());
-        holder.storyLocation.setText(itemList.get(position).get_location());
+        holder.storyDate.setText(itemList.get(position).getTimestamp());
+        holder.storyLocation.setText(itemList.get(position).getLocation());
     }
 
     @Override

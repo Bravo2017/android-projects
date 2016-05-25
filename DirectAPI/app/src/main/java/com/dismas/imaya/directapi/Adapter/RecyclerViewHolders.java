@@ -6,8 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dismas.imaya.combapiadapter.R;
-
+import com.dismas.imaya.directapi.R;
 /**
  * Created by imaya on 5/13/16.
  */

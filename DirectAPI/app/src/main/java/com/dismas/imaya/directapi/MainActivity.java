@@ -10,10 +10,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.dismas.imaya.combapiadapter.Adapter.All;
-import com.dismas.imaya.combapiadapter.Adapter.ItemObject;
-import com.dismas.imaya.combapiadapter.Adapter.RecyclerViewAdapter;
-import com.dismas.imaya.combapiadapter.Adapter.StoryApi;
+import com.dismas.imaya.directapi.Adapter.All;
+import com.dismas.imaya.directapi.Adapter.ItemObject;
+import com.dismas.imaya.directapi.Adapter.RecyclerViewAdapter;
+import com.dismas.imaya.directapi.Adapter.StoryApi;
+import com.dismas.imaya.directapi.Adapter.StoryObjects;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,12 +60,14 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 
         lLayout = new LinearLayoutManager(MainActivity.this);
-        List<ItemObject> rowListItem = getAllItemList();
+        //List<ItemObject> rowListItem = getAllItemList();
+        All all = new All();
 
         RecyclerView rView = (RecyclerView)findViewById(R.id.recycler_view);
         rView.setLayoutManager(lLayout);
 
-        RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(MainActivity.this, rowListItem);
+        //RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(MainActivity.this, rowListItem);
+        RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(MainActivity.this, all.objects);
         rView.setAdapter(rcAdapter);
 
         Toast.makeText(getApplicationContext(), "Swipe down to refresh", Toast.LENGTH_LONG).show();
@@ -96,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 RecyclerView rView = (RecyclerView)findViewById(R.id.recycler_view);
                 rView.setLayoutManager(lLayout);
 
-                RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(MainActivity.this, rowListItem);
+                RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(MainActivity.this, all.objects);
                 rView.setAdapter(rcAdapter);
             }
         });
