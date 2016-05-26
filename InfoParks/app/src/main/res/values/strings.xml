@@ -3,12 +3,12 @@
     <string name="roboto_light">sans-serif-light</string>
 
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="splash_title_1">FAN4FUN</string>
-    <string name="splash_title_2">Audio Music on Fan4Fun</string>
-    <string name="splash_title_3">Video Music on Fan4Fun</string>
-    <string name="splash_desc_1">Streaming audio and video music just became a lot more fun! </string>
-    <string name="splash_desc_2">Discover easily thousands of music across all genre.\n Listen to the music of your choice and Cheer your favourite artist</string>
-    <string name="splash_desc_3">Search easily millions of  videos music of your favourite artist across all genre. \n Watch their performances and download</string>
+    <string name="splash_title_1"><b>INFOPARKS</b></string>
+    <string name="splash_title_2"><b>INFORMATION</b></string>
+    <string name="splash_title_3"><b>GAME PARKS</b></string>
+    <string name="splash_desc_1"><b>Kenya is not a place to visit.\n IT IS HOME</b></string>
+    <string name="splash_desc_2"><b>Discover easily all the Parks.\n Get information about the them and the restaurants found near. All in Kenya</b></string>
+    <string name="splash_desc_3"><b>"Take nothing but pictures. \n Kill nothing but time. \n Leave nothing but footprints." - <i>(John Kay)</i></b></string>
 
     <string name="perf_article_font_size_key">perf_article_font_size</string>
     <string name="perf_feeds_anim_key">perf_feeds_anim_key</string>
