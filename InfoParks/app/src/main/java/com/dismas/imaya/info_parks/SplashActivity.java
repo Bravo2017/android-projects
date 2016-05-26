@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by imaya on 5/26/16.
