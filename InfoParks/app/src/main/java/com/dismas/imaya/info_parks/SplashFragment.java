@@ -72,7 +72,7 @@ public class SplashFragment extends Fragment {
                 txtSplashTitle.setTextColor(ContextCompat.getColor(getActivity(), R.color.green_2));
                 txtSplashDesc.setText(R.string.splash_desc_1);
                 txtSplashDesc.setTextColor(ContextCompat.getColor(getActivity(), R.color.green_2));
-                //imgSplash.setImageResource(R.drawable.splash_1);
+                imgSplash.setImageResource(R.drawable.small_welcome);
                 //relativeLayoutSplash.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.md_deep_own_50));
                 imgSelectedDot1.setVisibility(View.VISIBLE);
                 imgSelectedDot2.setVisibility(View.INVISIBLE);
