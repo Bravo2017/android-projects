@@ -4,10 +4,10 @@
 
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="splash_title_1"><b>INFOPARKS</b></string>
-    <string name="splash_title_2"><b>INFORMATION</b></string>
-    <string name="splash_title_3"><b>GAME PARKS</b></string>
-    <string name="splash_desc_1"><b>Kenya is not a place to visit.\n IT IS HOME</b></string>
-    <string name="splash_desc_2"><b>Discover easily all the Parks.\n Get information about the them and the restaurants found near. All in Kenya</b></string>
+    <string name="splash_title_2"><b>ATTRACTION SITES</b></string>
+    <string name="splash_title_3"><b>PAY A VISIT</b></string>
+    <string name="splash_desc_1"><b>Kenya is not a place to visit.\n\n IT IS HOME</b></string>
+    <string name="splash_desc_2"><b>Discover easily all the Game Parks and Reserves. Get information about the them and the restaurants found near. All in Kenya</b></string>
     <string name="splash_desc_3"><b>"Take nothing but pictures. \n Kill nothing but time. \n Leave nothing but footprints." - <i>(John Kay)</i></b></string>
 
     <string name="perf_article_font_size_key">perf_article_font_size</string>
@@ -23,5 +23,15 @@
     <string name="change_log">Change Log</string>
     <string name="change_log_desc"><b>Version 0.41</b>\n\nMinor bug fixes.\n\n<b>Version 0.40</b>\n\nAdded sync feature. Now you can synchronize feeds in background and application will save all of the data for offline reading.\n\n<b>Version 0.33</b>\n\nAdded white icons in dark theme(only in category list and sources list) so they are easier to see.\n\nRemoved shadow from toolbars as it was glitching in dark theme.\n\n<b>Version 0.32</b>\n\nMinor bug fixes.\n\nAdded shadow to toolbars.\n\nAdded option to delete the feed from article.\n\n<b>Version 0.31</b>\n\nMinor bug fix, which was making the settings menu crash on some devices.\n\n<b>Version 0.30</b>\n\nAdded Opml integration.\n\nAdded <i>Read External Storage</i> permission so that user can import opml feeds via file stored in SD Card or internal storage.\n\nAdded Curated feeds and option to submit your own feeds to the curated list.\n\nAdded Sorting option, now user can sort the feeds by random, title, category and date.\n\nMinor bug fixes.\n\n<b>Version 0.22</b>\n\nMade circular reveal animation optional, you can disable it in settings.\n\n<b>Version 0.21</b>\n\nFixed a bug in which white screen was shown on splash screen.\n\nAdded the option to rate, view source code and view licence in About screen.\n\n<b>Version 0.20</b>\n\nAdded dark theme.\n\n<b>Version 0.11</b>\n\nRemoved duplicate entries in settings menu.\n\n<b>Version 0.10</b>\n\nReleased initial version.</string>
     <string name="action_search">Search</string>
+    <string name="provincies">Provinces</string>
+    <string name="kenya">KENYA</string>
+    <string name="nairobi">Nairobi</string>
+    <string name="central">Central</string>
+    <string name="eastern">Eastern</string>
+    <string name="north_eastern">North Eastern</string>
+    <string name="nyanza">Nyanza</string>
+    <string name="coast">Coast</string>
+    <string name="western">Western</string>
+    <string name="rift_valley">Rift Valley</string>
 
 </resources>

@@ -2,40 +2,53 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:title="">
         <menu>
-            <item android:title="Name of User"
-                android:id="@+id/nav_item_pic"
+            <item android:title="@string/kenya"
+                android:id="@+id/kenya"
                 android:icon="@drawable/tab_icon_profile_active3x"/>
         </menu>
     </item>
 
-    <item android:title="Main Menu">
+    <item android:title="@string/provincies">
         <menu>
 
-            <item android:title="Discover"
-                android:id="@+id/nav_item_discover"
-                android:icon="@drawable/tab_icon_discover_idle2x"/>
-
-            <item android:title="Profile"
-                android:id="@+id/nav_item_profile"
+            <item android:title="@string/central"
+                android:id="@+id/central"
                 android:icon="@drawable/tab_icon_profile_idle2x"/>
 
-            <item android:title="My Stories"
-                android:id="@+id/nav_item_mystories"
+            <item android:title="@string/coast"
+                android:id="@+id/coast"
+                android:icon="@drawable/tab_icon_notifications_idle2x"/>
+
+            <item android:title="@string/eastern"
+                android:id="@+id/eastern"
                 android:icon="@drawable/tab_icon_stories_idle2x"/>
 
-            <item android:title="Notifications"
-                android:id="@+id/nav_item_notifications"
+            <item android:title="@string/nairobi"
+                android:id="@+id/nairobi"
+                android:icon="@drawable/tab_icon_discover_idle2x"/>
+
+            <item android:title="@string/north_eastern"
+                android:id="@+id/north_eastern"
                 android:icon="@drawable/tab_icon_notifications_idle2x"/>
+
+            <item android:title="@string/nyanza"
+                android:id="@+id/nyanza"
+                android:icon="@drawable/tab_icon_notifications_idle2x"/>
+
+            <item android:title="@string/rift_valley"
+                android:id="@+id/rift_valley"
+                android:icon="@drawable/tab_icon_notifications_idle2x"/>
+
+            <item android:title="@string/western"
+                android:id="@+id/western"
+                android:icon="@drawable/tab_icon_notifications_idle2x"/>
+
         </menu>
     </item>
 
 
-    <item android:title="More">
+    <item android:title="">
         <menu>
-            <item
-                android:title="Account"
-                android:id="@+id/nav_item_account"
-                android:icon="@drawable/icon_account2x"/>
             <item
                 android:title="About"
                 android:id="@+id/nav_item_about"
