@@ -13,10 +13,10 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#5c3d02"
+        android:background="#192800"
         android:id="@+id/toolbar"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:title="Game Parks and Reserves"
+        app:title="Attraction Sites"
         app:titleMarginStart="70dp"/>
 
     <android.support.v4.widget.DrawerLayout
