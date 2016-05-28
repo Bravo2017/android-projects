@@ -4,7 +4,7 @@
         <menu>
             <item android:title="@string/kenya"
                 android:id="@+id/kenya"
-                android:icon="@drawable/tab_icon_profile_active3x"/>
+                android:icon="@mipmap/kenya"/>
         </menu>
     </item>
 
@@ -13,35 +13,36 @@
 
             <item android:title="@string/central"
                 android:id="@+id/central"
-                android:icon="@drawable/tab_icon_profile_idle2x"/>
+                android:icon="@mipmap/central"
+                android:visible="true"/>
 
             <item android:title="@string/coast"
                 android:id="@+id/coast"
-                android:icon="@drawable/tab_icon_notifications_idle2x"/>
+                android:icon="@mipmap/coast"/>
 
             <item android:title="@string/eastern"
                 android:id="@+id/eastern"
-                android:icon="@drawable/tab_icon_stories_idle2x"/>
+                android:icon="@mipmap/eastern"/>
 
             <item android:title="@string/nairobi"
                 android:id="@+id/nairobi"
-                android:icon="@drawable/tab_icon_discover_idle2x"/>
+                android:icon="@mipmap/nairobi"/>
 
             <item android:title="@string/north_eastern"
                 android:id="@+id/north_eastern"
-                android:icon="@drawable/tab_icon_notifications_idle2x"/>
+                android:icon="@mipmap/north_eastern"/>
 
             <item android:title="@string/nyanza"
                 android:id="@+id/nyanza"
-                android:icon="@drawable/tab_icon_notifications_idle2x"/>
+                android:icon="@mipmap/nyanza"/>
 
             <item android:title="@string/rift_valley"
                 android:id="@+id/rift_valley"
-                android:icon="@drawable/tab_icon_notifications_idle2x"/>
+                android:icon="@mipmap/rift_valley"/>
 
             <item android:title="@string/western"
                 android:id="@+id/western"
-                android:icon="@drawable/tab_icon_notifications_idle2x"/>
+                android:icon="@mipmap/western"/>
 
         </menu>
     </item>
