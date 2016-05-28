@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#667618"
+    android:background="#FFFFFF"
     android:orientation="vertical"
     >
 
@@ -10,11 +10,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
-        android:src="@drawable/splash_1"
+        android:src="@drawable/splash_1_large"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
-        android:elevation="50dp"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="-50dp"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -31,7 +30,6 @@
         android:textColor="#000"
         android:textSize="50sp"
         android:textStyle="bold"
-        android:fontFamily="@string/roboto_light"
         android:layout_marginBottom="10dp"
         android:singleLine="false" />
 
