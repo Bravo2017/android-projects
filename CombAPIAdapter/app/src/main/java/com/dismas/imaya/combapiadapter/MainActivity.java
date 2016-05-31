@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         Toast.makeText(getApplicationContext(), "Swipe down to refresh", Toast.LENGTH_LONG).show();
 
+//        colors to be displayed while loading
         mSwipeRefreshLayout.setColorSchemeResources(
                 android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
