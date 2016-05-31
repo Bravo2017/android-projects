@@ -136,7 +136,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         return super.onOptionsItemSelected(item);
     }
 
+    //Reads all the data from an api and puts them in a list
     public List<ItemObject> getAllItemList(){
+
 
         StoryApi story = restAdapter.create(StoryApi.class);
         story.getStory(new Callback<All>() {
