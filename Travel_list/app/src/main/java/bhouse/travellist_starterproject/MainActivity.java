@@ -18,19 +18,20 @@ public class MainActivity extends Activity {
     private StaggeredGridLayoutManager mStaggeredLayoutManager;
     private TravelListAdapter mAdapter;
 
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_main);
-      
+
+      isListView = true;
+
       mRecyclerView = (RecyclerView) findViewById(R.id.list);
       mStaggeredLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
       mRecyclerView.setLayoutManager(mStaggeredLayoutManager);
 
       mAdapter = new TravelListAdapter(this);
       mRecyclerView.setAdapter(mAdapter);
-
-      isListView = true;
   }
 
   private void setUpActionBar() {
