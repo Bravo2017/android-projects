@@ -86,7 +86,7 @@ public class TravelListAdapter extends RecyclerView.Adapter<TravelListAdapter.Vi
 
         Palette.generateAsync(photo, new Palette.PaletteAsyncListener() {
             public void onGenerated(Palette palette) {
-                int bgColor = palette.getVibrantColor(mContext.getResources().getColor(android.R.color.black));
+                int bgColor = palette.getMutedColor(mContext.getResources().getColor(android.R.color.black));
                 holder.placeNameHolder.setBackgroundColor(bgColor);
             }
         });

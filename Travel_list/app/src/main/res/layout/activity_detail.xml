@@ -56,16 +56,16 @@
 
     </LinearLayout>
 
-    <ImageButton
-      android:id="@+id/btn_add"
-      android:layout_width="@dimen/floating_button_size"
-      android:layout_height="@dimen/floating_button_size"
-      android:layout_gravity="end"
-      android:layout_marginEnd="10dp"
-      android:layout_marginTop="28dp"
-      android:src="@drawable/icn_add"
-      android:elevation="@dimen/button_elevation"
-      android:contentDescription="@null" />
+    <!--<ImageButton-->
+      <!--android:id="@+id/btn_add"-->
+      <!--android:layout_width="@dimen/floating_button_size"-->
+      <!--android:layout_height="@dimen/floating_button_size"-->
+      <!--android:layout_gravity="end"-->
+      <!--android:layout_marginEnd="10dp"-->
+      <!--android:layout_marginTop="28dp"-->
+      <!--android:src="@drawable/icn_add"-->
+      <!--android:elevation="@dimen/button_elevation"-->
+      <!--android:contentDescription="@null" />-->
 
   </FrameLayout>
 

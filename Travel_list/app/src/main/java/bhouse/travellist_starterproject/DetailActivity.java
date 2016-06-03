@@ -51,11 +51,11 @@ public class DetailActivity extends Activity implements View.OnClickListener {
     mImageView = (ImageView) findViewById(R.id.placeImage);
     mTitle = (TextView) findViewById(R.id.textView);
     mTitleHolder = (LinearLayout) findViewById(R.id.placeNameHolder);
-    mAddButton = (ImageButton) findViewById(R.id.btn_add);
+    //mAddButton = (ImageButton) findViewById(R.id.btn_add);
     mRevealView = (LinearLayout) findViewById(R.id.llEditTextHolder);
     mEditTextTodo = (EditText) findViewById(R.id.etTodo);
 
-    mAddButton.setOnClickListener(this);
+//    mAddButton.setOnClickListener(this);
     defaultColor = getResources().getColor(R.color.primary_dark);
 
     mInputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -107,19 +107,19 @@ public class DetailActivity extends Activity implements View.OnClickListener {
   @Override
   public void onClick(View v) {
     switch (v.getId()) {
-      case R.id.btn_add:
-        if (!isEditTextVisible) {
-          revealEditText(mRevealView);
-          mEditTextTodo.requestFocus();
-          mInputManager.showSoftInput(mEditTextTodo, InputMethodManager.SHOW_IMPLICIT);
-
-        } else {
-          addToDo(mEditTextTodo.getText().toString());
-          mToDoAdapter.notifyDataSetChanged();
-          mInputManager.hideSoftInputFromWindow(mEditTextTodo.getWindowToken(), 0);
-          hideEditText(mRevealView);
-
-        }
+//      case R.id.btn_add:
+//        if (!isEditTextVisible) {
+//          revealEditText(mRevealView);
+//          mEditTextTodo.requestFocus();
+//          mInputManager.showSoftInput(mEditTextTodo, InputMethodManager.SHOW_IMPLICIT);
+//
+//        } else {
+//          addToDo(mEditTextTodo.getText().toString());
+//          mToDoAdapter.notifyDataSetChanged();
+//          mInputManager.hideSoftInputFromWindow(mEditTextTodo.getWindowToken(), 0);
+//          hideEditText(mRevealView);
+//
+//        }
     }
   }
 
@@ -133,25 +133,6 @@ public class DetailActivity extends Activity implements View.OnClickListener {
 
   @Override
   public void onBackPressed() {
-    AlphaAnimation alphaAnimation = new AlphaAnimation(1.0f, 0.0f);
-    alphaAnimation.setDuration(100);
-    mAddButton.startAnimation(alphaAnimation);
-    alphaAnimation.setAnimationListener(new Animation.AnimationListener() {
-      @Override
-      public void onAnimationStart(Animation animation) {
-
-      }
-
-      @Override
-      public void onAnimationEnd(Animation animation) {
-        mAddButton.setVisibility(View.GONE);
-        finish();
-      }
-
-      @Override
-      public void onAnimationRepeat(Animation animation) {
-
-      }
-    });
+    finish();
   }
 }
