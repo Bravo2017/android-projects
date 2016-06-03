@@ -23,7 +23,7 @@ public class MainActivity extends Activity {
       mRecyclerView = (RecyclerView) findViewById(R.id.list);
       mStaggeredLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
       mRecyclerView.setLayoutManager(mStaggeredLayoutManager);
-      
+
       setContentView(R.layout.activity_main);
 
       isListView = true;
