@@ -12,19 +12,23 @@ import android.view.MenuItem;
 
 public class MainActivity extends Activity {
 
-  private Menu menu;
-  private boolean isListView;
-  private RecyclerView mRecyclerView;
-  private StaggeredGridLayoutManager mStaggeredLayoutManager;
+    private Menu menu;
+    private boolean isListView;
+    private RecyclerView mRecyclerView;
+    private StaggeredGridLayoutManager mStaggeredLayoutManager;
+    private TravelListAdapter mAdapter;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_main);
+      
       mRecyclerView = (RecyclerView) findViewById(R.id.list);
       mStaggeredLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
       mRecyclerView.setLayoutManager(mStaggeredLayoutManager);
 
-      setContentView(R.layout.activity_main);
+      mAdapter = new TravelListAdapter(this);
+      mRecyclerView.setAdapter(mAdapter);
 
       isListView = true;
   }
