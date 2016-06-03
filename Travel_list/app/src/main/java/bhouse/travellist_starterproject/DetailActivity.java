@@ -1,9 +1,11 @@
 package bhouse.travellist_starterproject;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -135,7 +137,7 @@ public class DetailActivity extends Activity implements View.OnClickListener {
       @Override
       public void onAnimationEnd(Animation animation) {
         mAddButton.setVisibility(View.GONE);
-        finishAfterTransition();
+        finish();
       }
 
       @Override
