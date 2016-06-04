@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -52,17 +53,17 @@ public class DetailActivity extends Activity implements View.OnClickListener {
     mTitle = (TextView) findViewById(R.id.textView);
     mTitleHolder = (LinearLayout) findViewById(R.id.placeNameHolder);
     //mAddButton = (ImageButton) findViewById(R.id.btn_add);
-    mRevealView = (LinearLayout) findViewById(R.id.llEditTextHolder);
-    mEditTextTodo = (EditText) findViewById(R.id.etTodo);
+    mRevealView = (LinearLayout) findViewById(R.id.TextHolder);
+    //mEditTextTodo = (EditText) findViewById(R.id.etTodo);
 
 //    mAddButton.setOnClickListener(this);
     defaultColor = getResources().getColor(R.color.primary_dark);
 
-    mInputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+    //mInputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
     mRevealView.setVisibility(View.INVISIBLE);
-    isEditTextVisible = false;
+    //isEditTextVisible = false;
 
-    setUpAdapter();
+    //setUpAdapter();
     loadPlace();
     windowTransition();
     getPhoto();
@@ -101,7 +102,9 @@ public class DetailActivity extends Activity implements View.OnClickListener {
   private void applyPalette(Palette mPalette) {
     getWindow().setBackgroundDrawable(new ColorDrawable(mPalette.getDarkMutedColor(defaultColor)));
     mTitleHolder.setBackgroundColor(mPalette.getMutedColor(defaultColor));
-    mRevealView.setBackgroundColor(mPalette.getLightVibrantColor(defaultColor));
+//    mRevealView.setBackgroundColor(mPalette.getLightVibrantColor(defaultColor));
+    mRevealView.setBackgroundColor(Color.WHITE);
+
   }
 
   @Override

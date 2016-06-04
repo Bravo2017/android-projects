@@ -3,4 +3,6 @@
 
   <string name="hello_world">Hello world!</string>
   <string name="action_settings">Settings</string>
+  <string name="nairobiabout">About</string>
+  <string name="nairobicontent1">The Nairobi Animal Orphanage is located in the Nairobi National Park. It serves a treatments and rehabilitation centre for wild animals. The Orphanage hosts lions, cheetahs, hyenas, jackals, serval cats, rare Sokoke cats, warthogs, leopards, various monkeys, baboons and buffalo. Various birds can also be viewed including parrots, guinea fowls, crowned cranes and ostriches.</string>
 </resources>
