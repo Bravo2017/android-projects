@@ -20,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class DetailActivity extends Activity implements View.OnClickListener {
   private TextView mTitle;
   private LinearLayout mTitleHolder;
   private ImageButton mAddButton;
-  private LinearLayout mRevealView;
+  private RelativeLayout mRevealView;
   private EditText mEditTextTodo;
   private boolean isEditTextVisible;
   private InputMethodManager mInputManager;
@@ -53,7 +54,7 @@ public class DetailActivity extends Activity implements View.OnClickListener {
     mTitle = (TextView) findViewById(R.id.textView);
     mTitleHolder = (LinearLayout) findViewById(R.id.placeNameHolder);
     //mAddButton = (ImageButton) findViewById(R.id.btn_add);
-    mRevealView = (LinearLayout) findViewById(R.id.TextHolder);
+    mRevealView = (RelativeLayout) findViewById(R.id.TextHolder);
     //mEditTextTodo = (EditText) findViewById(R.id.etTodo);
 
 //    mAddButton.setOnClickListener(this);
@@ -103,7 +104,7 @@ public class DetailActivity extends Activity implements View.OnClickListener {
     getWindow().setBackgroundDrawable(new ColorDrawable(mPalette.getDarkMutedColor(defaultColor)));
     mTitleHolder.setBackgroundColor(mPalette.getMutedColor(defaultColor));
 //    mRevealView.setBackgroundColor(mPalette.getLightVibrantColor(defaultColor));
-    mRevealView.setBackgroundColor(Color.WHITE);
+    //mRevealView.setBackgroundColor(Color.WHITE);
 
   }
 
