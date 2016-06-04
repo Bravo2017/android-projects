@@ -60,7 +60,7 @@ public class DetailActivity extends Activity implements View.OnClickListener {
     defaultColor = getResources().getColor(R.color.primary_dark);
 
     //mInputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-    mRevealView.setVisibility(View.INVISIBLE);
+    mRevealView.setVisibility(View.VISIBLE);
     //isEditTextVisible = false;
 
     //setUpAdapter();
