@@ -7,4 +7,7 @@
     <dimen name="text_size_avg">20sp</dimen>
     <dimen name="text_size_big">25sp</dimen>
     <dimen name="space_small">8dp</dimen>
+
+    <dimen name="card_elevation">1dp</dimen>
+    <dimen name="card_corner_radius">0dp</dimen>
 </resources>

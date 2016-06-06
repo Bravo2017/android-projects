@@ -1,6 +1,5 @@
 package com.dismas.imaya.info_parks;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,28 +26,29 @@ public class GameParksFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_gameparksfragment,null);
+        final View rootView = inflater.inflate(R.layout.activity_gameparksfragment, container, false);
 
         isListView = true;
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.list);
+        RecyclerView mRecyclerView = (RecyclerView) rootView.findViewById(R.id.list);
         mStaggeredLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mStaggeredLayoutManager);
 
-        mAdapter = new TravelListAdapter(this);
+        mAdapter = new TravelListAdapter(getActivity());
         mRecyclerView.setAdapter(mAdapter);
 
         TravelListAdapter.OnItemClickListener onItemClickListener = new TravelListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                Toast.makeText(MainActivity.this, "Clicked " + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Clicked " + position, Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                Intent intent = new Intent(getActivity(), DetailActivity.class);
                 intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
                 startActivity(intent);
             }
         };
 
         mAdapter.setOnItemClickListener(onItemClickListener);
+        return rootView;
     }
 }
