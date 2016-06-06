@@ -47,8 +47,8 @@ public class GameParksFragment extends Fragment {
                 startActivity(intent);
             }
         };
-
         mAdapter.setOnItemClickListener(onItemClickListener);
+
         return rootView;
     }
 }
