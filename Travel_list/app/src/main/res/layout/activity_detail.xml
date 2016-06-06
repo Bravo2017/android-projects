@@ -59,7 +59,7 @@
             android:layout_gravity="center_horizontal"
             cardview:cardCornerRadius="5dp"
             cardview:cardBackgroundColor="#FFFFFF"
-            cardview:cardElevation="2dp">
+            cardview:cardElevation="4dp">
           <RelativeLayout
               android:id="@+id/TextHolder"
               android:layout_width="wrap_content"
