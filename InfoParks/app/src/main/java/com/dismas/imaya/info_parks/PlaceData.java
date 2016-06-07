@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by imaya on 6/6/16.
  */
 public class PlaceData {
-    public static String[] placeNameArray = {"Bora Bora", "Canada", "Dubai", "Hong Kong", "Iceland", "India", "Kenya", "London", "Switzerland", "Sydney"};
+    public static String[] placeNameArray = {"Aberdare", "Canada", "Dubai", "Hong Kong", "Iceland", "India", "Kenya", "London", "Switzerland", "Sydney"};
 
     public static ArrayList<Place> placeList() {
         ArrayList<Place> list = new ArrayList<>();
