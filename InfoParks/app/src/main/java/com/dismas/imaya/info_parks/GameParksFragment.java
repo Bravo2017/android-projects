@@ -41,9 +41,139 @@ public class GameParksFragment extends Fragment {
             public void onItemClick(View v, int position) {
                 Toast.makeText(getActivity(), "Clicked " + position, Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(getActivity(), DetailActivity.class);
-                intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
-                startActivity(intent);
+                if(position == 0)
+                {
+                    Intent intent = new Intent(getActivity(), DetailActivity.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+                else if(position == 1)
+                {
+                    Intent intent = new Intent(getActivity(), SplashScreenAlways.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+                else if(position == 2)
+                {
+                    Intent intent = new Intent(getActivity(), SplashScreenAlways.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+                else if(position == 3)
+                {
+                    Intent intent = new Intent(getActivity(), SplashScreenAlways.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+                else if(position == 4)
+                {
+                    Intent intent = new Intent(getActivity(), SplashScreenAlways.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+                else if(position == 5)
+                {
+                    Intent intent = new Intent(getActivity(), SplashScreenAlways.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+                else if(position == 6)
+                {
+                    Intent intent = new Intent(getActivity(), SplashScreenAlways.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+                else if(position == 7)
+                {
+                    Intent intent = new Intent(getActivity(), SplashScreenAlways.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+                else if(position == 8)
+                {
+                    Intent intent = new Intent(getActivity(), SplashScreenAlways.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+                else if(position == 9)
+                {
+                    Intent intent = new Intent(getActivity(), SplashScreenAlways.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+                else if(position == 10)
+                {
+                    Intent intent = new Intent(getActivity(), SplashScreenAlways.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+                else if(position == 11)
+                {
+                    Intent intent = new Intent(getActivity(), SplashScreenAlways.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+                else if(position == 12)
+                {
+                    Intent intent = new Intent(getActivity(), SplashScreenAlways.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+                else if(position == 13)
+                {
+                    Intent intent = new Intent(getActivity(), SplashScreenAlways.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+                else if(position == 14)
+                {
+                    Intent intent = new Intent(getActivity(), SplashScreenAlways.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+                else if(position == 15)
+                {
+                    Intent intent = new Intent(getActivity(), SplashScreenAlways.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+                else if(position == 16)
+                {
+                    Intent intent = new Intent(getActivity(), SplashScreenAlways.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+                else if(position == 17)
+                {
+                    Intent intent = new Intent(getActivity(), SplashScreenAlways.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+                else if(position == 18)
+                {
+                    Intent intent = new Intent(getActivity(), SplashScreenAlways.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+                else if(position == 19)
+                {
+                    Intent intent = new Intent(getActivity(), SplashScreenAlways.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+                else if(position == 20)
+                {
+                    Intent intent = new Intent(getActivity(), SplashScreenAlways.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+                else if(position == 21)
+                {
+                    Intent intent = new Intent(getActivity(), SplashScreenAlways.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
+                    startActivity(intent);
+                }
+
             }
         };
         mAdapter.setOnItemClickListener(onItemClickListener);
