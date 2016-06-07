@@ -9,12 +9,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00a706a6-853e-475f-b953-450be109ebde" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../InfoParks/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../InfoParks/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../InfoParks/app/src/main/java/com/dismas/imaya/info_parks/GameParksFragment.java" afterPath="$PROJECT_DIR$/../InfoParks/app/src/main/java/com/dismas/imaya/info_parks/GameParksFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../InfoParks/app/src/main/java/com/dismas/imaya/info_parks/TabFragment.java" afterPath="$PROJECT_DIR$/../InfoParks/app/src/main/java/com/dismas/imaya/info_parks/TabFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="00a706a6-853e-475f-b953-450be109ebde" name="Default" comment="" />
     <ignored path="Travel_list.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -1758,9 +1753,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="24" />
+    <option name="y" value="52" />
     <option name="width" value="1366" />
-    <option name="height" value="744" />
+    <option name="height" value="716" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -2207,7 +2202,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1366" height="744" extended-state="7" />
+    <frame x="0" y="52" width="1366" height="716" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />

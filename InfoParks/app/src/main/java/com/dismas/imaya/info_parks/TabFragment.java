@@ -90,7 +90,7 @@ public class TabFragment extends Fragment {
                 case 0 :
                     return "Game Parks";
                 case 1 :
-                    return "Game Reserves";
+                    return "Trending";
             }
             return null;
         }
