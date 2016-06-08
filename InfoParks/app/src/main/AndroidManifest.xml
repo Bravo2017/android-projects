@@ -36,6 +36,28 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".AmboseliActivity"></activity>
+        <activity android:name=".ArabukoActivity"></activity>
+        <activity android:name=".BogoriaActivity"></activity>
+        <activity android:name=".BuffaloActivity"></activity>
+        <activity android:name=".HellsActivity"></activity>
+        <activity android:name=".KakamegaActivity"></activity>
+        <activity android:name=".LewaActivity"></activity>
+        <activity android:name=".MaasaiActivity"></activity>
+        <activity android:name=".MarsabitActivity"></activity>
+        <activity android:name=".MeruActivity"></activity>
+        <activity android:name=".MombasaActivity"></activity>
+        <activity android:name=".MtkenyaActivity"></activity>
+        <activity android:name=".MtlongonotActivity"></activity>
+        <activity android:name=".NaivashaActivity"></activity>
+        <activity android:name=".NakuruActivity"></activity>
+        <activity android:name=".SamburuActivity"></activity>
+        <activity android:name=".ShabaActivity"></activity>
+        <activity android:name=".ShimbaActivity"></activity>
+        <activity android:name=".TaitaActivity"></activity>
+        <activity android:name=".TsavoEastActivity"></activity>
+        <activity android:name=".TsavoWestActivity"></activity>
+        <activity android:name=".WatamuActivity"></activity>
     </application>
 
 </manifest>
