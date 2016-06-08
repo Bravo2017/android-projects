@@ -85,7 +85,7 @@
                         android:text="@string/amboseli"
                         android:id="@+id/textView4"
                         android:layout_marginTop="45dp"
-                        android:textAlignment="center"
+                        android:textAlignment="textStart"
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
                         android:textColor="#006400" />
