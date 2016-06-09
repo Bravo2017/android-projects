@@ -36,7 +36,27 @@
 
     <string name="nairobiabout">About</string>
     <string name="nairobicontent1">The Nairobi Animal Orphanage is located in the Nairobi National Park. It serves a treatments and rehabilitation centre for wild animals. The Orphanage hosts lions, cheetahs, hyenas, jackals, serval cats, rare Sokoke cats, warthogs, leopards, various monkeys, baboons and buffalo. Various birds can also be viewed including parrots, guinea fowls, crowned cranes and ostriches.</string>
-    <string name="amboseli"><b>Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
-
+    <string name="amboseli"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
+    <string name="arabuko"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
+    <string name="bogoria"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
+    <string name="buffalo"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
+    <string name="hells"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
+    <string name="kakamega"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
+    <string name="lewa"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
+    <string name="maasai"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
+    <string name="marsabit"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
+    <string name="meru"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
+    <string name="mombasa"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
+    <string name="mtkenya"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
+    <string name="longonot"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
+    <string name="naivasha"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
+    <string name="nakuru"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
+    <string name="samburu"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
+    <string name="shaba"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
+    <string name="shimba"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
+    <string name="taita"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
+    <string name="tsavoeast"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
+    <string name="tsavowest"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
+    <string name="watamu"><b> Address:</b> Loitoktok District, Rift Valley \n <b>Area:</b> 151.4 Square Miles \n <b>Hours Open: </b> 24 Hours \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1974 \n</string>
 
 </resources>
