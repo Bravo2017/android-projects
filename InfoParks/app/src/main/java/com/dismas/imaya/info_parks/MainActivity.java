@@ -56,46 +56,48 @@ public class MainActivity extends AppCompatActivity{
 
                 if (menuItem.getItemId() == R.id.kenya) {
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.containerView,new TrendingFragment()).commit();
+                    //fragmentTransaction.replace(R.id.containerView,new TrendingFragment()).commit();
+                    fragmentTransaction.replace(R.id.containerView,new GameParksFragment()).commit();
 
                 }
 
                 if (menuItem.getItemId() == R.id.rift_valley) {
                     FragmentTransaction afragmentTransaction = mFragmentManager.beginTransaction();
-                    afragmentTransaction.replace(R.id.containerView,new ProvincesFragment()).commit();
+                    //afragmentTransaction.replace(R.id.containerView,new ProvincesFragment()).commit();
+                    afragmentTransaction.replace(R.id.containerView,new GameParksFragment()).commit();
                 }
 
                 if (menuItem.getItemId() == R.id.nairobi) {
                     FragmentTransaction bfragmentTransaction = mFragmentManager.beginTransaction();
-                    bfragmentTransaction.replace(R.id.containerView,new ProvincesFragment()).commit();
+                    bfragmentTransaction.replace(R.id.containerView,new GameParksFragment()).commit();
                 }
                 if (menuItem.getItemId() == R.id.central) {
                     FragmentTransaction cfragmentTransaction = mFragmentManager.beginTransaction();
-                    cfragmentTransaction.replace(R.id.containerView,new ProvincesFragment()).commit();
+                    cfragmentTransaction.replace(R.id.containerView,new GameParksFragment()).commit();
                 }
                 if (menuItem.getItemId() == R.id.western) {
                     FragmentTransaction dfragmentTransaction = mFragmentManager.beginTransaction();
-                    dfragmentTransaction.replace(R.id.containerView,new ProvincesFragment()).commit();
+                    dfragmentTransaction.replace(R.id.containerView,new GameParksFragment()).commit();
                 }
                 if (menuItem.getItemId() == R.id.nyanza) {
                     FragmentTransaction efragmentTransaction = mFragmentManager.beginTransaction();
-                    efragmentTransaction.replace(R.id.containerView,new ProvincesFragment()).commit();
+                    efragmentTransaction.replace(R.id.containerView,new GameParksFragment()).commit();
                 }
                 if (menuItem.getItemId() == R.id.eastern) {
                     FragmentTransaction efragmentTransaction = mFragmentManager.beginTransaction();
-                    efragmentTransaction.replace(R.id.containerView,new ProvincesFragment()).commit();
+                    efragmentTransaction.replace(R.id.containerView,new GameParksFragment()).commit();
                 }
                 if (menuItem.getItemId() == R.id.north_eastern) {
                     FragmentTransaction efragmentTransaction = mFragmentManager.beginTransaction();
-                    efragmentTransaction.replace(R.id.containerView,new ProvincesFragment()).commit();
+                    efragmentTransaction.replace(R.id.containerView,new GameParksFragment()).commit();
                 }
                 if (menuItem.getItemId() == R.id.coast) {
                     FragmentTransaction efragmentTransaction = mFragmentManager.beginTransaction();
-                    efragmentTransaction.replace(R.id.containerView,new ProvincesFragment()).commit();
+                    efragmentTransaction.replace(R.id.containerView,new GameParksFragment()).commit();
                 }
                 if (menuItem.getItemId() == R.id.nav_item_about) {
                     FragmentTransaction ffragmentTransaction = mFragmentManager.beginTransaction();
-                    ffragmentTransaction.replace(R.id.containerView,new ProvincesFragment()).commit();
+                    ffragmentTransaction.replace(R.id.containerView,new GameParksFragment()).commit();
                 }
 
 
