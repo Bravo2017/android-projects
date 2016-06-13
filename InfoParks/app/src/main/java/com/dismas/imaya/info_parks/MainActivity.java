@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity{
                 }
                 if (menuItem.getItemId() == R.id.nav_item_about) {
                     FragmentTransaction ffragmentTransaction = mFragmentManager.beginTransaction();
-                    ffragmentTransaction.replace(R.id.containerView,new GameParksFragment()).commit();
+                    ffragmentTransaction.replace(R.id.containerView,new AboutFragment()).commit();
                 }
 
 
