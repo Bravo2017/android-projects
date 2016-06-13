@@ -14,7 +14,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:textColor="@color/green_one"
-        android:text="ABOUT\nInfoParks"/>
+        android:text="@string/about_ninfoparks"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,7 +24,7 @@
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
         android:fontFamily="@string/roboto_light"
-        android:text="infoparks.com"
+        android:text="@string/infoparks_com"
         android:textColor="#000"
         android:layout_below="@+id/textView"
         android:textStyle="italic"/>

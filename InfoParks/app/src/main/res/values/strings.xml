@@ -59,5 +59,7 @@
     <string name="tsavowest"><b> Address:</b> Mangani, Kenya \n <b>Area:</b> 3,500 Square Miles \n <b>Hours Open: </b> 8AM-5PM \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1948 \n</string>
     <string name="watamu"><b> Address:</b> Malindi, Mombasa \n <b>Area:</b> _____ Square Miles \n <b>Hours Open: </b> 8AM-9PM \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1968 \n</string>
     <string name="aberdare"><b> Address:</b> Ndaragwa, Kenya\n <b>Area:</b> 295.8 Square Miles \n <b>Hours Open: </b> 8AM-9PM \n <b>Phone: </b> +254 800 597 000 \n <b>Established: </b> 1940 \n</string>
+    <string name="about_ninfoparks">ABOUT\nInfoParks</string>
+    <string name="infoparks_com">infoparks.com</string>
 
 </resources>
