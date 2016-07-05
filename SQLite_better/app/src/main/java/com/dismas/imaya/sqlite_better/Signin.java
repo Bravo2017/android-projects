@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
@@ -13,7 +14,7 @@ import android.widget.Toast;
 /**
  * Created by imaya on 7/5/16.
  */
-public class Signin extends Activity {
+public class Signin extends AppCompatActivity {
     Intent i=null;
     ImageView im=null;
     EditText tv1,tv2,tv3,tv4;
