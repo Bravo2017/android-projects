@@ -7,11 +7,11 @@
     <ViewFlipper
         android:id="@+id/view_flipper"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="300px">
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="300px">
 
             <ImageView
                 android:layout_width="fill_parent"
@@ -28,7 +28,7 @@
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="300px">
 
             <ImageView
                 android:layout_width="fill_parent"
@@ -45,7 +45,7 @@
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="300px">
 
             <ImageView
                 android:layout_width="fill_parent"
@@ -64,17 +64,15 @@
     <ImageView
         android:id="@+id/swipe_left"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="150px"
         android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
         android:src="@drawable/swipe_left" />
 
     <ImageView
         android:id="@+id/swipe_right"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="150px"
         android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
         android:src="@drawable/swipe_right" />
 
 </RelativeLayout>
