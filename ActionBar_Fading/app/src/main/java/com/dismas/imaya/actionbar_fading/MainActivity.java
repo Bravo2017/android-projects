@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         ScrollViewX scrollView = (ScrollViewX) findViewById(R.id.scroll_view);
-        scrollView.setOnScrollViewListener(new OnScrollViewListener() {
+        scrollView.setOnScrollViewListener(new ScrollViewX.OnScrollViewListener() {
 
             @Override
             public void onScrollChanged(ScrollViewX v, int l, int t, int oldl, int oldt) {
