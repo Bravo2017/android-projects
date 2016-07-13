@@ -26,14 +26,14 @@ public class MainActivity extends AppCompatActivity {
         final BitmapDrawable bd = new BitmapDrawable(bitmap);
         final ColorDrawable cd = new ColorDrawable(Color.rgb(68, 74, 83));
         mActionBar = getActionBar();
-        mActionBar.setBackgroundDrawable(cd);
+        //mActionBar.setBackgroundDrawable(cd);
 
         cd.setAlpha(0);
 
-        mActionBar.setDisplayHomeAsUpEnabled(true); //to activate back pressed on home button press
-        mActionBar.setDisplayShowHomeEnabled(false); //
-        mActionBar.setTitle(Html.fromHtml("<b><font color='#ffffff'>Powai </font></b>"));
-        mActionBar.setSubtitle(Html.fromHtml("<font color='#ffffff'>Hiranandani Gardens </font>"));
+       // mActionBar.setDisplayHomeAsUpEnabled(true); //to activate back pressed on home button press
+        //mActionBar.setDisplayShowHomeEnabled(false); //
+        //mActionBar.setTitle(Html.fromHtml("<b><font color='#ffffff'>Powai </font></b>"));
+        //mActionBar.setSubtitle(Html.fromHtml("<font color='#ffffff'>Hiranandani Gardens </font>"));
 
 
 
