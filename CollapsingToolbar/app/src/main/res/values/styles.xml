@@ -10,8 +10,7 @@
 
     <style name="expandedappbar" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">40sp</item>
-        <i
-            tem name="android:textColor">#ffff3017</item>
+        <item name="android:textColor">#ffff3017</item>
         <item name="android:textStyle">bold</item>
     </style>
 
