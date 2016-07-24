@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final CoordinatorLayout Clayout = (CoordinatorLayout)findViewById(R.id.snackbarlocation);
-        final FloatingActionButton FabButton = (FloatingActionButton) findViewById(R.id.add_fab_button);
+        FloatingActionButton FabButton = (FloatingActionButton) findViewById(R.id.add_fab_button);
 
         FabButton.setOnClickListener(new View.OnClickListener() {
             @Override
