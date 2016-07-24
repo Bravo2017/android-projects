@@ -16,12 +16,21 @@ public class MainActivity extends AppCompatActivity {
 
         final CoordinatorLayout Clayout = (CoordinatorLayout)findViewById(R.id.snackbarlocation);
         FloatingActionButton FabButton = (FloatingActionButton) findViewById(R.id.add_fab_button);
+        FloatingActionButton Fab = (FloatingActionButton) findViewById(R.id.add_fab_button1);
 
         FabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Snackbar.make(Clayout, "This snack bar located at top", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(Clayout, "You clicked the forward button", Snackbar.LENGTH_SHORT).show();
+            }
+        });
+
+        Fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Snackbar.make(Clayout, "You clicked the rewind button", Snackbar.LENGTH_SHORT).show();
             }
         });
 
