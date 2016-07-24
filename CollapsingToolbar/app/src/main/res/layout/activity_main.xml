@@ -19,6 +19,15 @@
         android:background="@color/material_deep_teal_500"
         android:fitsSystemWindows="true">
 
+        <ImageView
+            android:id="@+id/bgheader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:fitsSystemWindows="true"
+            android:background="@drawable/imaya"
+            app:layout_collapseMode="pin" />
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/MyToolbar"
             android:layout_width="match_parent"
@@ -91,5 +100,5 @@ app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 </android.support.v4.widget.NestedScrollView>
 
-    </android.support.design.widget.CoordinatorLayout>
+</android.support.design.widget.CoordinatorLayout>
 
