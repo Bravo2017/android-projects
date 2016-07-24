@@ -27,6 +27,7 @@
         android:src="@drawable/ic_fast_forward_white_18dp"
         android:layout_alignParentRight="true"
         android:layout_above="@id/snackbarlocation"
+        app:elevation="4dp"
         app:borderWidth="0dp"/>
 
     <android.support.design.widget.FloatingActionButton
@@ -37,5 +38,6 @@
         android:src="@drawable/ic_fast_rewind_white_18dp"
         android:layout_alignParentLeft="true"
         android:layout_above="@id/snackbarlocation"
+        app:elevation="4dp"
         app:borderWidth="0dp"/>
 </RelativeLayout>
