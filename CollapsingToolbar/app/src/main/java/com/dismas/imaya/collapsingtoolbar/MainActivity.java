@@ -23,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
 
         collapsingToolbar.setCollapsedTitleTextColor(getResources().getColor(R.color.black));
         collapsingToolbar.setExpandedTitleColor(getResources().getColor(R.color.colorPrimary));
+        collapsingToolbar.setContentScrimColor(getResources().getColor(R.color.colorPrimary));
+
+        collapsingToolbar.setExpandedTitleTextAppearance(R.style.expandedappbar);
+        collapsingToolbar.setCollapsedTitleTextAppearance(R.style.collapsedappbar);
     }
 
 }
