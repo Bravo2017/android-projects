@@ -9,14 +9,13 @@
         android:id="@+id/MyAppbar"
         android:layout_width="match_parent"
         android:layout_height="256dp"
-    android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true">
 
     <android.support.design.widget.CollapsingToolbarLayout
         android:id="@+id/collapse_toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_scrollFlags="scroll|exitUntilCollapsed"
-        android:background="@color/material_deep_teal_500"
         android:fitsSystemWindows="true">
 
         <ImageView
@@ -25,7 +24,7 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:fitsSystemWindows="true"
-            android:background="@drawable/imaya"
+            android:background="@drawable/colors"
             app:layout_collapseMode="pin" />
 
         <android.support.v7.widget.Toolbar

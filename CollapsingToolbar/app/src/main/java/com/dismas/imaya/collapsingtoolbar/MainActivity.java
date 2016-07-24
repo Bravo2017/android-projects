@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
         collapsingToolbar.setTitle("Dismas Imaya");
         //this will change the display title text color.
 
-        collapsingToolbar.setCollapsedTitleTextColor(getResources().getColor(R.color.white));
-        collapsingToolbar.setExpandedTitleColor(getResources().getColor(R.color.yellow));
+        collapsingToolbar.setCollapsedTitleTextColor(getResources().getColor(R.color.black));
+        collapsingToolbar.setExpandedTitleColor(getResources().getColor(R.color.colorPrimary));
     }
 
 }
