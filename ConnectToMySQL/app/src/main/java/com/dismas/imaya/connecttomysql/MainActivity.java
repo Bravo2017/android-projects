@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
             HttpClient httpclient = new DefaultHttpClient();
 
-            HttpPost httppost = new HttpPost("http://41.89.64.197/Myfile.php"); //YOUR PHP SCRIPT ADDRESS
+            HttpPost httppost = new HttpPost("http://192.168.43.238/Myfile.php"); //YOUR PHP SCRIPT ADDRESS
 
 // HttpPost httppost = new HttpPost("http://172.23.193.32/elift-test/myfile.php"); //YOUR PHP SCRIPT ADDRESS
 
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
                 JSONObject json = jArray.getJSONObject(i);
 
-                s = s +"Name : "+json.getString("id")+" "+json.getString("username");  }
+                s = s +"Name : "+json.getString("id")+" "+json.getString("MYUSER");  }
 
             resultView.setText(s);
 
