@@ -1,6 +1,7 @@
 package com.dismas.imaya.registration;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,14 +14,13 @@ import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText editTextName;
     private EditText editTextUsername;
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_signup);
 
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextUsername = (EditText) findViewById(R.id.editTextUserName);
@@ -69,11 +69,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private class Process extends AsyncTask<String, Void, String> {
+        ProgressDialog loading;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             // Things to do before fetching/posting
+            loading = ProgressDialog.show(SignUpActivity.this, "Please Wait",null, true, true);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            // result from php
+            loading.dismiss();
+            Log.e(">>>>>>>>>>>", ">>>>>>"+result);
+            Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
+
+            Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+            startActivity(intent);
         }
 
         @Override
@@ -124,57 +138,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             return null;
         }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-
-            Log.e(">>>>>>>>>>>", ">>>>>>"+result);
-            // result from php
-        }
-    }
-
-    private void register(String name, String username, String password, String email) {
-        String urlSuffix = "?name="+name+"&username="+username+"&password="+password+"&email="+email;
-        class RegisterUser extends AsyncTask<String, Void, String> {
-
-            ProgressDialog loading;
-
-
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                loading = ProgressDialog.show(MainActivity.this, "Please Wait",null, true, true);
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                loading.dismiss();
-                Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            protected String doInBackground(String... params) {
-                String s = params[0];
-                BufferedReader bufferedReader = null;
-                try {
-                    URL url = new URL(REGISTER_URL+s);
-                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                    bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-
-                    String result;
-
-                    result = bufferedReader.readLine();
-
-                    return result;
-                }catch(Exception e){
-                    return null;
-                }
-            }
-        }
-
-        RegisterUser ru = new RegisterUser();
-        ru.execute(urlSuffix);
     }
 }
