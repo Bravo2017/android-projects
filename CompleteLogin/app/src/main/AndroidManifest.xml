@@ -8,15 +8,24 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginActivity"
+            android:label="@string/login_label"
+            android:theme="@style/AppTheme_NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegistrationActivity"></activity>
+
+        <!--  Entry for RegisterActivity.class -->
+        <activity android:name=".RegisterActivity"
+            android:theme="@style/AppTheme_NoActionBar"
+            android:label="@string/register_label">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN01" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
