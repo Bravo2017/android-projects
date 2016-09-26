@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#667618</color>
+    <color name="colorPrimaryDark">#0a1000</color>
+    <color name="colorAccent">#097054</color>
+
+    <color name="green_one">#006600</color>
+    <color name="green_2">#097054</color>
+    <color name="buttongreen">#192800</color>
+    <color name="primary_dark">#E0E0E0</color>
+
+    <color name="buttonorange">#D07C42</color>
+    <color name="main_color_grey_600">@color/material_grey_600</color>
+    <color name="material_grey_400">#bdbcbc</color>
+
+    <color name="main_color_grey_400">@color/material_grey_400</color>
 </resources>

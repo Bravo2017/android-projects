@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="">
+        <menu>
+            <item android:title="Dismas Imaya"
+                android:id="@+id/nav_item_pic"
+                android:icon="@drawable/tab_icon_profile_idle3x"/>
+        </menu>
+    </item>
+
+    <item android:title="Main Menu">
+        <menu>
+            <item android:title="Home"
+                android:id="@+id/nav_item_home"
+                android:icon="@drawable/ic_home_black_24dp"/>
+
+            <item android:title="Discover"
+                android:id="@+id/nav_item_discover"
+                android:icon="@drawable/ic_explore_black_24dp"/>
+
+
+            <item android:title="Map"
+                android:id="@+id/nav_item_map"
+                android:icon="@drawable/ic_location_on_black_24dp"/>
+
+            <item android:title="Weather"
+                android:id="@+id/nav_item_weather"
+                android:icon="@drawable/ic_cloud_circle_black_24dp"/>
+        </menu>
+    </item>
+
+
+    <item android:title="Settings">
+        <menu>
+            <item
+                android:title="Account"
+                android:id="@+id/nav_item_account"
+                android:icon="@drawable/icon_account3x"/>
+            <item
+                android:title="About"
+                android:id="@+id/nav_item_about"
+                android:icon="@drawable/icon_about3x"/>
+        </menu>
+    </item>
+
+</menu>
