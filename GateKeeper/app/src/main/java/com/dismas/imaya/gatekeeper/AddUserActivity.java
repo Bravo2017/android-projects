@@ -49,7 +49,7 @@ public class AddUserActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.add_record:
+            case R.id.add_user:
                 final String name = nameEditText.getText().toString();
                 final String designation = designationEditText.getText().toString();
                 final String department = departmentEditText.getText().toString();
@@ -61,6 +61,7 @@ public class AddUserActivity extends Activity implements View.OnClickListener {
                 final String card_serial = card_serialEditText.getText().toString();
 
                 dbController.insert(name, designation, department, img_url, dob, height, weight, allowed_areas, card_serial);
+
 
                 Intent main = new Intent(AddUserActivity.this,
                         UserListActivity.class)

@@ -43,6 +43,7 @@ public class UserListActivity extends AppCompatActivity {
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
                 R.layout.activity_view_record, cursor, from, to);
 
+
         adapter.notifyDataSetChanged();
         listView.setAdapter(adapter);
 

@@ -58,7 +58,7 @@ public class SQLController {
         return cursor;
     }
 
-    public int update(long user_id, String name, String designation, String department, String img_url,
+    public int update(long _id, String name, String designation, String department, String img_url,
                       String dob, String height, String weight, String allowed_areas, String card_serial) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(DBhelper.NAME, name);
@@ -71,12 +71,12 @@ public class SQLController {
         contentValues.put(DBhelper.ALLOWED_AREAS, allowed_areas);
         contentValues.put(DBhelper.CARD_SERIAL, card_serial);
         int i = database.update(DBhelper.TABLE_NAME, contentValues,
-                DBhelper._ID + " = " + user_id, null);
+                DBhelper._ID + " = " + _id, null);
         return i;
     }
 
-    public void delete(long user_id) {
-        database.delete(DBhelper.TABLE_NAME, DBhelper._ID + "=" + user_id, null);
+    public void delete(long _id) {
+        database.delete(DBhelper.TABLE_NAME, DBhelper._ID + "=" + _id, null);
     }
 
 }

@@ -1,8 +1,12 @@
 package com.dismas.imaya.gatekeeper.Database;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by imaya on 10/4/16.
@@ -14,7 +18,7 @@ public class DBhelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "Users";
 
     // Table columns
-    public static final String _ID = "user_id";
+    public static final String _ID = "_id";
     public static final String NAME = "name";
     public static final String DESIGNATION = "designation";
     public static final String DEPARTMENT = "department";
@@ -48,5 +52,32 @@ public class DBhelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
+    }
+    /**
+     * Getting all labels
+     * returns list of labels
+     * */
+    public List<String> getAllAreas(){
+        List<String> labels = new ArrayList<String>();
+
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(8));
+            } while (cursor.moveToNext());
+        }
+
+        // closing connection
+        cursor.close();
+        db.close();
+
+        // returning lables
+        return labels;
     }
 }
