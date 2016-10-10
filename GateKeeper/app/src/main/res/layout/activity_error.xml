@@ -11,11 +11,22 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.dismas.imaya.gatekeeper.ErrorActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:textSize="12dp"
+        android:textColor="@color/colorAccent"
+        android:gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:text="@string/developed" />
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/error"
+        android:id="@+id/imageView3"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:id="@+id/imageView3" />
+        android:layout_marginTop="69dp" />
 </RelativeLayout>
