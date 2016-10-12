@@ -9,12 +9,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.dismas.imaya.gatekeeper.Database.DBhelper;
 import com.dismas.imaya.gatekeeper.Database.SQLController;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -27,8 +28,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        addListenerOnButtonVerify();
-        addListenerOnButtonSetPoint();
+        //addListenerOnButtonVerify();
+        //addListenerOnButtonSetPoint();
         addListenerOnButtonExit();
 
         dbController = new SQLController(this);
@@ -36,10 +37,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
         //insert data into sqlite database
-        dbController.insert("Kelvin Murumba", "Lieutenant", "Special Forces", "img_url", "21/02/1989", "5.7", "78KG", "Gate A", "147W741E");
-        dbController.insert("Dismas Imaya", "Major General", "Overall", "img_url", "09/12/1989", "6.3", "85KG", "All Places", "258R852S");
-        dbController.insert("Velma Namwela", "Brigadier", "ICT Docket", "img_url", "12/02/1990", "5.5", "90KG", "Gate B", "369E963Y");
-        dbController.insert("Wiberforce Kipchumba", "Colonel", "Cadet", "img_url", "11/12/1979", "5.6", "78KG", "Data Centre", "123G321M");
+        dbController.insert("Kelvin Murumba", "Lieutenant", "Special Forces", "android.resource://com.dismas.imaya.gatekeeper/drawable/kelvin", "21/02/1989", "5.7", "78KG", "Gate A", "44553A9A");
+        dbController.insert("Dismas Imaya", "Major General", "Overall", "android.resource://com.dismas.imaya.gatekeeper/drawable/imaya", "09/12/1989", "6.3", "85KG", "All Places", "E14351D5");
+        dbController.insert("Velma Namwela", "Brigadier", "ICT Docket", "android.resource://com.dismas.imaya.gatekeeper/drawable/velma", "12/02/1990", "5.5", "90KG", "Gate B", "D47C379A");
+        dbController.insert("Wiberforce Kipchumba", "Colonel", "Cadet", "android.resource://com.dismas.imaya.gatekeeper/drawable/wilberforce", "11/12/1979", "5.6", "78KG", "Data Centre", "445E369A");
         dbController.insert("Ann Siyanoi", "Captian", "Cadet", "img_url", "21/02/1989", "6.0", "80KG", "Conference", "654U455P");
         dbController.insert("Christiana Mandy", "Officer Cadet", "Cadet", "img_url", "21/10/1969", "5.9", "70KG", "Data Centre", "987G789V");
         dbController.insert("Olive Wanjiku", "Commandant", "Cadet", "img_url", "03/11/1989", "6.1", "73KG", "Gate B", "357X753V");
@@ -55,25 +56,26 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // Loading spinner data from database
         loadSpinnerData();
     }
-    public void addListenerOnButtonVerify() {
-
-        final Context context = this;
-
-        button = (Button) findViewById(R.id.verify);
-
-        button.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-
-                Intent intent = new Intent(context, VerifyActivity.class);
-                startActivity(intent);
-
-            }
-
-        });
-
-    }
+//    public void addListenerOnButtonVerify() {
+//
+//        final Context context = this;
+//
+//        button = (Button) findViewById(R.id.verify);
+//
+//        button.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View arg0) {
+//
+//                Intent intent = new Intent(context, VerifyActivity.class);
+//                intent.putExtra("label", label);
+//                startActivity(intent);
+//
+//            }
+//
+//        });
+//
+//    }
     public void addListenerOnButtonSetPoint() {
 
         final Context context = this;
@@ -121,10 +123,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         // Spinner Drop down elements
         List<String> lables = db.getAllAreas();
-
-        // Creating adapter for spinner for default
-//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-//                android.R.layout.simple_spinner_item, lables);
+        Set<String> hs = new HashSet<>();
+        hs.addAll(lables);
+        lables.clear();
+        lables.addAll(hs);
 
         //this is for custom spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
@@ -144,11 +146,27 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // On selecting a spinner item
-        String label = parent.getItemAtPosition(position).toString();
+        final String label = parent.getItemAtPosition(position).toString();
 
         // Showing selected spinner item
-        Toast.makeText(parent.getContext(), "You selected: " + label,
-                Toast.LENGTH_LONG).show();
+//        Toast.makeText(parent.getContext(), "You selected: " + label,
+//                Toast.LENGTH_LONG).show();
+        final Context context = this;
+
+        button = (Button) findViewById(R.id.verify);
+
+        button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                Intent intent = new Intent(context, VerifyActivity.class);
+                intent.putExtra("label", label);
+                startActivity(intent);
+
+            }
+
+        });
     }
 
     @Override

@@ -46,24 +46,17 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <data android:mimeType="text/plain" />
+                <action android:name="android.nfc.action.TAG_DISCOVERED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
-
-            <meta-data
-                android:name="android.nfc.action.TECH_DISCOVERED"
-                android:resource="@xml/nfc_tech_filter" />
         </activity>
         <activity
             android:name=".ErrorActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".VerifyActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.dismas.imaya.gatekeeper.MainActivity" />
+                android:value="com.dismas.imaya.gatekeeper.VerifyActivity" />
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN03" />
@@ -90,6 +83,16 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ResultsActivity"
+            android:label="@string/title_activity_results"
+            android:parentActivityName=".VerifyActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.dismas.imaya.gatekeeper.VerifyActivity" />
+        </activity>
+        <activity
+            android:name=".AccessDeniedActivity"
+            android:label="@string/title_activity_access_denied"
             android:parentActivityName=".VerifyActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

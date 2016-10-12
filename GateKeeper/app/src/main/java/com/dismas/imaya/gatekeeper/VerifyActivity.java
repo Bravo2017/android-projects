@@ -1,27 +1,26 @@
 package com.dismas.imaya.gatekeeper;
 
-import android.app.Activity;
-import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.nfc.NdefMessage;
-import android.nfc.NdefRecord;
-import android.nfc.NfcAdapter;
-import android.nfc.Tag;
+import android.nfc.tech.IsoDep;
+import android.nfc.tech.MifareClassic;
+import android.nfc.tech.MifareUltralight;
 import android.nfc.tech.Ndef;
-import android.os.AsyncTask;
+import android.nfc.tech.NfcA;
+import android.nfc.tech.NfcB;
+import android.nfc.tech.NfcF;
+import android.nfc.tech.NfcV;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.dismas.imaya.gatekeeper.Database.DBhelper;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static com.dismas.imaya.gatekeeper.Database.DBhelper.TABLE_NAME;
@@ -30,18 +29,33 @@ public class VerifyActivity extends AppCompatActivity {
     private DBhelper dbHelper;
     private SQLiteDatabase database;
     private static int SPLASH_TIME_OUT = 3000;
+    Button button;
 
-    //nfc
-    public static final String MIME_TEXT_PLAIN = "text/plain";
-    public static final String TAG = "NfcDemo";
-    private NfcAdapter mNfcAdapter;
+    // list of NFC technologies detected:
+    private final String[][] techList = new String[][] {
+            new String[] {
+                    NfcA.class.getName(),
+                    NfcB.class.getName(),
+                    NfcF.class.getName(),
+                    NfcV.class.getName(),
+                    IsoDep.class.getName(),
+                    MifareClassic.class.getName(),
+                    MifareUltralight.class.getName(), Ndef.class.getName()
+            }
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify);
 
-        String Card_Serial = "147W741E";
+        addListenerOnButtonCancel();
+
+        final String Card_Serial =  "E14351D5";
+
+         Intent intent = getIntent();
+        final String label = intent.getStringExtra("label");
 
         // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE_NAME;
@@ -63,6 +77,8 @@ public class VerifyActivity extends AppCompatActivity {
         cursor.close();
         db.close();
 
+        final String allowed_areastv = getAllowedAreas(Card_Serial);
+
         if (labels.contains(Card_Serial)) {
             new Handler().postDelayed(new Runnable() {
 
@@ -70,11 +86,28 @@ public class VerifyActivity extends AppCompatActivity {
                 public void run() {
                     // This method will be executed once the timer is over
                     // Start your app main activity
-                    Intent intent = new Intent(VerifyActivity.this, ResultsActivity.class);
-                    startActivity(intent);
+                    if(label.equals(allowed_areastv))
+                    {
+                        Intent intent = new Intent(VerifyActivity.this, ResultsActivity.class);
+                        intent.putExtra("card_serial", Card_Serial);
+                        intent.putExtra("label", label);
+                        startActivity(intent);
 
-                    // close this activity
-                    finish();
+                        // close this activity
+                        finish();
+                    }
+                    else
+                    {
+                        Intent intent = new Intent(VerifyActivity.this, AccessDeniedActivity.class);
+                        intent.putExtra("card_serial", Card_Serial);
+                        intent.putExtra("label", label);
+                        startActivity(intent);
+                        finish();
+
+                        // close this activity
+                        finish();
+                    }
+
                 }
             }, SPLASH_TIME_OUT);
         } else {
@@ -83,7 +116,6 @@ public class VerifyActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     // This method will be executed once the timer is over
-                    // Start your app main activity
                     Intent intent = new Intent(VerifyActivity.this, ErrorActivity.class);
                     startActivity(intent);
                     finish();
@@ -91,172 +123,153 @@ public class VerifyActivity extends AppCompatActivity {
             }, SPLASH_TIME_OUT);
         }
 
-        //nfc intent
-        handleIntent(getIntent());
+    }
+    public String getAllowedAreas(String Card_Serial) {
+
+        Cursor cursor = null;
+        String allowed_areastv = "";
+        dbHelper = new DBhelper(getApplicationContext());
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        cursor = db.rawQuery("SELECT allowed_areas FROM Users WHERE card_serial=?", new String[] {Card_Serial + ""});
+        cursor.moveToFirst();
+        allowed_areastv = cursor.getString(cursor.getColumnIndex("allowed_areas"));
+
+        return allowed_areastv;
 
     }
-    @Override
-    protected void onResume() {
-        super.onResume();
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        // creating pending intent:
+//        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
+//        // creating intent receiver for NFC events:
+//        IntentFilter filter = new IntentFilter();
+//        filter.addAction(NfcAdapter.ACTION_TAG_DISCOVERED);
+//        filter.addAction(NfcAdapter.ACTION_NDEF_DISCOVERED);
+//        filter.addAction(NfcAdapter.ACTION_TECH_DISCOVERED);
+//        // enabling foreground dispatch for getting intent from NFC event:
+//        NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+//        nfcAdapter.enableForegroundDispatch(this, pendingIntent, new IntentFilter[]{filter}, this.techList);
+//    }
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        // disabling foreground dispatch:
+//        NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+//        nfcAdapter.disableForegroundDispatch(this);
+//    }
+//
+//    @Override
+//    protected void onNewIntent(Intent intent) {
+//        if (intent.getAction().equals(NfcAdapter.ACTION_TAG_DISCOVERED)) {
+//            final String Card_Serial =  ByteArrayToHexString(intent.getByteArrayExtra(NfcAdapter.EXTRA_ID));
+//
+//            intent = getIntent();
+//            final String label = intent.getStringExtra("label");
+//
+//            // Select All Query
+//            String selectQuery = "SELECT  * FROM " + TABLE_NAME;
+//
+//            dbHelper = new DBhelper(getApplicationContext());
+//
+//            SQLiteDatabase db = dbHelper.getReadableDatabase();
+//            Cursor cursor = db.rawQuery(selectQuery, null);
+//
+//            // looping through all rows and adding to list
+//            List<String> labels = new ArrayList<String>();
+//            if (cursor.moveToFirst()) {
+//                while(cursor.moveToNext()){
+//                    labels.add(cursor.getString(9));
+//                }
+//            }
+//
+//            // closing connection
+//            cursor.close();
+//            db.close();
+//
+//            final String allowed_areastv = getAllowedAreas(Card_Serial);
+//
+//            if (labels.contains(Card_Serial)) {
+//                new Handler().postDelayed(new Runnable() {
+//
+//                    @Override
+//                    public void run() {
+//                        // This method will be executed once the timer is over
+//                        // Start your app main activity
+//                        if(label.equals(allowed_areastv))
+//                        {
+//                            Intent intent = new Intent(VerifyActivity.this, ResultsActivity.class);
+//                            intent.putExtra("card_serial", Card_Serial);
+//                            intent.putExtra("label", label);
+//                            startActivity(intent);
+//
+//                            // close this activity
+//                            finish();
+//                        }
+//                        else
+//                        {
+//                            Intent intent = new Intent(VerifyActivity.this, AccessDeniedActivity.class);
+//                            intent.putExtra("card_serial", Card_Serial);
+//                            intent.putExtra("label", label);
+//                            startActivity(intent);
+//                            finish();
+//
+//                            // close this activity
+//                            finish();
+//                        }
+//
+//                    }
+//                }, SPLASH_TIME_OUT);
+//            } else {
+//                new Handler().postDelayed(new Runnable() {
+//
+//                    @Override
+//                    public void run() {
+//                        // This method will be executed once the timer is over
+//                        Intent intent = new Intent(VerifyActivity.this, ErrorActivity.class);
+//                        startActivity(intent);
+//                        finish();
+//                    }
+//                }, SPLASH_TIME_OUT);
+//            }
+//        }
+//    }
+//
+//    private String ByteArrayToHexString(byte [] inarray) {
+//        int i, j, in;
+//        String [] hex = {"0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"};
+//        String out= "";
+//
+//        for(j = 0 ; j < inarray.length ; ++j)
+//        {
+//            in = (int) inarray[j] & 0xff;
+//            i = (in >> 4) & 0x0f;
+//            out += hex[i];
+//            i = in & 0x0f;
+//            out += hex[i];
+//        }
+//        return out;
+//    }
 
-        /**
-         * It's important, that the activity is in the foreground (resumed). Otherwise
-         * an IllegalStateException is thrown.
-         */
-        setupForegroundDispatch(this, mNfcAdapter);
-    }
+    public void addListenerOnButtonCancel() {
 
-    @Override
-    protected void onPause() {
-        /**
-         * Call this before onPause, otherwise an IllegalArgumentException is thrown as well.
-         */
-        stopForegroundDispatch(this, mNfcAdapter);
+        final Context context = this;
 
-        super.onPause();
-    }
+        button = (Button) findViewById(R.id.cancel);
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-        /**
-         * This method gets called, when a new Intent gets associated with the current activity instance.
-         * Instead of creating a new activity, onNewIntent will be called. For more information have a look
-         * at the documentation.
-         *
-         * In our case this method gets called, when the user attaches a Tag to the device.
-         */
-        handleIntent(intent);
-    }
+        button.setOnClickListener(new View.OnClickListener() {
 
-    private void handleIntent(Intent intent) {
-        String action = intent.getAction();
-        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)) {
+            @Override
+            public void onClick(View arg0) {
 
-            String type = intent.getType();
-            if (MIME_TEXT_PLAIN.equals(type)) {
+                Intent intent = new Intent(context, VerifyActivity.class);
+                startActivity(intent);
+                finish();
 
-                Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
-                new NdefReaderTask().execute(tag);
-
-            } else {
-                Log.d(TAG, "Wrong mime type: " + type);
             }
-        } else if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(action)) {
 
-            // In case we would still use the Tech Discovered Intent
-            Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
-            String[] techList = tag.getTechList();
-            String searchedTech = Ndef.class.getName();
+        });
 
-            for (String tech : techList) {
-                if (searchedTech.equals(tech)) {
-                    new NdefReaderTask().execute(tag);
-                    break;
-                }
-            }
-        }
-    }
-
-    /**
-     * @param activity The corresponding {@link Activity} requesting the foreground dispatch.
-     * @param adapter The {@link NfcAdapter} used for the foreground dispatch.
-     */
-    public static void setupForegroundDispatch(final Activity activity, NfcAdapter adapter) {
-        final Intent intent = new Intent(activity.getApplicationContext(), activity.getClass());
-        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
-        final PendingIntent pendingIntent = PendingIntent.getActivity(activity.getApplicationContext(), 0, intent, 0);
-
-        IntentFilter[] filters = new IntentFilter[1];
-        String[][] techList = new String[][]{};
-
-        // Notice that this is the same filter as in our manifest.
-        filters[0] = new IntentFilter();
-        filters[0].addAction(NfcAdapter.ACTION_NDEF_DISCOVERED);
-        filters[0].addCategory(Intent.CATEGORY_DEFAULT);
-        try {
-            filters[0].addDataType(MIME_TEXT_PLAIN);
-        } catch (IntentFilter.MalformedMimeTypeException e) {
-            throw new RuntimeException("Check your mime type.");
-        }
-
-        adapter.enableForegroundDispatch(activity, pendingIntent, filters, techList);
-    }
-
-    /**
-     * @param activity The corresponding {@link VerifyActivity} requesting to stop the foreground dispatch.
-     * @param adapter The {@link NfcAdapter} used for the foreground dispatch.
-     */
-    public static void stopForegroundDispatch(final Activity activity, NfcAdapter adapter) {
-        adapter.disableForegroundDispatch(activity);
-    }
-
-    /**
-     * Background task for reading the data. Do not block the UI thread while reading.
-     *
-     * @author Ralf Wondratschek
-     *
-     */
-    private class NdefReaderTask extends AsyncTask<Tag, Void, String> {
-
-        @Override
-        protected String doInBackground(Tag... params) {
-            Tag tag = params[0];
-
-            Ndef ndef = Ndef.get(tag);
-            if (ndef == null) {
-                // NDEF is not supported by this Tag.
-                return null;
-            }
-
-            NdefMessage ndefMessage = ndef.getCachedNdefMessage();
-
-            NdefRecord[] records = ndefMessage.getRecords();
-            for (NdefRecord ndefRecord : records) {
-                if (ndefRecord.getTnf() == NdefRecord.TNF_WELL_KNOWN && Arrays.equals(ndefRecord.getType(), NdefRecord.RTD_TEXT)) {
-                    try {
-                        return readText(ndefRecord);
-                    } catch (UnsupportedEncodingException e) {
-                        Log.e(TAG, "Unsupported Encoding", e);
-                    }
-                }
-            }
-
-            return null;
-        }
-
-        private String readText(NdefRecord record) throws UnsupportedEncodingException {
-        /*
-         * See NFC forum specification for "Text Record Type Definition" at 3.2.1
-         *
-         * http://www.nfc-forum.org/specs/
-         *
-         * bit_7 defines encoding
-         * bit_6 reserved for future use, must be 0
-         * bit_5..0 length of IANA language code
-         */
-
-            byte[] payload = record.getPayload();
-
-            // Get the Text Encoding
-            String textEncoding = ((payload[0] & 128) == 0) ? "UTF-8" : "UTF-16";
-
-            // Get the Language Code
-            int languageCodeLength = payload[0] & 0063;
-
-            // String languageCode = new String(payload, 1, languageCodeLength, "US-ASCII");
-            // e.g. "en"
-
-            // Get the Text
-            return new String(payload, languageCodeLength + 1, payload.length - languageCodeLength - 1, textEncoding);
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            if (result != null) {
-                //here are the results
-                //mTextView.setText("Read content: " + result);
-            }
-        }
     }
 }

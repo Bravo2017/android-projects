@@ -42,7 +42,8 @@
         android:textColor="@color/colorAccent"
         android:gravity="center_horizontal"
         android:layout_alignParentBottom="true"
-        android:text="@string/developed" />
+        android:text="@string/developed"
+        android:id="@+id/textView3" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -59,6 +60,17 @@
             />
 
     </RelativeLayout>
+
+    <Button
+        android:text="Stop Verification"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="23dp"
+        android:textColor="@color/red"
+        android:background="@drawable/spinner"
+        android:id="@+id/cancel" />
 
 
 </RelativeLayout>
