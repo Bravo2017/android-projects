@@ -24,9 +24,6 @@ public class ResultsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
         final String label = intent.getStringExtra("label");
@@ -71,6 +68,7 @@ public class ResultsActivity extends AppCompatActivity {
         Picasso.with(context).load(imageUri)
                 .placeholder(R.drawable.small)
                 .error(R.drawable.error_load)
+                .resize(800,800)
                 .into(imageView);
 
 

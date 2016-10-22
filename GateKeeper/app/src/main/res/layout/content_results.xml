@@ -59,17 +59,7 @@
                 android:padding="3dp"
                 android:textSize="17sp"
                 android:textStyle="bold" />
-            <TextView
-                android:id="@+id/card_serial"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/name"
-                android:layout_toRightOf="@id/designation"
-                android:layout_marginLeft="30dp"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:padding="3dp"
-                android:visibility="visible" />
+
 
             <TextView
                 android:id="@+id/designation"
@@ -94,33 +84,43 @@
                 android:visibility="visible" />
 
             <TextView
+                android:id="@+id/card_serial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/department"
+                android:layout_marginLeft="10dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:padding="3dp"
+                android:visibility="visible" />
+
+            <TextView
                 android:id="@+id/allowed_areas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/designation"
-                android:layout_toRightOf="@+id/department"
-                android:layout_marginLeft="30dp"
+                android:layout_below="@id/card_serial"
+                android:layout_marginLeft="10dp"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:padding="3dp"
                 android:visibility="visible" />
 
             <!--<TextView-->
-                <!--android:id="@+id/imageurl"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_below="@id/department"-->
-                <!--android:layout_marginLeft="10dp"-->
-                <!--android:ellipsize="end"-->
-                <!--android:maxLines="2"-->
-                <!--android:padding="3dp"-->
-                <!--android:visibility="visible" />-->
+            <!--android:id="@+id/imageurl"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@id/department"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:ellipsize="end"-->
+            <!--android:maxLines="2"-->
+            <!--android:padding="3dp"-->
+            <!--android:visibility="visible" />-->
 
             <TextView
                 android:id="@+id/dob"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/department"
+                android:layout_below="@id/allowed_areas"
                 android:layout_marginLeft="10dp"
                 android:ellipsize="end"
                 android:maxLines="2"
@@ -142,9 +142,8 @@
                 android:id="@+id/weight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/dob"
-                android:layout_toRightOf="@+id/height"
-                android:layout_marginLeft="30dp"
+                android:layout_below="@id/height"
+                android:layout_marginLeft="10dp"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:padding="3dp"

@@ -11,7 +11,6 @@ import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dismas.imaya.gatekeeper.Database.DBhelper;
 import com.squareup.picasso.Picasso;
@@ -47,10 +46,6 @@ public class AccessDeniedActivity extends AppCompatActivity {
 
         //End of verification unsuccessful
 
-        // Showing error message that phone is not nfc enabled
-        Toast.makeText(this, "Verification is successful",
-                Toast.LENGTH_LONG).show();
-
         TextView name = (TextView) findViewById(R.id.name);
         TextView designation= (TextView) findViewById(R.id.designation);
         TextView department = (TextView) findViewById(R.id.department);
@@ -85,9 +80,36 @@ public class AccessDeniedActivity extends AppCompatActivity {
         Picasso.with(context).load(imageUri)
                 .placeholder(R.drawable.small)
                 .error(R.drawable.error_load)
+                .resize(800,800)
                 .into(imageView);
 
+//        addListenerOnButtonBack();
+
+
+
     }
+
+//    private void addListenerOnButtonBack() {
+//        //Back to verify function
+//
+//
+//        ImageButton imgbutton = (ImageButton) findViewById(R.id.results_back);
+//
+//        imgbutton.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View arg0) {
+//
+//                Intent intent = new Intent(AccessDeniedActivity.this, VerifyActivity.class);
+//                intent.putExtra("label", label);
+//                startActivity(intent);
+//                finish();
+//
+//            }
+//
+//        });
+//        //end of back to verify function
+//    }
 
     public String getName(String Card_Serial) {
 
