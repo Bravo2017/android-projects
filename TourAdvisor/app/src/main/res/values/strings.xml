@@ -12,4 +12,6 @@
     <string name="new_account">Create a new Account</string>
     <string name="enter_email">or Enter your email address</string>
     <string name="login">Login</string>
+    <string name="pass">Password</string>
+    <string name="cpass">Confirm Password</string>
 </resources>

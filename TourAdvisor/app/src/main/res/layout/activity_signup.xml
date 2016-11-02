@@ -6,21 +6,20 @@ android:layout_height="match_parent"
 android:gravity="center_horizontal"
 android:orientation="vertical"
 android:paddingTop="24dp"
-    android:paddingLeft="24dp"
-    android:paddingRight="24dp">
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp">
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:textSize="38sp"
+        android:textColor="@color/colorPrimary"/>
 
-    <ImageView
-        android:id="@+id/iv_logo"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:scaleType="centerInside"
-        android:layout_marginBottom="20dp"
-        app:srcCompat="@drawable/color_tour_name" />
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,9 +28,7 @@ android:paddingTop="24dp"
             android:id="@+id/txtName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:ems="10"
             android:layout_weight="1"
-            android:textSize="20sp"
             android:inputType="textPersonName"
             android:hint="@string/name"/>
     </android.support.design.widget.TextInputLayout>
@@ -44,9 +41,7 @@ android:paddingTop="24dp"
             android:id="@+id/txtEmail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:ems="10"
             android:layout_weight="1"
-            android:textSize="20sp"
             android:inputType="textEmailAddress"
             android:hint="@string/email"/>
     </android.support.design.widget.TextInputLayout>
@@ -59,9 +54,7 @@ android:paddingTop="24dp"
             android:id="@+id/txtCity"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:ems="10"
             android:layout_weight="1"
-            android:textSize="20sp"
             android:inputType="text"
             android:hint="@string/city"/>
     </android.support.design.widget.TextInputLayout>
@@ -74,9 +67,7 @@ android:paddingTop="24dp"
             android:id="@+id/txtCountry"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:ems="10"
             android:layout_weight="1"
-            android:textSize="20sp"
             android:inputType="text"
             android:hint="@string/country"/>
     </android.support.design.widget.TextInputLayout>
@@ -84,17 +75,27 @@ android:paddingTop="24dp"
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/dob_input_layout">
-
+        android:id="@+id/pass_input_layout">
         <EditText
-            android:id="@+id/txtDob"
+            android:id="@+id/txtPass"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:ems="10"
             android:layout_weight="1"
-            android:textSize="20sp"
-            android:inputType="date"
-            android:hint="@string/dob"/>
+            android:inputType="textPassword"
+            android:hint="@string/pass"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cpass_input_layout">
+        <EditText
+            android:id="@+id/txtCPass"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:inputType="textPassword"
+            android:hint="@string/cpass"/>
     </android.support.design.widget.TextInputLayout>
 
     <Button
@@ -109,17 +110,26 @@ android:paddingTop="24dp"
         android:layout_weight="1" />
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:textSize="14sp"
+        android:text="Have an account?"/>
+
+    <TextView
         android:text="@string/slogan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="30dp"
+        android:textSize="10sp"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/colorPrimaryDark"
         android:id="@+id/textView" />
+    
 
 </LinearLayout>
-
 
 
 </ScrollView>
