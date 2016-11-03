@@ -12,4 +12,12 @@
     <color name="complimetary_1">#AE00BE</color>
     <color name="notification">#12DD00</color>
     <color name="uncompleted_text_color">#F8F8F8</color>
+
+    <color name="fragment_1">#A5CD39</color>
+    <color name="fragment_2">#E0782B</color>
+    <color name="fragment_3">#6DCEF4</color>
+    <color name="fragment_4">#8C64A9</color>
+    <color name="fragment_5">#01A78D</color>
+    <color name="fragment_6">#D9424F</color>
+    <color name="fragment_7">#5DA8DB</color>
 </resources>
