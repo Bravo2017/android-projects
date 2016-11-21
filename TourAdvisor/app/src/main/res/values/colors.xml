@@ -20,4 +20,6 @@
     <color name="fragment_5">#01A78D</color>
     <color name="fragment_6">#D9424F</color>
     <color name="fragment_7">#5DA8DB</color>
+
+    <color name="name">#ffff00</color>
 </resources>

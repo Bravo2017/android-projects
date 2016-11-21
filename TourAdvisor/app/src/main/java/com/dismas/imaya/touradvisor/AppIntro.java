@@ -49,7 +49,7 @@ public class AppIntro extends AppCompatActivity implements ViewPager.OnPageChang
 
     private void runOnce() {
         if (!SettingsPreferences.isNewInstall(AppIntro.this)) {
-            runIntent(SignupActivity.class);
+            runIntent(SplashActivity.class);
             finish();
         }
     }
@@ -86,7 +86,7 @@ public class AppIntro extends AppCompatActivity implements ViewPager.OnPageChang
     public void OnNext() {
         if (viewPager.getCurrentItem() == 3) {
             SettingsPreferences.setNewInstall(AppIntro.this);
-            runIntent(SignupActivity.class);
+            runIntent(SplashActivity.class);
             finish();
         } else if (viewPager.getCurrentItem() < 3) {
             viewPager.setCurrentItem(viewPager.getCurrentItem() + 1, true);

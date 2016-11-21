@@ -114,6 +114,7 @@ android:paddingTop="24dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
+        android:id="@+id/login"
         android:textSize="14sp"
         android:text="Have an account?"/>
 
