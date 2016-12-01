@@ -70,16 +70,16 @@ public class AppIntroFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         int sectionNumber = getArguments().getInt(ARG_SECTION_NUMBER);
-        txtSplashTitle.setText(getString(R.string.section_format, sectionNumber));
+//        txtSplashTitle.setText(getString(R.string.section_format, sectionNumber));
 
         switch (sectionNumber) {
             case 1:
-                txtSplashTitle.setText(R.string.appintro_title_1);
-                txtSplashTitle.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-                txtSplashDesc.setText(R.string.appintro_desc_1);
-                txtSplashDesc.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+//                txtSplashTitle.setText(R.string.appintro_title_1);
+//                txtSplashTitle.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+//                txtSplashDesc.setText(R.string.appintro_desc_1);
+//                txtSplashDesc.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
 //                imgBack.setImageResource(R.drawable.onlycity);
-                relativeLayoutSplash.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.first));
+                relativeLayoutSplash.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.one));
 //                relativeLayoutSplash.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.fragment_3));
                 imgSelectedDot1.setVisibility(View.VISIBLE);
                 imgSelectedDot2.setVisibility(View.INVISIBLE);
@@ -87,38 +87,38 @@ public class AppIntroFragment extends Fragment {
                 imgSelectedDot4.setVisibility(View.INVISIBLE);
                 break;
             case 2:
-                txtSplashTitle.setText(R.string.appintro_title_2);
-                txtSplashTitle.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-                txtSplashDesc.setText(R.string.appintro_desc_2);
-                txtSplashDesc.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+//                txtSplashTitle.setText(R.string.appintro_title_2);
+//                txtSplashTitle.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+//                txtSplashDesc.setText(R.string.appintro_desc_2);
+//                txtSplashDesc.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
 //                imgSplash.setImageResource(R.drawable.search_use);
-                relativeLayoutSplash.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.second));
+                relativeLayoutSplash.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.two));
                 imgSelectedDot1.setVisibility(View.INVISIBLE);
                 imgSelectedDot2.setVisibility(View.VISIBLE);
                 imgSelectedDot3.setVisibility(View.INVISIBLE);
                 imgSelectedDot4.setVisibility(View.INVISIBLE);
                 break;
             case 3:
-                txtSplashTitle.setText(R.string.appintro_title_3);
-                txtSplashTitle.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-                txtSplashDesc.setText(R.string.appintro_desc_3);
-                txtSplashDesc.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+//                txtSplashTitle.setText(R.string.appintro_title_3);
+//                txtSplashTitle.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+//                txtSplashDesc.setText(R.string.appintro_desc_3);
+//                txtSplashDesc.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
 //                imgSplash.setImageResource(R.drawable.discover);
                 //relativeLayoutSplash.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
-                relativeLayoutSplash.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.third));
+                relativeLayoutSplash.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.three));
                 imgSelectedDot1.setVisibility(View.INVISIBLE);
                 imgSelectedDot2.setVisibility(View.INVISIBLE);
                 imgSelectedDot3.setVisibility(View.VISIBLE);
                 imgSelectedDot4.setVisibility(View.INVISIBLE);
                 break;
             case 4:
-                txtSplashTitle.setText(R.string.appintro_title_4);
-                txtSplashTitle.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-                txtSplashDesc.setText(R.string.appintro_desc_4);
-                txtSplashDesc.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+//                txtSplashTitle.setText(R.string.appintro_title_4);
+//                txtSplashTitle.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+//                txtSplashDesc.setText(R.string.appintro_desc_4);
+//                txtSplashDesc.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
 //                imgSplash.setImageResource(R.drawable.discover);
                 //relativeLayoutSplash.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
-                relativeLayoutSplash.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.fourth));
+                relativeLayoutSplash.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.four));
                 imgSelectedDot1.setVisibility(View.INVISIBLE);
                 imgSelectedDot2.setVisibility(View.INVISIBLE);
                 imgSelectedDot3.setVisibility(View.INVISIBLE);

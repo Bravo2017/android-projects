@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     DBController controller = new DBController(this);
     //Progress Dialog Object
     ProgressDialog prgDialog;
+
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,23 +92,14 @@ public class MainActivity extends AppCompatActivity {
             if(controller.dbSyncCount() != 0){
                 prgDialog.show();
                 params.put("usersJSON", controller.composeJSONfromSQLite());
+                Log.e(TAG, String.valueOf(params));
                 client.post("http://192.168.43.238/sqlitemysqlsync/insertuser.php",params ,new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-
-                    }
-
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
-                    }
-
-                    @Override
-                    public void onSuccess(String response) {
-                        System.out.println(response);
+                        System.out.println(responseBody);
                         prgDialog.hide();
                         try {
-                            JSONArray arr = new JSONArray(response);
+                            JSONArray arr = new JSONArray(responseBody);
                             System.out.println(arr.length());
                             for(int i=0; i<arr.length();i++){
                                 JSONObject obj = (JSONObject)arr.get(i);
@@ -122,8 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(int statusCode, Throwable error,
-                                          String content) {
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                         // TODO Auto-generated method stub
                         prgDialog.hide();
                         if(statusCode == 404){
@@ -131,9 +124,10 @@ public class MainActivity extends AppCompatActivity {
                         }else if(statusCode == 500){
                             Toast.makeText(getApplicationContext(), "Something went wrong at server end", Toast.LENGTH_LONG).show();
                         }else{
-                            Toast.makeText(getApplicationContext(), "Unexpected Error occcured! [Most common Error: Device might not be connected to Internet]", Toast.LENGTH_LONG).show();
                         }
                     }
+
+
                 });
             }else{
                 Toast.makeText(getApplicationContext(), "SQLite and Remote MySQL DBs are in Sync!", Toast.LENGTH_LONG).show();
