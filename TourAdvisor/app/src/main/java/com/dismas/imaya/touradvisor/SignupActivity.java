@@ -53,74 +53,77 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(login);
 
                 break;
-        }
+            default:
 
-        str_Name = edt_Name.getText().toString();
-        str_Password = edt_Password.getText().toString();
-        str_RePassword = edt_RePassword.getText().toString();
-        str_City = edt_City.getText().toString();
-        str_Country = edt_Country.getText().toString();
-        str_Email = edt_Email.getText().toString();
+                str_Name = edt_Name.getText().toString();
+                str_Password = edt_Password.getText().toString();
+                str_RePassword = edt_RePassword.getText().toString();
+                str_City = edt_City.getText().toString();
+                str_Country = edt_Country.getText().toString();
+                str_Email = edt_Email.getText().toString();
 
-        if (str_Name.length() == 0 & str_Password.length() == 0
-                & str_RePassword.length() == 0 & str_City.length() == 0 & str_Country.length() == 0) {
-            Toast.makeText(getApplicationContext(),
-                    "All fields are mandatory to fill", Toast.LENGTH_LONG)
-                    .show();
-        } else if (str_Name.length() == 0) {
-            Toast.makeText(getApplicationContext(), "Please enter your Name",
-                    Toast.LENGTH_LONG).show();
-        } else if (str_Password.length() == 0) {
-            Toast.makeText(getApplicationContext(),
-                    "Please enter your Password", Toast.LENGTH_LONG).show();
-        } else if (str_RePassword.length() == 0) {
-            Toast.makeText(getApplicationContext(),
-                    "Please Re-enter your Password", Toast.LENGTH_LONG).show();
-        }
+                if (str_Name.length() == 0 & str_Password.length() == 0
+                        & str_RePassword.length() == 0 & str_City.length() == 0 & str_Country.length() == 0) {
+                    Toast.makeText(getApplicationContext(),
+                            "All fields are mandatory to fill", Toast.LENGTH_LONG)
+                            .show();
+                } else if (str_Name.length() == 0) {
+                    Toast.makeText(getApplicationContext(), "Please enter your Name",
+                            Toast.LENGTH_LONG).show();
+                } else if (str_Password.length() == 0) {
+                    Toast.makeText(getApplicationContext(),
+                            "Please enter your Password", Toast.LENGTH_LONG).show();
+                } else if (str_RePassword.length() == 0) {
+                    Toast.makeText(getApplicationContext(),
+                            "Please Re-enter your Password", Toast.LENGTH_LONG).show();
+                }
 
-        else if (str_Email.length() == 0) {
-            Toast.makeText(getApplicationContext(),
-                    "Please enter your Email Id", Toast.LENGTH_LONG).show();
-        }
+                else if (str_Email.length() == 0) {
+                    Toast.makeText(getApplicationContext(),
+                            "Please enter your Email Id", Toast.LENGTH_LONG).show();
+                }
 
-        else if (str_Password.contains(str_RePassword) != str_RePassword
-                .contains(str_Password)) {
-            Toast.makeText(getApplicationContext(),
-                    "Confirm Password does not match", Toast.LENGTH_LONG)
-                    .show();
-        }
-        else if (str_City.length() == 0) {
+                else if (str_Password.contains(str_RePassword) != str_RePassword
+                        .contains(str_Password)) {
+                    Toast.makeText(getApplicationContext(),
+                            "Confirm Password does not match", Toast.LENGTH_LONG)
+                            .show();
+                }
+                else if (str_City.length() == 0) {
 
-            Toast.makeText(getApplicationContext(),
-                    "Please enter your City", Toast.LENGTH_LONG)
-                    .show();
+                    Toast.makeText(getApplicationContext(),
+                            "Please enter your City", Toast.LENGTH_LONG)
+                            .show();
 
-        }
-        else if (str_Country.length() == 0) {
+                }
+                else if (str_Country.length() == 0) {
 
-            Toast.makeText(getApplicationContext(),
-                    "Please enter your Country", Toast.LENGTH_LONG)
-                    .show();
+                    Toast.makeText(getApplicationContext(),
+                            "Please enter your Country", Toast.LENGTH_LONG)
+                            .show();
 
-        }
+                }
 
-        else {
-            SplashActivity.editor.putString("name", str_Name);
-            SplashActivity.editor.putString("password", str_RePassword);
-            SplashActivity.editor.putString("email", str_Email);
-            SplashActivity.editor.putString("city", str_City);
-            SplashActivity.editor.putString("country", str_Country);
+                else {
+                    SplashActivity.editor.putString("name", str_Name);
+                    SplashActivity.editor.putString("password", str_RePassword);
+                    SplashActivity.editor.putString("email", str_Email);
+                    SplashActivity.editor.putString("city", str_City);
+                    SplashActivity.editor.putString("country", str_Country);
 
-            SplashActivity.editor.commit();
+                    SplashActivity.editor.commit();
 
-            Intent sendtoLogin = new Intent(getApplicationContext(),
-                    SplashActivity.class);
+                    Intent sendtoLogin = new Intent(getApplicationContext(),
+                            LoginActivity.class);
 
-            Toast.makeText(getApplicationContext(),
-                    "You have successfully registered", Toast.LENGTH_LONG)
-                    .show();
+                    Toast.makeText(getApplicationContext(),
+                            "You have successfully registered", Toast.LENGTH_LONG)
+                            .show();
 
-            startActivity(sendtoLogin);
+                    startActivity(sendtoLogin);
+
+                }
+                break;
 
         }
 

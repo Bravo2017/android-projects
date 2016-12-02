@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     "You have successfuly login", Toast.LENGTH_LONG).show();
 
             Intent sendToLogout = new Intent(getApplicationContext(),
-                    MainActivity.class);
+                    MainActivityDrawer.class);
 
             startActivity(sendToLogout);
         }

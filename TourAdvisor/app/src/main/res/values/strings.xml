@@ -39,4 +39,8 @@
     <string name="appintro_desc_3">Consider several \nFactors before travel \nAnd actual visit.</string>
     <string name="appintro_title_4"><b>Visit \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</b></string>
     <string name="appintro_desc_4">Go. Travel. Visit. \nAnd enjoy the \nAdventure</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tour_advisor">Tour Advisor</string>
 </resources>

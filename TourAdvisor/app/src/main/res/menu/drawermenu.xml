@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="">
+        <menu>
+            <item android:title="Name of User"
+                android:id="@+id/nav_item_profile"
+                android:icon="@drawable/user"/>
+        </menu>
+    </item>
+    <item android:title="Home"
+        android:id="@+id/nav_item_home"
+        android:icon="@drawable/home"/>
+
+    <item android:title="National Parks"
+        android:id="@+id/nav_item_park"
+        android:icon="@drawable/park"/>
+
+    <item android:title="National Reserves"
+        android:id="@+id/nav_item_reserve"
+        android:icon="@drawable/reserve"/>
+
+    <item android:title="Marine Parks"
+        android:id="@+id/nav_item_marine"
+        android:icon="@drawable/marine"/>
+
+    <item android:title="Sanctuaries"
+        android:id="@+id/nav_item_sanctuaries"
+        android:icon="@drawable/sanctuaries"/>
+
+    <item android:title="Orphanage/Safari Walk"
+        android:id="@+id/nav_item_orphanage"
+        android:icon="@drawable/orphanage"/>
+
+    <item android:title="Accommodations"
+        android:id="@+id/nav_item_accommodation"
+        android:icon="@drawable/hotel"/>
+    <item
+        android:title="Account"
+        android:id="@+id/nav_item_account"
+        android:icon="@drawable/icon_account3x"/>
+    <item
+        android:title="About"
+        android:id="@+id/nav_item_about"
+        android:icon="@drawable/about"/>
+
+</menu>

@@ -54,7 +54,15 @@
         </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN01" />
+                <action android:name="android.intent.action.MAIN05" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivityDrawer"
+            android:theme="@style/AppTheme.NoActionbar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN06" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
