@@ -8,7 +8,7 @@ public class MapAllConstructor {
 
     int geolocation_id;
     String location_name;
-    Double longitude, latitude;
+    String longitude, latitude;
 
     public int getId()
     {
@@ -18,19 +18,19 @@ public class MapAllConstructor {
     {
         this.geolocation_id = geolocation_id;
     }
-    public Double getLongitude()
+    public String getLongitude()
     {
         return longitude;
     }
-    public void setLongitude(Double longitude)
+    public void setLongitude(String longitude)
     {
         this.longitude = longitude;
     }
-    public Double getLatitude()
+    public String getLatitude()
     {
         return latitude;
     }
-    public void setLatitude(Double latitude)
+    public void setLatitude(String latitude)
     {
         this.latitude = latitude;
     }
@@ -38,7 +38,7 @@ public class MapAllConstructor {
     {
         return location_name;
     }
-    public void setName(String Name)
+    public void setName(String location_name)
     {
         this.location_name = location_name;
     }

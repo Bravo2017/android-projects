@@ -97,6 +97,8 @@ public class MainActivityDrawer extends AppCompatActivity{
                 if (menuItem.getItemId() == R.id.nav_item_accommodation) {
                     FragmentTransaction dfragmentTransaction = mFragmentManager.beginTransaction();
                     dfragmentTransaction.replace(R.id.containerView,new AccommodationFragment()).commit();
+//                    Intent intent = new Intent(MainActivityDrawer.this, MainActivity.class);
+//                    startActivity(intent);
                 }
                 if (menuItem.getItemId() == R.id.nav_item_account) {
                     FragmentTransaction efragmentTransaction = mFragmentManager.beginTransaction();

@@ -12,9 +12,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,10 +65,11 @@ public class AccommodationFragment extends Fragment implements OnMapReadyCallbac
     private SharedPreferences pref;
 
     String[] location_name;
-    Double[] latitude;
-    Double[] longitude;
+    String[] latitude;
+    String[] longitude;
 
     private ProgressDialog loading;
+    SupportMapFragment mMapView;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -84,10 +83,12 @@ public class AccommodationFragment extends Fragment implements OnMapReadyCallbac
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
         }
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        mMapView = ((SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map));
+        mMapView.onCreate(savedInstanceState);
+        mMapView.getMapAsync(this);
+        mMapView.onResume();// needed to get the map to display immediately
+
+
         getData();
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -95,10 +96,6 @@ public class AccommodationFragment extends Fragment implements OnMapReadyCallbac
 
         // Inflate the layout for this fragment
         return x;
-    }
-
-    private FragmentManager getSupportFragmentManager() {
-        return getSupportFragmentManager();
     }
 
     @Override
@@ -248,30 +245,30 @@ public class AccommodationFragment extends Fragment implements OnMapReadyCallbac
         ArrayList<MapAllConstructor> details = new ArrayList<>();
         try {
             JSONObject jsonObject = new JSONObject(response);
-            JSONArray result = jsonObject.getJSONArray("details");
+            JSONArray result = jsonObject.getJSONArray("accommodations");
             location_name = new String[result.length()];
-            latitude = new Double[result.length()];
-            longitude = new Double[result.length()];
+            latitude = new String[result.length()];
+            longitude = new String[result.length()];
 
             for (int i = 0; i < result.length(); i++) {
 
                 JSONObject locationData = result.getJSONObject(i);
                 MapAllConstructor location = new MapAllConstructor();
-                location.setId(locationData.getInt("geolocation_id"));
+//                location.setId(locationData.getInt("geolocation_id"));
                 location.setName(locationData.getString("location_name"));
-                location.setLatitude(locationData.getDouble("latitude"));
-                location.setLongitude(locationData.getDouble("longitude"));
+                location.setLatitude(locationData.getString("latitude"));
+                location.setLongitude(locationData.getString("longitude"));
                 details.add(location);
 
                 location_name[i] = location.getName();
                 latitude[i] = location.getLatitude();
                 longitude[i] = location.getLongitude();
-                Log.e("Am Here", location_name[i]);
+
                 Toast.makeText(getActivity(), longitude[i].toString(), Toast.LENGTH_LONG).show();
 
                 Location newLocation = new Location("newlocation");
-                newLocation.setLatitude(latitude[i]);
-                newLocation.setLongitude(longitude[i]);
+                newLocation.setLatitude(Double.parseDouble(latitude[i]));
+                newLocation.setLongitude(Double.parseDouble(longitude[i]));
 
 //                Location crntLocation=new Location("crntlocation");
 //                crntLocation.setLatitude(crntLocation.getLatitude());
@@ -280,7 +277,7 @@ public class AccommodationFragment extends Fragment implements OnMapReadyCallbac
 
 //                LatLng ourPOint = new LatLng(Double.parseDouble(latitude[i]), Double.parseDouble(longitude[i]));
 //                if (distance<5100) {
-                LatLng ourPOint = new LatLng(latitude[i], longitude[i]);
+                LatLng ourPOint = new LatLng(Double.parseDouble(latitude[i]), Double.parseDouble(longitude[i]));
                 mMap.addMarker(new MarkerOptions().position(ourPOint).title(location_name[i]));
 //                }
 
@@ -293,7 +290,7 @@ public class AccommodationFragment extends Fragment implements OnMapReadyCallbac
 
     public Action getIndexApiAction() {
         Thing object = new Thing.Builder()
-                .setName("Maps Page") // TODO: Define a title for the content shown.
+                .setName("Nairobi National Park") // TODO: Define a title for the content shown.
                 // TODO: Make sure this auto-generated URL is correct.
                 .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
                 .build();
@@ -322,4 +319,6 @@ public class AccommodationFragment extends Fragment implements OnMapReadyCallbac
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
     }
+
+
 }
