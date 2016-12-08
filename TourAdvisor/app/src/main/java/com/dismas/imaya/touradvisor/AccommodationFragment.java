@@ -135,13 +135,13 @@ public class AccommodationFragment extends Fragment implements OnMapReadyCallbac
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
-        markerOptions.title("My Location");
+        markerOptions.title("Current Location");
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
         //distanceTo
 
 
@@ -242,7 +242,7 @@ public class AccommodationFragment extends Fragment implements OnMapReadyCallbac
     }
 
     private void showJSON(String response) {
-        ArrayList<MapAllConstructor> details = new ArrayList<>();
+        ArrayList<MapAllConstructor> accommodations = new ArrayList<>();
         try {
             JSONObject jsonObject = new JSONObject(response);
             JSONArray result = jsonObject.getJSONArray("accommodations");
@@ -258,13 +258,13 @@ public class AccommodationFragment extends Fragment implements OnMapReadyCallbac
                 location.setName(locationData.getString("location_name"));
                 location.setLatitude(locationData.getString("latitude"));
                 location.setLongitude(locationData.getString("longitude"));
-                details.add(location);
+                accommodations.add(location);
 
                 location_name[i] = location.getName();
                 latitude[i] = location.getLatitude();
                 longitude[i] = location.getLongitude();
 
-                Toast.makeText(getActivity(), longitude[i].toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), location_name[i], Toast.LENGTH_LONG).show();
 
                 Location newLocation = new Location("newlocation");
                 newLocation.setLatitude(Double.parseDouble(latitude[i]));

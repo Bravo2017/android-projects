@@ -2,6 +2,7 @@ package com.dismas.imaya.touradvisor;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -95,10 +96,24 @@ public class MainActivityDrawer extends AppCompatActivity{
                     cfragmentTransaction.replace(R.id.containerView,new OrphanageFragment()).commit();
                 }
                 if (menuItem.getItemId() == R.id.nav_item_accommodation) {
-                    FragmentTransaction dfragmentTransaction = mFragmentManager.beginTransaction();
-                    dfragmentTransaction.replace(R.id.containerView,new AccommodationFragment()).commit();
+                    int off = 0;
+                    try {
+                        off = Settings.Secure.getInt(getContentResolver(), Settings.Secure.LOCATION_MODE);
+                    } catch (Settings.SettingNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    if(off==0){
+                        Intent onGPS = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                        startActivity(onGPS);
+                    }
+                    else
+                    {
+                        FragmentTransaction dfragmentTransaction = mFragmentManager.beginTransaction();
+                        dfragmentTransaction.replace(R.id.containerView,new AccommodationFragment()).commit();
 //                    Intent intent = new Intent(MainActivityDrawer.this, MainActivity.class);
 //                    startActivity(intent);
+                    }
+
                 }
                 if (menuItem.getItemId() == R.id.nav_item_account) {
                     FragmentTransaction efragmentTransaction = mFragmentManager.beginTransaction();
