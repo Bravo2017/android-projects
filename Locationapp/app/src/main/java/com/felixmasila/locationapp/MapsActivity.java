@@ -56,8 +56,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private SharedPreferences pref;
 
     String[] name;
-    Double[] latitude;
-    Double[] longitude;
+    String[] latitude;
+    String[] longitude;
 
     private ProgressDialog loading;
     /**
@@ -270,19 +270,20 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         ArrayList<LocationConstructor> details = new ArrayList<>();
         try {
             JSONObject jsonObject = new JSONObject(response);
-            JSONArray result = jsonObject.getJSONArray("details");
+            JSONArray result = jsonObject.getJSONArray("accommodations");
             name = new String[result.length()];
-            latitude = new Double[result.length()];
-            longitude = new Double[result.length()];
+            latitude = new String[result.length()];
+            longitude = new String[result.length()];
 
             for (int i = 0; i < result.length(); i++) {
 
                 JSONObject locationData = result.getJSONObject(i);
                 LocationConstructor location = new LocationConstructor();
-                location.setId(locationData.getInt("ID"));
-                location.setName(locationData.getString("Name"));
-                location.setLatitude(locationData.getDouble("latitude"));
-                location.setLongitude(locationData.getDouble("longitude"));
+                location.setId(locationData.getInt("accommodation_id"));
+                location.setName(locationData.getString("location_name"));
+                location.setLatitude(locationData.getString("latitude"));
+//                location.setLongitude(locationData.getDouble("longitude"));
+                location.setLongitude(locationData.getString("longitude"));
                 details.add(location);
 
                 name[i] = location.getName();
@@ -292,8 +293,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 Toast.makeText(MapsActivity.this, longitude[i].toString(), Toast.LENGTH_LONG).show();
 
                 Location newLocation = new Location("newlocation");
-                newLocation.setLatitude(latitude[i]);
-                newLocation.setLongitude(longitude[i]);
+                newLocation.setLatitude(Double.parseDouble(latitude[i]));
+                newLocation.setLongitude(Double.parseDouble(longitude[i]));
 
 //                Location crntLocation=new Location("crntlocation");
 //                crntLocation.setLatitude(crntLocation.getLatitude());
@@ -302,7 +303,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 //                LatLng ourPOint = new LatLng(Double.parseDouble(latitude[i]), Double.parseDouble(longitude[i]));
 //                if (distance<5100) {
-                LatLng ourPOint = new LatLng((latitude[i]), (longitude[i]));
+                LatLng ourPOint = new LatLng(Double.parseDouble(latitude[i]), Double.parseDouble(longitude[i]));
                 mMap.addMarker(new MarkerOptions().position(ourPOint).title(name[i]));
 //                }
 

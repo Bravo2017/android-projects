@@ -1,13 +1,14 @@
-package com.felixmasila.locationapp;
+package com.dismas.imaya.touradvisor.constructors;
 
 /**
- * Created by felixmasila on 11/15/16.
+ * Created by imaya on 12/8/16.
  */
 
-public class LocationConstructor {
+public class MapAllConstructor {
 
     int geolocation_id;
-    String location_name, longitude, latitude;
+    String location_name;
+    Double longitude, latitude;
 
     public int getId()
     {
@@ -17,19 +18,19 @@ public class LocationConstructor {
     {
         this.geolocation_id = geolocation_id;
     }
-    public String getLongitude()
+    public Double getLongitude()
     {
         return longitude;
     }
-    public void setLongitude(String longitude)
+    public void setLongitude(Double longitude)
     {
         this.longitude = longitude;
     }
-    public String getLatitude()
+    public Double getLatitude()
     {
         return latitude;
     }
-    public void setLatitude(String latitude)
+    public void setLatitude(Double latitude)
     {
         this.latitude = latitude;
     }
@@ -41,5 +42,4 @@ public class LocationConstructor {
     {
         this.location_name = location_name;
     }
-
 }
