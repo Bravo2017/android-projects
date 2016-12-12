@@ -6,14 +6,11 @@ define('DB', 'touradvisorzone');
 $con = mysqli_connect(HOST,USER,PASS,DB) or die('unable to connect');
 if($_SERVER['REQUEST_METHOD']=='GET'){
 
- $category = "National Reserve";
- $sql = "SELECT * FROM attraction_sites INNER JOIN geolocations ON attraction_sites.geolocation_id = geolocations.geolocation_id where attraction_sites.categories LIKE '%$category%'";
+ $sql = "SELECT * FROM attraction_sites INNER JOIN geolocations ON attraction_sites.geolocation_id = geolocations.geolocation_id LIMIT 0, 1000";
 
  $r = mysqli_query($con,$sql);
 
- // $row = mysqli_fetch_array($r);
-
- $result["details"] = array();
+ $result["attractions"] = array();
  while ($row = mysqli_fetch_array($r)){
     $data = array();
     $data["attraction_site_id"]=$row["attraction_site_id"];
@@ -27,7 +24,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     $data["attractions_image"]=$row["attractions_image"];
     $data["opening_hrs"]=$row["opening_hrs"];
     $data["categories"]=$row["categories"];
-        array_push($result["details"], $data);
+        array_push($result["attractions"], $data);
   }
 
  echo json_encode($result);

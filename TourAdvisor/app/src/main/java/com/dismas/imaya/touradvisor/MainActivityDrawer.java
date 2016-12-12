@@ -18,7 +18,7 @@ import android.widget.Toast;
 /**
  * Created by imaya on 12/2/16.
  */
-public class MainActivityDrawer extends AppCompatActivity{
+public class MainActivityDrawer extends AppCompatActivity {
 
 
     DrawerLayout mDrawerLayout;
@@ -33,7 +33,7 @@ public class MainActivityDrawer extends AppCompatActivity{
 
         setTitle(null);
 
-        Toolbar topToolBar = (Toolbar)findViewById(R.id.toolbar);
+        final Toolbar topToolBar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(topToolBar);
 
         /**
@@ -55,6 +55,7 @@ public class MainActivityDrawer extends AppCompatActivity{
          * Setup click events on the Navigation View Items.
          */
 
+
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -66,6 +67,8 @@ public class MainActivityDrawer extends AppCompatActivity{
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.containerView,new ProfileFragment()).commit();
 
+                    topToolBar.setTitle("Profile");
+
                 }
 
                 if (menuItem.getItemId() == R.id.nav_item_home) {
@@ -73,27 +76,41 @@ public class MainActivityDrawer extends AppCompatActivity{
 //                    startActivity(intent);
                     FragmentTransaction afragmentTransaction = mFragmentManager.beginTransaction();
                     afragmentTransaction.replace(R.id.containerView,new TabFragment()).commit();
+
+                    topToolBar.setTitle("Home");
                 }
 
                 if (menuItem.getItemId() == R.id.nav_item_park) {
                     FragmentTransaction bfragmentTransaction = mFragmentManager.beginTransaction();
                     bfragmentTransaction.replace(R.id.containerView,new ParkFragment()).commit();
+
+                    topToolBar.setTitle("National Parks");
+
+
                 }
                 if (menuItem.getItemId() == R.id.nav_item_reserve) {
                     FragmentTransaction cfragmentTransaction = mFragmentManager.beginTransaction();
                     cfragmentTransaction.replace(R.id.containerView,new ReserveFragment()).commit();
+
+                    topToolBar.setTitle("National Reserve");
                 }
                 if (menuItem.getItemId() == R.id.nav_item_marine) {
                     FragmentTransaction cfragmentTransaction = mFragmentManager.beginTransaction();
                     cfragmentTransaction.replace(R.id.containerView,new MarineFragment()).commit();
+
+                    topToolBar.setTitle("Marine Parks");
                 }
                 if (menuItem.getItemId() == R.id.nav_item_sanctuaries) {
                     FragmentTransaction cfragmentTransaction = mFragmentManager.beginTransaction();
                     cfragmentTransaction.replace(R.id.containerView,new SanctuariesFragment()).commit();
+
+                    topToolBar.setTitle("Sanctuaries");
                 }
                 if (menuItem.getItemId() == R.id.nav_item_orphanage) {
                     FragmentTransaction cfragmentTransaction = mFragmentManager.beginTransaction();
                     cfragmentTransaction.replace(R.id.containerView,new OrphanageFragment()).commit();
+
+                    topToolBar.setTitle("Orphanage");
                 }
                 if (menuItem.getItemId() == R.id.nav_item_accommodation) {
                     int off = 0;
@@ -112,16 +129,21 @@ public class MainActivityDrawer extends AppCompatActivity{
                         dfragmentTransaction.replace(R.id.containerView,new AccommodationFragment()).commit();
 //                    Intent intent = new Intent(MainActivityDrawer.this, MainActivity.class);
 //                    startActivity(intent);
+                        topToolBar.setTitle("Accommodations");
                     }
 
                 }
                 if (menuItem.getItemId() == R.id.nav_item_account) {
                     FragmentTransaction efragmentTransaction = mFragmentManager.beginTransaction();
                     efragmentTransaction.replace(R.id.containerView,new AccountFragment()).commit();
+
+                    topToolBar.setTitle("Account");
                 }
                 if (menuItem.getItemId() == R.id.nav_item_about) {
                     FragmentTransaction ffragmentTransaction = mFragmentManager.beginTransaction();
                     ffragmentTransaction.replace(R.id.containerView,new AboutFragment()).commit();
+
+                    topToolBar.setTitle("About");
                 }
 
 
@@ -174,4 +196,6 @@ public class MainActivityDrawer extends AppCompatActivity{
         }
         return super.onKeyDown(keyCode, event);
     }
+
+
 }

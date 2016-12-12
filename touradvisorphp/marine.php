@@ -2,7 +2,7 @@
 define('HOST', '104.236.78.39');
 define('USER','imaya');
 define('PASS','#Imaya1993*');
-define('DB', 'touradvisor');
+define('DB', 'touradvisorzone');
 $con = mysqli_connect(HOST,USER,PASS,DB) or die('unable to connect');
 if($_SERVER['REQUEST_METHOD']=='GET'){
 
@@ -11,9 +11,9 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
 
  $r = mysqli_query($con,$sql);
 
- $row = mysqli_fetch_array($r);
+ // $row = mysqli_fetch_array($r);
 
- $result["details"] = array();
+ $result["marines"] = array();
  while ($row = mysqli_fetch_array($r)){
     $data = array();
     $data["attraction_site_id"]=$row["attraction_site_id"];
@@ -22,12 +22,12 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     $data["longitude"]=$row["longitude"];
     $data["location_name"]=$row["location_name"];
     $data["longitude"]=$row["longitude"];
-    $data["image_1"]=$row["image_1"];
-    $data["image_2"]=$row["image_2"];
-    $data["image_3"]=$row["image_3"];
+    $data["site_image"]=$row["site_image"];
+    $data["interior_image"]=$row["interior_image"];
+    $data["attractions_image"]=$row["attractions_image"];
     $data["opening_hrs"]=$row["opening_hrs"];
     $data["categories"]=$row["categories"];
-        array_push($result["details"], $data);
+        array_push($result["marines"], $data);
   }
 
  echo json_encode($result);

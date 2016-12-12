@@ -2,7 +2,7 @@
 define('HOST', '104.236.78.39');
 define('USER','imaya');
 define('PASS','#Imaya1993*');
-define('DB', 'touradvisor');
+define('DB', 'touradvisorzone');
 $con = mysqli_connect(HOST,USER,PASS,DB) or die('unable to connect');
 if($_SERVER['REQUEST_METHOD']=='GET'){
 
@@ -10,7 +10,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
 
  $r = mysqli_query($con,$sql);
 
- $row = mysqli_fetch_array($r);
+ // $row = mysqli_fetch_array($r);
 
  $result["accommodations"] = array();
  while ($row = mysqli_fetch_array($r)){
@@ -20,9 +20,9 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     $data["email"]=$row["email"];
     $data["phone"]=$row["phone"];
     $data["cost_per_day"]=$row["cost_per_day"];
-    $data["image_1"]=$row["image_1"];
-    $data["image_2"]=$row["image_2"];
-    $data["image_3"]=$row["image_3"];
+    $data["hotel_image"]=$row["hotel_image"];
+    $data["interior_image"]=$row["interior_image"];
+    $data["guest_image"]=$row["guest_image"];
     $data["latitude"]=$row["latitude"];
     $data["longitude"]=$row["longitude"];
     $data["location_name"]=$row["location_name"];

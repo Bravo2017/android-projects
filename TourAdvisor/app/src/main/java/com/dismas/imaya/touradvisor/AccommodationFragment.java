@@ -1,18 +1,12 @@
 package com.dismas.imaya.touradvisor;
 
-import android.Manifest;
 import android.app.ProgressDialog;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,211 +17,80 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.dismas.imaya.touradvisor.adapters.RecyclerViewAdapter;
 import com.dismas.imaya.touradvisor.configs.MapAllConfig;
-import com.dismas.imaya.touradvisor.constructors.MapAllConstructor;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.dismas.imaya.touradvisor.constructors.ParksAllConstructor;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by imaya on 12/2/16.
  */
-public class AccommodationFragment extends Fragment implements OnMapReadyCallback,
-        GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener,
-        LocationListener {
+public class AccommodationFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
+    private LinearLayoutManager lLayout;
 
-    private GoogleMap mMap;
-    //API Client
-    GoogleApiClient mGoogleApiClient;
-    Location mLastLocation;
-    Marker mCurrLocationMarker;
-    LocationRequest mLocationRequest;
-    private SharedPreferences pref;
+    SwipeRefreshLayout mSwipeRefreshLayout;
 
-    String[] location_name;
-    String[] latitude;
-    String[] longitude;
+    ArrayList<ParksAllConstructor> accommodations = new ArrayList<>();
 
     private ProgressDialog loading;
-    SupportMapFragment mMapView;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View x =  inflater.inflate(R.layout.fragment_accommodation,container, false);
+        View x =  inflater.inflate(R.layout.fragment_accommodation, container, false);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            checkLocationPermission();
-        }
-        mMapView = ((SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map));
-        mMapView.onCreate(savedInstanceState);
-        mMapView.getMapAsync(this);
-        mMapView.onResume();// needed to get the map to display immediately
+        lLayout = new LinearLayoutManager(getActivity());
 
+        final RecyclerView rView = (RecyclerView) x.findViewById(R.id.recycler_view);
+        rView.setLayoutManager(lLayout);
+        List<ParksAllConstructor> rowListItem = getAllSanctuaries();
+        final RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(getActivity(), rowListItem);
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 5s = 5000ms
+                rView.setAdapter(rcAdapter);
+            }
+        }, 3000);
 
-        getData();
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(getActivity()).addApi(AppIndex.API).build();
+        Toast.makeText(getActivity(), "Swipe down to refresh", Toast.LENGTH_LONG).show();
+        mSwipeRefreshLayout = (SwipeRefreshLayout) x.findViewById(R.id.swipe_container);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+        mSwipeRefreshLayout.setColorSchemeResources(
+                android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
 
         // Inflate the layout for this fragment
         return x;
     }
-
     @Override
-    public void onConnected(@Nullable Bundle bundle) {
-
-        mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(1000);
-        mLocationRequest.setFastestInterval(1000);
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
-        if (ContextCompat.checkSelfPermission(getActivity(),
-                Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
-        }
-
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
     }
 
     @Override
-    public void onConnectionSuspended(int i) {
+    public void onRefresh() {
 
     }
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-    }
-
-    @Override
-    public void onLocationChanged(Location location) {
-
-        mLastLocation = location;
-        if (mCurrLocationMarker != null) {
-            mCurrLocationMarker.remove();
-        }
-
-        //Place current location marker
-        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(latLng);
-        markerOptions.title("Current Location");
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
-        mCurrLocationMarker = mMap.addMarker(markerOptions);
-
-        //move map camera
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
-        //distanceTo
-
-
-        //stop location updates
-        if (mGoogleApiClient != null) {
-            LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
-        }
-
-
-    }
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-
-        mMap = googleMap;
-        //mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() );
-        // mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-
-        //Initialize Google Play Services
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(getActivity(),
-                    Manifest.permission.ACCESS_FINE_LOCATION)
-                    == PackageManager.PERMISSION_GRANTED) {
-                buildGoogleApiClient();
-                mMap.setMyLocationEnabled(true);
-            }
-        } else {
-            buildGoogleApiClient();
-            mMap.setMyLocationEnabled(true);
-        }
-
-    }
-    protected synchronized void buildGoogleApiClient() {
-        mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API)
-                .build();
-        mGoogleApiClient.connect();
-    }
-
-    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
-
-    public boolean checkLocationPermission() {
-        if (ContextCompat.checkSelfPermission(getActivity(),
-                android.Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-
-            // Asking user if explanation is needed
-            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
-                    android.Manifest.permission.ACCESS_FINE_LOCATION)) {
-
-                // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
-
-                //Prompt the user once explanation has been shown
-                ActivityCompat.requestPermissions(getActivity(),
-                        new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-                        MY_PERMISSIONS_REQUEST_LOCATION);
-
-
-            } else {
-                // No explanation needed, we can request the permission.
-                ActivityCompat.requestPermissions(getActivity(),
-                        new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-                        MY_PERMISSIONS_REQUEST_LOCATION);
-            }
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-
-    //getData from mysql db function
-    private void getData() {
-        loading = ProgressDialog.show(getActivity(), "Please wait...", "Fetching...", false, false);
+    public List<ParksAllConstructor> getAllSanctuaries(){
+        loading = ProgressDialog.show(getActivity(), "Please wait...", "Fetching Accommodations...", false, false);
 
         String url = MapAllConfig.DATA_URL;
 
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                loading.dismiss();
                 showJSON(response);
+                loading.dismiss();
             }
         },
                 new Response.ErrorListener() {
@@ -239,47 +102,26 @@ public class AccommodationFragment extends Fragment implements OnMapReadyCallbac
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
+
+        return accommodations;
     }
 
     private void showJSON(String response) {
-        ArrayList<MapAllConstructor> accommodations = new ArrayList<>();
         try {
             JSONObject jsonObject = new JSONObject(response);
             JSONArray result = jsonObject.getJSONArray("accommodations");
-            location_name = new String[result.length()];
-            latitude = new String[result.length()];
-            longitude = new String[result.length()];
+
 
             for (int i = 0; i < result.length(); i++) {
 
-                JSONObject locationData = result.getJSONObject(i);
-                MapAllConstructor location = new MapAllConstructor();
-//                location.setId(locationData.getInt("geolocation_id"));
-                location.setName(locationData.getString("location_name"));
-                location.setLatitude(locationData.getString("latitude"));
-                location.setLongitude(locationData.getString("longitude"));
-                accommodations.add(location);
+                JSONObject accommodationData = result.getJSONObject(i);
+                ParksAllConstructor accommodation = new ParksAllConstructor();
+                //park.setAttraction_site_id(accommodationData.getInt("attraction_site_id"));
+                accommodation.setSite_name(accommodationData.getString("restaurant_name"));
+                accommodation.setLocation_name(accommodationData.getString("location_name"));
+                accommodation.setSite_image(accommodationData.getString("hotel_image"));
+                accommodations.add(accommodation);
 
-                location_name[i] = location.getName();
-                latitude[i] = location.getLatitude();
-                longitude[i] = location.getLongitude();
-
-                Toast.makeText(getActivity(), location_name[i], Toast.LENGTH_LONG).show();
-
-                Location newLocation = new Location("newlocation");
-                newLocation.setLatitude(Double.parseDouble(latitude[i]));
-                newLocation.setLongitude(Double.parseDouble(longitude[i]));
-
-//                Location crntLocation=new Location("crntlocation");
-//                crntLocation.setLatitude(crntLocation.getLatitude());
-//                crntLocation.setLongitude(crntLocation.getLongitude());
-//                float distance =crntLocation.distanceTo(newLocation)/1000; // in km
-
-//                LatLng ourPOint = new LatLng(Double.parseDouble(latitude[i]), Double.parseDouble(longitude[i]));
-//                if (distance<5100) {
-                LatLng ourPOint = new LatLng(Double.parseDouble(latitude[i]), Double.parseDouble(longitude[i]));
-                mMap.addMarker(new MarkerOptions().position(ourPOint).title(location_name[i]));
-//                }
 
             }
         } catch (JSONException e) {
@@ -287,38 +129,4 @@ public class AccommodationFragment extends Fragment implements OnMapReadyCallbac
         }
 
     }
-
-    public Action getIndexApiAction() {
-        Thing object = new Thing.Builder()
-                .setName("Nairobi National Park") // TODO: Define a title for the content shown.
-                // TODO: Make sure this auto-generated URL is correct.
-                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
-                .build();
-        return new Action.Builder(Action.TYPE_VIEW)
-                .setObject(object)
-                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-                .build();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        AppIndex.AppIndexApi.start(client, getIndexApiAction());
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        AppIndex.AppIndexApi.end(client, getIndexApiAction());
-        client.disconnect();
-    }
-
-
 }
