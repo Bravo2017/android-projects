@@ -46,4 +46,5 @@
     <string name="tour_accommodations">Accommodations</string>
     <string name="title_activity_details">DetailsActivity</string>
     <string name="showinmap">Show in map</string>
+    <string name="title_activity_showinmap">Showing in Map</string>
 </resources>

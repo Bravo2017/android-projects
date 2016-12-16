@@ -152,6 +152,8 @@ public class AccommodationFragment extends Fragment implements SwipeRefreshLayou
                 accommodation.setLocation_name(accommodationData.getString("location_name"));
                 accommodation.setSite_image(accommodationData.getString("hotel_image"));
                 accommodation.setCost_per_day(accommodationData.getString("cost_per_day"));
+                accommodation.setLongitude(accommodationData.getString("longitude"));
+                accommodation.setLatitude(accommodationData.getString("latitude"));
                 accommodations.add(accommodation);
 
 

@@ -7,10 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,15 +45,15 @@ import static com.uber.sdk.android.core.utils.Preconditions.checkState;
 
 public class DetailsActivity extends AppCompatActivity implements View.OnClickListener, RideRequestButtonCallback {
     ////////
-    private static final String DROPOFF_ADDR = "Department of Geology";
-    private static final Double DROPOFF_LAT = -1.273995;
-    private static final Double DROPOFF_LONG = 36.817776;
-    private static final String DROPOFF_NICK = "University of Nairobi - Chiromo Campus";
-    private static final String ERROR_LOG_TAG = "UberSDK-MainActivity";
-    private static final String PICKUP_ADDR = "Villa Rosa Kempinski";
-    private static final Double PICKUP_LAT = -1.2920659;
-    private static final Double PICKUP_LONG = 36.82194619999996;
-    private static final String PICKUP_NICK = "Villa Rosa Kempinski";
+    String DROPOFF_ADDR;
+    Double DROPOFF_LAT;
+    Double DROPOFF_LONG;
+    String DROPOFF_NICK;
+    private String ERROR_LOG_TAG = "UberSDK-MainActivity";
+    private static final String PICKUP_ADDR = "Prof David Wasawo Dr.";
+    private static final Double PICKUP_LAT = -1.2724939;
+    private static final Double PICKUP_LONG = 36.8067234;
+    private static final String PICKUP_NICK = "Science and Physics Labs";
     private static final String UBERX_PRODUCT_ID = "a1111c8c-c720-46c3-8534-2fcdd730040d";
     private static final int WIDGET_REQUEST_CODE = 1234;
 
@@ -62,22 +63,27 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
     private SessionConfiguration configuration;
     ////////
-    public static final String EXTRA_PARAM_ID = "position";
 
     ArrayList<ParksAllConstructor> alldetails = new ArrayList<>();
 
     private ProgressDialog loading;
     Context context;
     private ImageView mImageView;
-    private TextView mTitle, phone, email;
+    private TextView mTitle, phone, email, titletxt;
 
-    String value;
+
+    RatingBar ratingbar1;
+    Button button, showinmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-        //////
+        final List<ParksAllConstructor> rowListItem = getAllDetails();
+        Bundle bundle = getIntent().getExtras();
+
+        final String value = bundle.getString("position");
+
         configuration = new SessionConfiguration.Builder()
                 .setRedirectUri(REDIRECT_URI)
                 .setClientId(CLIENT_ID)
@@ -85,49 +91,105 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 .build();
 
         validateConfiguration(configuration);
-        ServerTokenSession session = new ServerTokenSession(configuration);
+        final ServerTokenSession session = new ServerTokenSession(configuration);
 
-        RideParameters rideParametersForProduct = new RideParameters.Builder()
-                .setPickupLocation(PICKUP_LAT, PICKUP_LONG, PICKUP_NICK, PICKUP_ADDR)
-                .setDropoffLocation(DROPOFF_LAT, DROPOFF_LONG, DROPOFF_NICK, DROPOFF_ADDR)
-                .build();
-
-        RideRequestButton uberButtonWhite = (RideRequestButton) findViewById(R.id.uber_button_white);
-
-        uberButtonWhite.setRideParameters(rideParametersForProduct);
-        uberButtonWhite.setSession(session);
-        uberButtonWhite.loadRideInformation();
         //////
-        setTitle(null);
-
-        final Toolbar topToolBar = (Toolbar)findViewById(R.id.toolbar);
-        topToolBar.setTitleTextColor(getResources().getColor(R.color.colorPrimary));
-        setSupportActionBar(topToolBar);
+//        setTitle(null);
+//
+//        final Toolbar topToolBar = (Toolbar)findViewById(R.id.toolbar);
+//        topToolBar.setTitleTextColor(getResources().getColor(R.color.colorPrimary));
+//        setSupportActionBar(topToolBar);
 
         mImageView = (ImageView) findViewById(R.id.placeImage);
-        mTitle = (TextView) findViewById(R.id.detailstextView) ;
-        phone = (TextView) findViewById(R.id.phone) ;
-        email = (TextView) findViewById(R.id.email) ;
-        Bundle bundle = getIntent().getExtras();
+        mTitle = (TextView) findViewById(R.id.detailstextView);
+        titletxt = (TextView) findViewById(R.id.titletxt);
+        phone = (TextView) findViewById(R.id.phone);
+        email = (TextView) findViewById(R.id.email);
 
-        value = bundle.getString("position");
-        final List<ParksAllConstructor> rowListItem = getAllDetails();
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 // Do something after 5s = 5000ms
-                topToolBar.setTitle(rowListItem.get(Integer.parseInt(value)).getSite_name());
+                DROPOFF_ADDR = rowListItem.get(Integer.parseInt(value)).getSite_name();//restaurant name
+                DROPOFF_LAT = Double.parseDouble(rowListItem.get(Integer.parseInt(value)).getLatitude());
+                DROPOFF_LONG = Double.parseDouble(rowListItem.get(Integer.parseInt(value)).getLongitude());
+                DROPOFF_NICK = rowListItem.get(Integer.parseInt(value)).getLocationName();
+
+                RideParameters rideParametersForProduct = new RideParameters.Builder()
+                        .setPickupLocation(PICKUP_LAT, PICKUP_LONG, PICKUP_NICK, PICKUP_ADDR)
+                        .setDropoffLocation(DROPOFF_LAT, DROPOFF_LONG, DROPOFF_NICK, DROPOFF_ADDR)
+                        .build();
+
+                RideRequestButton uberButtonWhite = (RideRequestButton) findViewById(R.id.uber_button_white);
+
+                uberButtonWhite.setRideParameters(rideParametersForProduct);
+                uberButtonWhite.setSession(session);
+                uberButtonWhite.loadRideInformation();
+                titletxt.setText(rowListItem.get(Integer.parseInt(value)).getSite_name());
                 mTitle.setText(rowListItem.get(Integer.parseInt(value)).getCost_per_day());
-                phone.setText(rowListItem.get(Integer.parseInt(value)).getPhone());
-                email.setText(rowListItem.get(Integer.parseInt(value)).getEmail());
+                if(rowListItem.get(Integer.parseInt(value)).getPhone().isEmpty())
+                {
+                    phone.setText("N/A");
+                }
+                else
+                {
+                    phone.setText(rowListItem.get(Integer.parseInt(value)).getPhone());
+                }
+                if(rowListItem.get(Integer.parseInt(value)).getEmail().isEmpty())
+                {
+                    email.setText("N/A");
+                }
+                else
+                {
+                    email.setText(rowListItem.get(Integer.parseInt(value)).getEmail());
+                }
                 Picasso.with(context)
                         .load(rowListItem.get(Integer.parseInt(value)).getSite_image())
                         .placeholder(R.drawable.error)
                         .into(mImageView);
 
             }
-        }, 2000);
+        }, 6000);
+
+        addListenerOnButtonClick();
+        addListenerOnButton1Click();
+    }
+
+    private void addListenerOnButton1Click() {
+        showinmap =(Button)findViewById(R.id.showinmap);
+        showinmap.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent(DetailsActivity.this, ShowinmapFragment.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("longitude", String.valueOf(DROPOFF_LONG));
+                bundle.putString("latitude", String.valueOf(DROPOFF_LAT));
+                bundle.putString("location_name", String.valueOf(DROPOFF_ADDR));
+                intent.putExtras(bundle);
+                startActivity(intent);
+
+            }
+
+        });
+    }
+
+    public void addListenerOnButtonClick(){
+        ratingbar1=(RatingBar)findViewById(R.id.ratingBar1);
+        button=(Button)findViewById(R.id.ratebtn);
+        //Performing action on Button Click
+        button.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View arg0) {
+                //Getting the rating and displaying it on the toast
+                String rating=String.valueOf(ratingbar1.getRating());
+                Toast.makeText(getApplicationContext(), rating, Toast.LENGTH_LONG).show();
+            }
+
+        });
+
     }
 
     @Override

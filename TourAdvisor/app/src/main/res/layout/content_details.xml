@@ -2,26 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/container_view"
     xmlns:uber="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:textAlignment="center"
         android:layout_weight="5"
         android:fillViewport="false"
         android:layout_alignParentEnd="false">
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:weightSum="1">
 
             <ImageView
                 android:id="@+id/placeImage"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="220dp"
                 android:scaleType="centerCrop"
                 android:transitionName="tImage" />
 
@@ -97,6 +98,35 @@
                     android:layout_toRightOf="@+id/email_label"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     />
+                <LinearLayout
+                    android:id="@+id/rate"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <RatingBar
+                        android:theme="@style/RatingBar"
+                        android:id="@+id/ratingBar1"
+                        android:stepSize="0.5"
+                        android:numStars="5"
+                        android:layout_below="@+id/email"
+                        android:layout_width="wrap_content"
+                        android:elevation="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="44dp" />
+                    <Button
+                        android:id="@+id/ratebtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/signupbtn"
+                        android:layout_toRightOf="@+id/ratingBar1"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="44dp"
+                        android:text="submit" />
+
+                </LinearLayout>
 
                 <Button
                     android:text="@string/showinmap"
@@ -105,15 +135,16 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp"
                     android:id="@+id/showinmap"
-                    android:layout_below="@+id/email"
+                    android:layout_below="@+id/rate"
                     android:textColor="@color/colorPrimaryDark"
-                    android:background="@drawable/authenticationbtn"
-                    android:layout_weight="1" />
+                    android:background="@drawable/authenticationbtn" />
 
             </RelativeLayout>
 
         </LinearLayout>
     </ScrollView>
+
+
 
     <LinearLayout
         android:gravity="bottom|center"
