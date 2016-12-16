@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
 
+    public static final String EXTRA_PARAM_ID = "place_id";
     private GoogleMap mMap;
     //API Client
     GoogleApiClient mGoogleApiClient;

@@ -10,7 +10,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -29,7 +28,12 @@ public class MainActivityDrawer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maindrawer);
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStack();
+        } else {
+            setContentView(R.layout.activity_maindrawer);
+        }
+
 
         setTitle(null);
 
@@ -65,7 +69,7 @@ public class MainActivityDrawer extends AppCompatActivity {
 
                 if (menuItem.getItemId() == R.id.nav_item_profile) {
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.containerView,new ProfileFragment()).commit();
+                    fragmentTransaction.replace(R.id.containerView,new ProfileFragment()).addToBackStack(null).commit();
 
                     topToolBar.setTitle("Profile");
 
@@ -75,14 +79,14 @@ public class MainActivityDrawer extends AppCompatActivity {
 //                    Intent intent = new Intent(MainActivityDrawer.this, DiscoverActivity.class);
 //                    startActivity(intent);
                     FragmentTransaction afragmentTransaction = mFragmentManager.beginTransaction();
-                    afragmentTransaction.replace(R.id.containerView,new TabFragment()).commit();
+                    afragmentTransaction.replace(R.id.containerView,new TabFragment()).addToBackStack(null).commit();
 
                     topToolBar.setTitle("Home");
                 }
 
                 if (menuItem.getItemId() == R.id.nav_item_park) {
                     FragmentTransaction bfragmentTransaction = mFragmentManager.beginTransaction();
-                    bfragmentTransaction.replace(R.id.containerView,new ParkFragment()).commit();
+                    bfragmentTransaction.replace(R.id.containerView,new ParkFragment()).addToBackStack(null).commit();
 
                     topToolBar.setTitle("National Parks");
 
@@ -90,25 +94,25 @@ public class MainActivityDrawer extends AppCompatActivity {
                 }
                 if (menuItem.getItemId() == R.id.nav_item_reserve) {
                     FragmentTransaction cfragmentTransaction = mFragmentManager.beginTransaction();
-                    cfragmentTransaction.replace(R.id.containerView,new ReserveFragment()).commit();
+                    cfragmentTransaction.replace(R.id.containerView,new ReserveFragment()).addToBackStack(null).commit();
 
                     topToolBar.setTitle("National Reserve");
                 }
                 if (menuItem.getItemId() == R.id.nav_item_marine) {
                     FragmentTransaction cfragmentTransaction = mFragmentManager.beginTransaction();
-                    cfragmentTransaction.replace(R.id.containerView,new MarineFragment()).commit();
+                    cfragmentTransaction.replace(R.id.containerView,new MarineFragment()).addToBackStack(null).commit();
 
                     topToolBar.setTitle("Marine Parks");
                 }
                 if (menuItem.getItemId() == R.id.nav_item_sanctuaries) {
                     FragmentTransaction cfragmentTransaction = mFragmentManager.beginTransaction();
-                    cfragmentTransaction.replace(R.id.containerView,new SanctuariesFragment()).commit();
+                    cfragmentTransaction.replace(R.id.containerView,new SanctuariesFragment()).addToBackStack(null).commit();
 
                     topToolBar.setTitle("Sanctuaries");
                 }
                 if (menuItem.getItemId() == R.id.nav_item_orphanage) {
                     FragmentTransaction cfragmentTransaction = mFragmentManager.beginTransaction();
-                    cfragmentTransaction.replace(R.id.containerView,new OrphanageFragment()).commit();
+                    cfragmentTransaction.replace(R.id.containerView,new OrphanageFragment()).addToBackStack(null).commit();
 
                     topToolBar.setTitle("Orphanage");
                 }
@@ -126,7 +130,7 @@ public class MainActivityDrawer extends AppCompatActivity {
                     else
                     {
                         FragmentTransaction dfragmentTransaction = mFragmentManager.beginTransaction();
-                        dfragmentTransaction.replace(R.id.containerView,new AccommodationFragment()).commit();
+                        dfragmentTransaction.replace(R.id.containerView,new AccommodationFragment()).addToBackStack(null).commit();
 //                    Intent intent = new Intent(MainActivityDrawer.this, MainActivity.class);
 //                    startActivity(intent);
                         topToolBar.setTitle("Accommodations");
@@ -135,13 +139,13 @@ public class MainActivityDrawer extends AppCompatActivity {
                 }
                 if (menuItem.getItemId() == R.id.nav_item_account) {
                     FragmentTransaction efragmentTransaction = mFragmentManager.beginTransaction();
-                    efragmentTransaction.replace(R.id.containerView,new AccountFragment()).commit();
+                    efragmentTransaction.replace(R.id.containerView,new AccountFragment()).addToBackStack(null).commit();
 
                     topToolBar.setTitle("Account");
                 }
                 if (menuItem.getItemId() == R.id.nav_item_about) {
                     FragmentTransaction ffragmentTransaction = mFragmentManager.beginTransaction();
-                    ffragmentTransaction.replace(R.id.containerView,new AboutFragment()).commit();
+                    ffragmentTransaction.replace(R.id.containerView,new AboutFragment()).addToBackStack(null).commit();
 
                     topToolBar.setTitle("About");
                 }
@@ -185,17 +189,24 @@ public class MainActivityDrawer extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (keyCode == KeyEvent.KEYCODE_BACK) {
+//            Intent intent = new Intent(MainActivityDrawer.this,
+//                    SplashActivity.class);
+//            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            intent.putExtra("EXIT", true);
+//            startActivity(intent);
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            Intent intent = new Intent(MainActivityDrawer.this,
-                    SplashActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.putExtra("EXIT", true);
-            startActivity(intent);
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
         }
-        return super.onKeyDown(keyCode, event);
     }
-
 
 }

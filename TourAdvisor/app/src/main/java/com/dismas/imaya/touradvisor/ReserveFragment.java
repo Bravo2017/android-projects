@@ -59,7 +59,7 @@ public class ReserveFragment extends Fragment implements SwipeRefreshLayout.OnRe
                 // Do something after 5s = 5000ms
                 rView.setAdapter(rcAdapter);
             }
-        }, 3000);
+        }, 5000);
 
         Toast.makeText(getActivity(), "Swipe down to refresh", Toast.LENGTH_LONG).show();
         mSwipeRefreshLayout = (SwipeRefreshLayout) x.findViewById(R.id.swipe_container);

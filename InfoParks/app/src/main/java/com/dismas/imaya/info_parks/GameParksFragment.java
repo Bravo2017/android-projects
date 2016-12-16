@@ -1,6 +1,5 @@
 package com.dismas.imaya.info_parks;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -40,7 +39,7 @@ public class GameParksFragment extends Fragment {
         TravelListAdapter.OnItemClickListener onItemClickListener = new TravelListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                //Toast.makeText(getActivity(), "Clicked " + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Clicked " + position, Toast.LENGTH_SHORT).show();
 
                 if(position == 0)
                 {

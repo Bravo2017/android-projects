@@ -1,9 +1,11 @@
 package com.dismas.imaya.touradvisor;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,7 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.dismas.imaya.touradvisor.adapters.RecyclerViewAdapter;
+import com.dismas.imaya.touradvisor.adapters.RecyclerViewAdapterAccommodation;
 import com.dismas.imaya.touradvisor.configs.MapAllConfig;
 import com.dismas.imaya.touradvisor.constructors.ParksAllConstructor;
 
@@ -39,6 +41,8 @@ public class AccommodationFragment extends Fragment implements SwipeRefreshLayou
     ArrayList<ParksAllConstructor> accommodations = new ArrayList<>();
 
     private ProgressDialog loading;
+    RecyclerViewAdapterAccommodation rcAdapter;
+    FragmentManager mFragmentManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,7 +54,7 @@ public class AccommodationFragment extends Fragment implements SwipeRefreshLayou
         final RecyclerView rView = (RecyclerView) x.findViewById(R.id.recycler_view);
         rView.setLayoutManager(lLayout);
         List<ParksAllConstructor> rowListItem = getAllSanctuaries();
-        final RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(getActivity(), rowListItem);
+        rcAdapter = new RecyclerViewAdapterAccommodation(getActivity(), rowListItem);
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -69,6 +73,33 @@ public class AccommodationFragment extends Fragment implements SwipeRefreshLayou
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
+        RecyclerViewAdapterAccommodation.OnItemClickListener onItemClickListener = new RecyclerViewAdapterAccommodation.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Toast.makeText(getActivity(), "Clicked " + position, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getActivity(), DetailsActivity.class);
+                //Create the bundle
+                getFragmentManager().beginTransaction().addToBackStack(null);
+                Bundle bundle = new Bundle();
+                bundle.putString("position", String.valueOf(position));
+                intent.putExtras(bundle);
+                startActivity(intent);
+
+
+                //Put the value
+//                DetailsFragment detailsFragment = new DetailsFragment();
+//                Bundle args = new Bundle();
+//                args.putString("position", String.valueOf(position));
+//                detailsFragment.setArguments(args);
+//
+//                //Inflate the fragment
+//                getFragmentManager().beginTransaction().addToBackStack(null).add(R.id.containerView, detailsFragment).commit();
+
+            }
+        };
+
+        rcAdapter.setOnItemClickListener(onItemClickListener);
         // Inflate the layout for this fragment
         return x;
     }
@@ -120,6 +151,7 @@ public class AccommodationFragment extends Fragment implements SwipeRefreshLayou
                 accommodation.setSite_name(accommodationData.getString("restaurant_name"));
                 accommodation.setLocation_name(accommodationData.getString("location_name"));
                 accommodation.setSite_image(accommodationData.getString("hotel_image"));
+                accommodation.setCost_per_day(accommodationData.getString("cost_per_day"));
                 accommodations.add(accommodation);
 
 

@@ -6,7 +6,8 @@ package com.dismas.imaya.touradvisor.constructors;
 public class ParksAllConstructor {
     int attraction_site_id;
     String location_name;
-    String site_name, site_image;
+    String site_name, site_image, cost_per_day;
+    String longitude, latitude, phone, email;
 
     public int getAttraction_site_id()
     {
@@ -24,6 +25,14 @@ public class ParksAllConstructor {
     {
         this.site_name = site_name;
     }
+    public String getCost_per_day()
+    {
+        return cost_per_day;
+    }
+    public void setCost_per_day(String cost_per_day)
+    {
+        this.cost_per_day = cost_per_day;
+    }
     public String getSite_image()
     {
         return site_image;
@@ -39,5 +48,38 @@ public class ParksAllConstructor {
     public void setLocation_name(String location_name)
     {
         this.location_name = location_name;
+    }
+    public String getLongitude()
+    {
+        return longitude;
+    }
+    public void setLongitude(String longitude)
+    {
+        this.longitude = longitude;
+    }
+    public String getLatitude()
+    {
+        return latitude;
+    }
+    public void setLatitude(String latitude)
+    {
+        this.latitude = latitude;
+    }
+
+    public String getPhone()
+    {
+        return phone;
+    }
+    public void setPhone(String phone)
+    {
+        this.phone = phone;
+    }
+    public String getEmail()
+    {
+        return email;
+    }
+    public void setEmail(String email)
+    {
+        this.email = email;
     }
 }

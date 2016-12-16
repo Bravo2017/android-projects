@@ -1,4 +1,5 @@
 <?php
+
 define('HOST', '104.236.78.39');
 define('USER','imaya');
 define('PASS','#Imaya1993*');

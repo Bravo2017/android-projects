@@ -66,7 +66,7 @@ public class ParkFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 // Do something after 5s = 5000ms
                 rView.setAdapter(rcAdapter);
             }
-        }, 3000);
+        }, 5000);
 
 
         Toast.makeText(getActivity(), "Swipe down to refresh", Toast.LENGTH_LONG).show();
