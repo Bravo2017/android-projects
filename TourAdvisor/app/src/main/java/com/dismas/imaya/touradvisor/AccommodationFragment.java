@@ -97,8 +97,8 @@ public class AccommodationFragment extends Fragment implements SwipeRefreshLayou
                 bundle.putString("email", rowListItem.get(position).getEmail());
                 bundle.putString("location_name", rowListItem.get(position).getLocationName());
                 bundle.putString("hotel_image", rowListItem.get(position).getSite_image());
-                bundle.putString("interior_image", rowListItem.get(position).getSite_image());
-                bundle.putString("guest_image", rowListItem.get(position).getSite_image());
+                bundle.putString("interior_image", rowListItem.get(position).getInterior_image());
+                bundle.putString("guest_image", rowListItem.get(position).getAttraction_image());
                 intent.putExtras(bundle);
                 startActivity(intent);
 
@@ -198,8 +198,8 @@ public class AccommodationFragment extends Fragment implements SwipeRefreshLayou
                 accommodation.setEmail(accommodationData.getString("email"));
                 accommodation.setLongitude(accommodationData.getString("longitude"));
                 accommodation.setLatitude(accommodationData.getString("latitude"));
-                accommodation.setLatitude(accommodationData.getString("interior_image"));
-                accommodation.setLatitude(accommodationData.getString("guest_image"));
+                accommodation.setInterior_image(accommodationData.getString("interior_image"));
+                accommodation.setAttraction_image(accommodationData.getString("guest_image"));
                 accommodations.add(accommodation);
 
 
