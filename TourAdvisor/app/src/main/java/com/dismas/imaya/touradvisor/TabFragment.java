@@ -27,6 +27,7 @@ public class TabFragment extends Fragment {
          *Inflate tab_layout and setup Views.
          */
         View x =  inflater.inflate(R.layout.tab_layout,null);
+        ((MainActivityDrawer) getActivity()).topToolBar.setTitle("Home");
         tabLayout = (TabLayout) x.findViewById(R.id.tabs);
         viewPager = (ViewPager) x.findViewById(R.id.viewpager);
 

@@ -14,7 +14,7 @@ public class AccountFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View x =  inflater.inflate(R.layout.fragment_account,container, false);
-
+        ((MainActivityDrawer) getActivity()).topToolBar.setTitle("Account");
 
         // Inflate the layout for this fragment
         return x;

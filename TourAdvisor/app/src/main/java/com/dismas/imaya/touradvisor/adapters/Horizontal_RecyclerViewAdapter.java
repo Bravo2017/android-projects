@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dismas.imaya.touradvisor.R;
@@ -18,17 +17,17 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 /**
- * Created by imaya on 12/9/16.
+ * Created by imaya on 12/18/16.
  */
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class Horizontal_RecyclerViewAdapter extends RecyclerView.Adapter<Horizontal_RecyclerViewAdapter.ViewHolder> {
 
-    OnItemClickListener mItemClickListener;
+    RecyclerViewAdapter.OnItemClickListener mItemClickListener;
 
     private List<ParksAllConstructor> parkList;
     private Context context;
 
-    public RecyclerViewAdapter(Context context, List<ParksAllConstructor> itemList) {
+    public Horizontal_RecyclerViewAdapter(Context context, List<ParksAllConstructor> itemList) {
         this.parkList = itemList;
         this.context = context;
     }
@@ -40,17 +39,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public TextView parkLocation;
         public LinearLayout placeNameHolder;
         public TextView costPerday;
-        public RelativeLayout placeHolder;
+        public LinearLayout placeHolder;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            placeHolder = (RelativeLayout) itemView.findViewById(R.id.mainHolder);
-            parkName = (TextView) itemView.findViewById(R.id.park_name);
-            parkMedia = (ImageView) itemView.findViewById(R.id.park_media);
-            parkOpenhrs = (TextView) itemView.findViewById(R.id.park_openhrs);
-            parkLocation = (TextView) itemView.findViewById(R.id.park_location);
+            placeHolder = (LinearLayout) itemView.findViewById(R.id.mainHolder);
+            parkName = (TextView)itemView.findViewById(R.id.park_name);
+            parkMedia = (ImageView)itemView.findViewById(R.id.park_media);
+            parkOpenhrs = (TextView)itemView.findViewById(R.id.park_openhrs);
+            parkLocation = (TextView)itemView.findViewById(R.id.park_location);
             placeNameHolder = (LinearLayout) itemView.findViewById(R.id.placeNameHolder);
-            costPerday = (TextView) itemView.findViewById(R.id.cost_per_day);
+            costPerday = (TextView)itemView.findViewById(R.id.cost_per_day);
 
             placeHolder.setOnClickListener(this);
         }
@@ -70,14 +69,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         void onItemClick(View view, int position);
     }
 
-    public void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
+    public void setOnItemClickListener(final RecyclerViewAdapter.OnItemClickListener mItemClickListener) {
         this.mItemClickListener = mItemClickListener;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public Horizontal_RecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_list, null);
+        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.horizontal_card_view_list, null);
 //        ViewHolder rcv = new ViewHolder(layoutView);
 
         if (android.os.Build.VERSION.SDK_INT > 9) {
@@ -86,19 +85,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
 //        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_places, parent, false);
 //        return new ViewHolder(view);
-        return new ViewHolder(layoutView);
+        return new Horizontal_RecyclerViewAdapter.ViewHolder(layoutView);
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, final int position) {
+    public void onBindViewHolder(final Horizontal_RecyclerViewAdapter.ViewHolder holder, final int position) {
         holder.parkName.setText(parkList.get(position).getSite_name());//setImageBitmap(itemList.get(position).get_media());
         //holder.storyMedia.setImageDrawable(Drawable.createFromPath(itemList.get(position).get_media()));
         Picasso.with(context)
                 .load(parkList.get(position).getSite_image())
+                .resize(500, 400)
                 .placeholder(R.drawable.error)
                 .into(holder.parkMedia);
         //holder.parkOpenhrs.setText(itemList.get(position).get_timestamp());
-        holder.parkLocation.setText(parkList.get(position).getLocationName());
+        //holder.parkLocation.setText(parkList.get(position).getLocationName());
+        holder.costPerday.setText(parkList.get(position).getCost_per_day());
 
 //        Toast.makeText(context, parkList.get(position).getSite_image(), Toast.LENGTH_SHORT).show();
 //        try {

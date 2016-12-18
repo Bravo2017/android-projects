@@ -13,7 +13,6 @@ public class DiscoverFragment extends Fragment {
 
         View x =  inflater.inflate(R.layout.fragment_discover,container, false);
 
-
         // Inflate the layout for this fragment
         return x;
     }

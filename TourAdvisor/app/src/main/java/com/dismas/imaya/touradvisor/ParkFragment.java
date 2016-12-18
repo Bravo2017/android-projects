@@ -50,7 +50,7 @@ public class ParkFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
 
         View x =  inflater.inflate(R.layout.fragment_park,container, false);
-
+        ((MainActivityDrawer) getActivity()).topToolBar.setTitle("My list");
 
         lLayout = new LinearLayoutManager(getActivity());
 
@@ -66,7 +66,7 @@ public class ParkFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 // Do something after 5s = 5000ms
                 rView.setAdapter(rcAdapter);
             }
-        }, 5000);
+        }, 2000);
 
 
         Toast.makeText(getActivity(), "Swipe down to refresh", Toast.LENGTH_LONG).show();
@@ -88,6 +88,11 @@ public class ParkFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser) {
+            // Set title
+            getActivity().getActionBar()
+                    .setTitle("My list");
+        }
     }
 
     @Override

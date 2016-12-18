@@ -10,6 +10,7 @@ public class ParkAllConfig {
     public static final String MARINE_URL= "http://touradvisorzone.com/touradvisorphp/marine.php";
     public static final String ORPHANAGE_URL= "http://touradvisorzone.com/touradvisorphp/orphanage.php";
     public static final String SANCTUARY_URL= "http://touradvisorzone.com/touradvisorphp/sactuaries.php";
+    public static final String ALLATTRACTIONS_URL = "http://touradvisorzone.com/touradvisorphp/all_attractions.php";
     public static final String SITE_NAME ="site_name";
     public static final String LOCATION_NAME ="location_name";
     public static final String IMAGE_1="site_image";

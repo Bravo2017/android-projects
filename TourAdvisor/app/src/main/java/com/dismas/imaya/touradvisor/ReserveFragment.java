@@ -45,7 +45,7 @@ public class ReserveFragment extends Fragment implements SwipeRefreshLayout.OnRe
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View x =  inflater.inflate(R.layout.fragment_reserve,container, false);
-
+        ((MainActivityDrawer) getActivity()).topToolBar.setTitle("My tours");
         lLayout = new LinearLayoutManager(getActivity());
 
         final RecyclerView rView = (RecyclerView) x.findViewById(R.id.recycler_view);
@@ -59,7 +59,7 @@ public class ReserveFragment extends Fragment implements SwipeRefreshLayout.OnRe
                 // Do something after 5s = 5000ms
                 rView.setAdapter(rcAdapter);
             }
-        }, 5000);
+        }, 3000);
 
         Toast.makeText(getActivity(), "Swipe down to refresh", Toast.LENGTH_LONG).show();
         mSwipeRefreshLayout = (SwipeRefreshLayout) x.findViewById(R.id.swipe_container);
@@ -76,6 +76,11 @@ public class ReserveFragment extends Fragment implements SwipeRefreshLayout.OnRe
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser) {
+            // Set title
+            getActivity().getActionBar()
+                    .setTitle("My tours");
+        }
     }
 
     @Override

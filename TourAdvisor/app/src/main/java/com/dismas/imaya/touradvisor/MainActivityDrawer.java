@@ -1,8 +1,6 @@
 package com.dismas.imaya.touradvisor;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -25,6 +23,9 @@ public class MainActivityDrawer extends AppCompatActivity {
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
 
+    String str_getName, str_getPassword, str_getEmail, str_getCity, str_getCountry;
+    Toolbar topToolBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,19 +35,24 @@ public class MainActivityDrawer extends AppCompatActivity {
             setContentView(R.layout.activity_maindrawer);
         }
 
+        str_getName = SplashActivity.sh.getString("name", null);
+        str_getPassword = SplashActivity.sh.getString("password", null);
+        str_getEmail = SplashActivity.sh.getString("email", null);
+        str_getCity = SplashActivity.sh.getString("city", null);
+        str_getCountry = SplashActivity.sh.getString("country", null);
 
         setTitle(null);
 
-        final Toolbar topToolBar = (Toolbar)findViewById(R.id.toolbar);
+        topToolBar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(topToolBar);
+        topToolBar.setTitle("Home");
 
         /**
          *Setup the DrawerLayout and NavigationView
          */
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        mNavigationView = (NavigationView) findViewById(R.id.shitstuff) ;
-
+        mNavigationView = (NavigationView) findViewById(R.id.shitstuff);
         /**
          * Lets inflate the very first fragment
          * Here , we are inflating the TabFragment as the first Fragment
@@ -58,7 +64,8 @@ public class MainActivityDrawer extends AppCompatActivity {
         /**
          * Setup click events on the Navigation View Items.
          */
-
+        String profile = str_getName +" "+ str_getEmail;
+        mNavigationView.getMenu().findItem(R.id.nav_item_profile).setTitle(str_getName);
 
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -71,83 +78,77 @@ public class MainActivityDrawer extends AppCompatActivity {
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.containerView,new ProfileFragment()).addToBackStack(null).commit();
 
-                    topToolBar.setTitle("Profile");
 
                 }
 
                 if (menuItem.getItemId() == R.id.nav_item_home) {
-//                    Intent intent = new Intent(MainActivityDrawer.this, DiscoverActivity.class);
-//                    startActivity(intent);
                     FragmentTransaction afragmentTransaction = mFragmentManager.beginTransaction();
                     afragmentTransaction.replace(R.id.containerView,new TabFragment()).addToBackStack(null).commit();
 
-                    topToolBar.setTitle("Home");
                 }
-
-                if (menuItem.getItemId() == R.id.nav_item_park) {
+                if (menuItem.getItemId() == R.id.nav_item_mylist) {
                     FragmentTransaction bfragmentTransaction = mFragmentManager.beginTransaction();
                     bfragmentTransaction.replace(R.id.containerView,new ParkFragment()).addToBackStack(null).commit();
 
-                    topToolBar.setTitle("National Parks");
-
-
                 }
-                if (menuItem.getItemId() == R.id.nav_item_reserve) {
+                if (menuItem.getItemId() == R.id.nav_item_mytours) {
                     FragmentTransaction cfragmentTransaction = mFragmentManager.beginTransaction();
                     cfragmentTransaction.replace(R.id.containerView,new ReserveFragment()).addToBackStack(null).commit();
 
-                    topToolBar.setTitle("National Reserve");
                 }
-                if (menuItem.getItemId() == R.id.nav_item_marine) {
-                    FragmentTransaction cfragmentTransaction = mFragmentManager.beginTransaction();
-                    cfragmentTransaction.replace(R.id.containerView,new MarineFragment()).addToBackStack(null).commit();
 
-                    topToolBar.setTitle("Marine Parks");
-                }
-                if (menuItem.getItemId() == R.id.nav_item_sanctuaries) {
-                    FragmentTransaction cfragmentTransaction = mFragmentManager.beginTransaction();
-                    cfragmentTransaction.replace(R.id.containerView,new SanctuariesFragment()).addToBackStack(null).commit();
+//                if (menuItem.getItemId() == R.id.nav_item_park) {
+//                    FragmentTransaction bfragmentTransaction = mFragmentManager.beginTransaction();
+//                    bfragmentTransaction.replace(R.id.containerView,new ParkFragment()).addToBackStack(null).commit();
+//
+//                    topToolBar.setTitle("National Parks");
+//
+//
+//                }
+//                if (menuItem.getItemId() == R.id.nav_item_reserve) {
+//                    FragmentTransaction cfragmentTransaction = mFragmentManager.beginTransaction();
+//                    cfragmentTransaction.replace(R.id.containerView,new ReserveFragment()).addToBackStack(null).commit();
+//
+//                    topToolBar.setTitle("National Reserve");
+//                }
+//                if (menuItem.getItemId() == R.id.nav_item_marine) {
+//                    FragmentTransaction cfragmentTransaction = mFragmentManager.beginTransaction();
+//                    cfragmentTransaction.replace(R.id.containerView,new MarineFragment()).addToBackStack(null).commit();
+//
+//                    topToolBar.setTitle("Marine Parks");
+//                }
+//                if (menuItem.getItemId() == R.id.nav_item_sanctuaries) {
+//                    FragmentTransaction cfragmentTransaction = mFragmentManager.beginTransaction();
+//                    cfragmentTransaction.replace(R.id.containerView,new SanctuariesFragment()).addToBackStack(null).commit();
+//
+//                    topToolBar.setTitle("Sanctuaries");
+//                }
+//                if (menuItem.getItemId() == R.id.nav_item_orphanage) {
+//                    FragmentTransaction cfragmentTransaction = mFragmentManager.beginTransaction();
+//                    cfragmentTransaction.replace(R.id.containerView,new OrphanageFragment()).addToBackStack(null).commit();
+//
+//                    topToolBar.setTitle("Orphanage");
+//                }
+                if (menuItem.getItemId() == R.id.nav_item_site) {
+                    FragmentTransaction bfragmentTransaction = mFragmentManager.beginTransaction();
+                    bfragmentTransaction.replace(R.id.containerView,new AllAttractionsFragment()).addToBackStack(null).commit();
 
-                    topToolBar.setTitle("Sanctuaries");
-                }
-                if (menuItem.getItemId() == R.id.nav_item_orphanage) {
-                    FragmentTransaction cfragmentTransaction = mFragmentManager.beginTransaction();
-                    cfragmentTransaction.replace(R.id.containerView,new OrphanageFragment()).addToBackStack(null).commit();
 
-                    topToolBar.setTitle("Orphanage");
                 }
                 if (menuItem.getItemId() == R.id.nav_item_accommodation) {
-                    int off = 0;
-                    try {
-                        off = Settings.Secure.getInt(getContentResolver(), Settings.Secure.LOCATION_MODE);
-                    } catch (Settings.SettingNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                    if(off==0){
-                        Intent onGPS = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                        startActivity(onGPS);
-                    }
-                    else
-                    {
-                        FragmentTransaction dfragmentTransaction = mFragmentManager.beginTransaction();
-                        dfragmentTransaction.replace(R.id.containerView,new AccommodationFragment()).addToBackStack(null).commit();
-//                    Intent intent = new Intent(MainActivityDrawer.this, MainActivity.class);
-//                    startActivity(intent);
-                        topToolBar.setTitle("Accommodations");
-                    }
+                    FragmentTransaction dfragmentTransaction = mFragmentManager.beginTransaction();
+                    dfragmentTransaction.replace(R.id.containerView,new AccommodationFragment()).addToBackStack(null).commit();
+
 
                 }
                 if (menuItem.getItemId() == R.id.nav_item_account) {
                     FragmentTransaction efragmentTransaction = mFragmentManager.beginTransaction();
                     efragmentTransaction.replace(R.id.containerView,new AccountFragment()).addToBackStack(null).commit();
 
-                    topToolBar.setTitle("Account");
                 }
                 if (menuItem.getItemId() == R.id.nav_item_about) {
                     FragmentTransaction ffragmentTransaction = mFragmentManager.beginTransaction();
                     ffragmentTransaction.replace(R.id.containerView,new AboutFragment()).addToBackStack(null).commit();
-
-                    topToolBar.setTitle("About");
                 }
 
 

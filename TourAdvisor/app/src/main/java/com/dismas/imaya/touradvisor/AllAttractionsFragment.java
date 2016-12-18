@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,8 +19,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.dismas.imaya.touradvisor.adapters.RecyclerViewAdapterAccommodation;
-import com.dismas.imaya.touradvisor.configs.MapAllConfig;
+import com.dismas.imaya.touradvisor.adapters.RecyclerViewAdapter;
+import com.dismas.imaya.touradvisor.configs.ParkAllConfig;
 import com.dismas.imaya.touradvisor.constructors.ParksAllConstructor;
 
 import org.json.JSONArray;
@@ -32,35 +31,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by imaya on 12/2/16.
+ * Created by imaya on 12/17/16.
  */
-public class AccommodationFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
+
+public class AllAttractionsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
+
     private LinearLayoutManager lLayout;
 
     SwipeRefreshLayout mSwipeRefreshLayout;
 
-    ArrayList<ParksAllConstructor> accommodations = new ArrayList<>();
-
+    ArrayList<ParksAllConstructor> attractions = new ArrayList<>();
 
     private ProgressDialog loading;
-    RecyclerViewAdapterAccommodation rcAdapter;
-    FragmentManager mFragmentManager;
+    RecyclerViewAdapter rcAdapter;
 
 
+    Handler mHandler = new Handler();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        onRestoreInstanceState(savedInstanceState);
-        View x =  inflater.inflate(R.layout.fragment_accommodation, container, false);
-        ((MainActivityDrawer) getActivity()).topToolBar.setTitle("Accommodations");
+
+        View x =  inflater.inflate(R.layout.fragment_allattractions,container, false);
+        ((MainActivityDrawer) getActivity()).topToolBar.setTitle("Attraction Sites");
 
         lLayout = new LinearLayoutManager(getActivity());
-//        lLayout = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
 
-        final RecyclerView rView = (RecyclerView) x.findViewById(R.id.recycler_view);
+        final RecyclerView rView = (RecyclerView) x.findViewById(R.id.recycler_view_all);
         rView.setItemAnimator(new DefaultItemAnimator());
         rView.setLayoutManager(lLayout);
-        final List<ParksAllConstructor> rowListItem = getAllSanctuaries();
-        rcAdapter = new RecyclerViewAdapterAccommodation(getActivity(), rowListItem);
+        final List<ParksAllConstructor> rowListItem = getAllPark();
+        rcAdapter = new RecyclerViewAdapter(getActivity(), rowListItem);
+
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -69,6 +69,7 @@ public class AccommodationFragment extends Fragment implements SwipeRefreshLayou
                 rView.setAdapter(rcAdapter);
             }
         }, 2000);
+
 
         Toast.makeText(getActivity(), "Swipe down to refresh", Toast.LENGTH_LONG).show();
         mSwipeRefreshLayout = (SwipeRefreshLayout) x.findViewById(R.id.swipe_container);
@@ -79,41 +80,32 @@ public class AccommodationFragment extends Fragment implements SwipeRefreshLayou
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
-        RecyclerViewAdapterAccommodation.OnItemClickListener onItemClickListener = new RecyclerViewAdapterAccommodation.OnItemClickListener() {
+        RecyclerViewAdapter.OnItemClickListener onItemClickListener = new RecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
 //                Toast.makeText(getActivity(), "Clicked " + position, Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(getActivity(), DetailsActivity.class);
+                Intent intent = new Intent(getActivity(), AttractionDetailActivity.class);
                 //Create the bundle
                 getFragmentManager().beginTransaction().addToBackStack(null);
                 Bundle bundle = new Bundle();
                 bundle.putString("position", String.valueOf(position));
                 bundle.putString("longitude", rowListItem.get(position).getLongitude());
                 bundle.putString("latitude", rowListItem.get(position).getLatitude());
-                bundle.putString("restaurant_name", rowListItem.get(position).getSite_name());
-                bundle.putString("cost_per_day", rowListItem.get(position).getCost_per_day());
-                bundle.putString("phone", rowListItem.get(position).getPhone());
-                bundle.putString("email", rowListItem.get(position).getEmail());
+                bundle.putString("site_name", rowListItem.get(position).getSite_name());
+                bundle.putString("site_image", rowListItem.get(position).getSite_image());
+                bundle.putString("interior_image", rowListItem.get(position).getInterior_image());
+                bundle.putString("attractions_image", rowListItem.get(position).getAttraction_image());
                 bundle.putString("location_name", rowListItem.get(position).getLocationName());
-                bundle.putString("hotel_image", rowListItem.get(position).getSite_image());
+                bundle.putString("opening_hrs", rowListItem.get(position).getOpeninghrs());
+                bundle.putString("categories", rowListItem.get(position).getCategories());
                 intent.putExtras(bundle);
                 startActivity(intent);
-
-
-                //Put the value
-//                DetailsFragment detailsFragment = new DetailsFragment();
-//                Bundle args = new Bundle();
-//                args.putString("position", String.valueOf(position));
-//                detailsFragment.setArguments(args);
-//
-//                //Inflate the fragment
-//                getFragmentManager().beginTransaction().addToBackStack(null).add(R.id.containerView, detailsFragment).commit();
-
             }
         };
 
         rcAdapter.setOnItemClickListener(onItemClickListener);
+
         // Inflate the layout for this fragment
         return x;
     }
@@ -121,30 +113,12 @@ public class AccommodationFragment extends Fragment implements SwipeRefreshLayou
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setRetainInstance(true); //Will ignore onDestroy Method (Nested Fragments no need this if parent have it)
-    }
-    //Here you can restore saved data in onSaveInstanceState Bundle
-    private void onRestoreInstanceState(Bundle savedInstanceState){
-        if(savedInstanceState!=null){
-            String SomeText = savedInstanceState.getString("title");
-        }
-    }
-
-    //Here you Save your data
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString("title", "Some Text");
-    }
-    @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if(isVisibleToUser) {
             // Set title
             getActivity().getActionBar()
-                    .setTitle("Accommodations");
+                    .setTitle("Attraction Sites");
         }
     }
 
@@ -152,16 +126,16 @@ public class AccommodationFragment extends Fragment implements SwipeRefreshLayou
     public void onRefresh() {
 
     }
-    public List<ParksAllConstructor> getAllSanctuaries(){
-        loading = ProgressDialog.show(getActivity(), "Please wait...", "Fetching Accommodations...", false, false);
+    public List<ParksAllConstructor> getAllPark(){
+        loading = ProgressDialog.show(getActivity(), "Please wait...", "Fetching all atttractions...", false, false);
 
-        String url = MapAllConfig.DATA_URL;
+        String url = ParkAllConfig.ALLATTRACTIONS_URL;
 
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                showJSON(response);
                 loading.dismiss();
+                showJSON(response);
             }
         },
                 new Response.ErrorListener() {
@@ -174,29 +148,30 @@ public class AccommodationFragment extends Fragment implements SwipeRefreshLayou
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
 
-        return accommodations;
+        return attractions;
     }
 
     private void showJSON(String response) {
         try {
             JSONObject jsonObject = new JSONObject(response);
-            JSONArray result = jsonObject.getJSONArray("accommodations");
+            JSONArray result = jsonObject.getJSONArray("attractions");
 
 
             for (int i = 0; i < result.length(); i++) {
 
-                JSONObject accommodationData = result.getJSONObject(i);
-                ParksAllConstructor accommodation = new ParksAllConstructor();
-                //park.setAttraction_site_id(accommodationData.getInt("attraction_site_id"));
-                accommodation.setSite_name(accommodationData.getString("restaurant_name"));
-                accommodation.setLocation_name(accommodationData.getString("location_name"));
-                accommodation.setSite_image(accommodationData.getString("hotel_image"));
-                accommodation.setCost_per_day(accommodationData.getString("cost_per_day"));
-                accommodation.setPhone(accommodationData.getString("phone"));
-                accommodation.setEmail(accommodationData.getString("email"));
-                accommodation.setLongitude(accommodationData.getString("longitude"));
-                accommodation.setLatitude(accommodationData.getString("latitude"));
-                accommodations.add(accommodation);
+                JSONObject attractionData = result.getJSONObject(i);
+                ParksAllConstructor attraction = new ParksAllConstructor();
+                //park.setAttraction_site_id(parkData.getInt("attraction_site_id"));
+                attraction.setSite_name(attractionData.getString("site_name"));
+                attraction.setLocation_name(attractionData.getString("location_name"));
+                attraction.setSite_image(attractionData.getString("site_image"));
+                attraction.setLatitude(attractionData.getString("latitude"));
+                attraction.setLongitude(attractionData.getString("longitude"));
+                attraction.setInterior_image(attractionData.getString("interior_image"));
+                attraction.setAttraction_image(attractionData.getString("attractions_image"));
+                attraction.setOpeninghrs(attractionData.getString("opening_hrs"));
+                attraction.setCategories(attractionData.getString("categories"));
+                attractions.add(attraction);
 
 
             }

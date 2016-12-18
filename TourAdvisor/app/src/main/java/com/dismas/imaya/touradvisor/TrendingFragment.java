@@ -27,7 +27,6 @@ public class TrendingFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View x =  inflater.inflate(R.layout.fragment_trending,container, false);
-
         ///////////////////////////////////////////////////
 
         /*

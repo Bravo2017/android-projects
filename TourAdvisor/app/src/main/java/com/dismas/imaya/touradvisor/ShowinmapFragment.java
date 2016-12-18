@@ -13,7 +13,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -72,7 +71,7 @@ public class ShowinmapFragment extends AppCompatActivity implements OnMapReadyCa
         longitude = bundle.getString("longitude");
         latitude = bundle.getString("latitude");
         location_name = bundle.getString("location_name");
-        Toast.makeText(this, latitude, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, latitude, Toast.LENGTH_SHORT).show();
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -84,38 +83,19 @@ public class ShowinmapFragment extends AppCompatActivity implements OnMapReadyCa
                 LatLng ourPOint = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
                 mMap.addMarker(new MarkerOptions().position(ourPOint).title(location_name));
                 //move map camera
-//                mMap.moveCamera(CameraUpdateFactory.newLatLng(ourPOint));
-//                mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(ourPOint));
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
+
+
+
             }
-        }, 6000);
-
-
+        }, 3000);
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
 
-        mMap = googleMap;
-        //mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() );
-        // mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-
-        //Initialize Google Play Services
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(this,
-                    android.Manifest.permission.ACCESS_FINE_LOCATION)
-                    == PackageManager.PERMISSION_GRANTED) {
-                buildGoogleApiClient();
-                mMap.setMyLocationEnabled(true);
-            }
-        } else {
-            buildGoogleApiClient();
-            mMap.setMyLocationEnabled(true);
-        }
-
-    }
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -239,5 +219,26 @@ public class ShowinmapFragment extends AppCompatActivity implements OnMapReadyCa
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
     }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        //mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() );
+        // mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
+        //Initialize Google Play Services
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(this,
+                    android.Manifest.permission.ACCESS_FINE_LOCATION)
+                    == PackageManager.PERMISSION_GRANTED) {
+                buildGoogleApiClient();
+                mMap.setMyLocationEnabled(true);
+            }
+        } else {
+            buildGoogleApiClient();
+            mMap.setMyLocationEnabled(true);
+        }
+    }
+
 }
 

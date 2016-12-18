@@ -81,7 +81,6 @@ public class AccommodationsMaps extends Fragment implements OnMapReadyCallback,
 
         View x =  inflater.inflate(R.layout.fragment_accommodation_maps, container, false);
 
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
         }

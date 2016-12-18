@@ -14,7 +14,7 @@ public class AboutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View x =  inflater.inflate(R.layout.fragment_about,container, false);
-
+        ((MainActivityDrawer) getActivity()).topToolBar.setTitle("About");
 
         // Inflate the layout for this fragment
         return x;

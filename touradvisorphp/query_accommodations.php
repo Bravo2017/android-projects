@@ -7,8 +7,8 @@ define('DB', 'touradvisorzone');
 $con = mysqli_connect(HOST,USER,PASS,DB) or die('unable to connect');
 if($_SERVER['REQUEST_METHOD']=='GET'){
 
- $id = "get from app";
- $sql = "SELECT * FROM accommodations INNER JOIN attraction_sites ON accommodations.attraction_site_id = attraction_sites.attraction_site_id where accommodations.attraction_site_id LIKE '%$id%'";
+ $id = 1;
+ $sql = "SELECT * FROM accommodations INNER JOIN attraction_sites ON accommodations.attraction_site_id = attraction_sites.attraction_site_id where accommodations.attraction_site_id = $id";
 
  $r = mysqli_query($con,$sql);
 

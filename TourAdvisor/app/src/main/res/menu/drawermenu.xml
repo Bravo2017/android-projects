@@ -11,36 +11,53 @@
         android:id="@+id/nav_item_home"
         android:icon="@drawable/home"/>
 
-    <item android:title="National Parks"
-        android:id="@+id/nav_item_park"
+    <item android:title="My list"
+        android:id="@+id/nav_item_mylist"
+        android:icon="@drawable/list"/>
+
+    <item android:title="My tours"
+        android:id="@+id/nav_item_mytours"
+        android:icon="@drawable/like"/>
+
+    <!--<item android:title="National Parks"-->
+        <!--android:id="@+id/nav_item_park"-->
+        <!--android:icon="@drawable/park"/>-->
+
+    <!--<item android:title="National Reserves"-->
+        <!--android:id="@+id/nav_item_reserve"-->
+        <!--android:icon="@drawable/reserve"/>-->
+
+    <!--<item android:title="Marine Parks"-->
+        <!--android:id="@+id/nav_item_marine"-->
+        <!--android:icon="@drawable/marine"/>-->
+
+    <!--<item android:title="Sanctuaries"-->
+        <!--android:id="@+id/nav_item_sanctuaries"-->
+        <!--android:icon="@drawable/sanctuaries"/>-->
+
+    <!--<item android:title="Orphanage/Safari Walk"-->
+        <!--android:id="@+id/nav_item_orphanage"-->
+        <!--android:icon="@drawable/orphanage"/>-->
+
+    <item android:title="Attraction Sites"
+        android:id="@+id/nav_item_site"
         android:icon="@drawable/park"/>
-
-    <item android:title="National Reserves"
-        android:id="@+id/nav_item_reserve"
-        android:icon="@drawable/reserve"/>
-
-    <item android:title="Marine Parks"
-        android:id="@+id/nav_item_marine"
-        android:icon="@drawable/marine"/>
-
-    <item android:title="Sanctuaries"
-        android:id="@+id/nav_item_sanctuaries"
-        android:icon="@drawable/sanctuaries"/>
-
-    <item android:title="Orphanage/Safari Walk"
-        android:id="@+id/nav_item_orphanage"
-        android:icon="@drawable/orphanage"/>
 
     <item android:title="Accommodations"
         android:id="@+id/nav_item_accommodation"
         android:icon="@drawable/hotel"/>
-    <item
-        android:title="Account"
-        android:id="@+id/nav_item_account"
-        android:icon="@drawable/icon_account3x"/>
-    <item
-        android:title="About"
-        android:id="@+id/nav_item_about"
-        android:icon="@drawable/about"/>
+    <item android:title="">
+        <menu>
+            <item
+                android:title="Account"
+                android:id="@+id/nav_item_account"
+                android:icon="@drawable/icon_account3x"/>
+            <item
+                android:title="About"
+                android:id="@+id/nav_item_about"
+                android:icon="@drawable/about"/>
+        </menu>
+    </item>
+
 
 </menu>
