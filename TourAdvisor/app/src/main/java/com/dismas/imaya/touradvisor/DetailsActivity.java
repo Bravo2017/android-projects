@@ -8,12 +8,16 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -68,9 +72,14 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
     private ProgressDialog loading;
     Context context;
-    private ImageView mImageView;
+    private ImageView mImageView, mImageView1, mImageView2;
     private TextView mTitle, phone, email, titletxt;
 
+    private static final int SWIPE_MIN_DISTANCE = 120;
+    private static final int SWIPE_THRESHOLD_VELOCITY = 200;
+    private ViewFlipper mViewFlipper;
+    private Context mContext;
+    private final GestureDetector detector = new GestureDetector(new SwipeGestureDetector());
 
     RatingBar ratingbar1;
     Button button, showinmap;
@@ -82,12 +91,21 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     String phone_no;
     String email_add;
     String location_name;
-    String hotel_image;
+    String hotel_image,interior_image, guest_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+        mContext = this;
+        mViewFlipper = (ViewFlipper) this.findViewById(R.id.view_flipper);
+        mViewFlipper.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(final View view, final MotionEvent event) {
+                detector.onTouchEvent(event);
+                return true;
+            }
+        });
 //        final List<ParksAllConstructor> rowListItem = getAllDetails();
         Bundle bundle = getIntent().getExtras();
 
@@ -100,6 +118,8 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         email_add = bundle.getString("email");
         location_name = bundle.getString("location_name");
         hotel_image = bundle.getString("hotel_image");
+        interior_image = bundle.getString("interior_image");
+        guest_image = bundle.getString("guest_image");
 
         configuration = new SessionConfiguration.Builder()
                 .setRedirectUri(REDIRECT_URI)
@@ -110,14 +130,9 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         validateConfiguration(configuration);
         final ServerTokenSession session = new ServerTokenSession(configuration);
 
-        //////
-//        setTitle(null);
-//
-//        final Toolbar topToolBar = (Toolbar)findViewById(R.id.toolbar);
-//        topToolBar.setTitleTextColor(getResources().getColor(R.color.colorPrimary));
-//        setSupportActionBar(topToolBar);
-
         mImageView = (ImageView) findViewById(R.id.placeImage);
+        mImageView1 = (ImageView) findViewById(R.id.placeImage1);
+        mImageView2 = (ImageView) findViewById(R.id.placeImage2);
         mTitle = (TextView) findViewById(R.id.detailstextView);
         titletxt = (TextView) findViewById(R.id.titletxt);
         phone = (TextView) findViewById(R.id.phone);
@@ -160,65 +175,42 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 .load(hotel_image)
                 .placeholder(R.drawable.error)
                 .into(mImageView);
+        Picasso.with(context)
+                .load(interior_image)
+                .placeholder(R.drawable.error)
+                .into(mImageView1);
+        Picasso.with(context)
+                .load(guest_image)
+                .placeholder(R.drawable.error)
+                .into(mImageView2);
 
-//        final Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//
-//
-//            }
-//        }, 1000);
-
-//        final Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                // Do something after 5s = 5000ms
-//                DROPOFF_ADDR = rowListItem.get(Integer.parseInt(value)).getSite_name();//restaurant name
-//                DROPOFF_LAT = Double.parseDouble(rowListItem.get(Integer.parseInt(value)).getLatitude());
-//                DROPOFF_LONG = Double.parseDouble(rowListItem.get(Integer.parseInt(value)).getLongitude());
-//                DROPOFF_NICK = rowListItem.get(Integer.parseInt(value)).getLocationName();
-//
-//                RideParameters rideParametersForProduct = new RideParameters.Builder()
-//                        .setPickupLocation(PICKUP_LAT, PICKUP_LONG, PICKUP_NICK, PICKUP_ADDR)
-//                        .setDropoffLocation(DROPOFF_LAT, DROPOFF_LONG, DROPOFF_NICK, DROPOFF_ADDR)
-//                        .build();
-//
-//                RideRequestButton uberButtonWhite = (RideRequestButton) findViewById(R.id.uber_button_white);
-//
-//                uberButtonWhite.setRideParameters(rideParametersForProduct);
-//                uberButtonWhite.setSession(session);
-//                uberButtonWhite.loadRideInformation();
-//                titletxt.setText(rowListItem.get(Integer.parseInt(value)).getSite_name());
-//                mTitle.setText(rowListItem.get(Integer.parseInt(value)).getCost_per_day());
-//                if(rowListItem.get(Integer.parseInt(value)).getPhone().isEmpty())
-//                {
-//                    phone.setText("N/A");
-//                }
-//                else
-//                {
-//                    phone.setText(rowListItem.get(Integer.parseInt(value)).getPhone());
-//                }
-//                if(rowListItem.get(Integer.parseInt(value)).getEmail().isEmpty())
-//                {
-//                    email.setText("N/A");
-//                }
-//                else
-//                {
-//                    email.setText(rowListItem.get(Integer.parseInt(value)).getEmail());
-//                }
-//                Picasso.with(context)
-//                        .load(rowListItem.get(Integer.parseInt(value)).getSite_image())
-//                        .placeholder(R.drawable.error)
-//                        .into(mImageView);
-//
-//            }
-//        }, 6000);
 
         addListenerOnButtonClick();
         addListenerOnButton1Click();
+    }
+    class SwipeGestureDetector extends GestureDetector.SimpleOnGestureListener {
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            try {
+                // right to left swipe
+                if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+                    mViewFlipper.setInAnimation(AnimationUtils.loadAnimation(mContext, R.anim.left_in));
+                    mViewFlipper.setOutAnimation(AnimationUtils.loadAnimation(mContext, R.anim.left_out));
+                    mViewFlipper.showNext();
+                    return true;
+                } else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+                    mViewFlipper.setInAnimation(AnimationUtils.loadAnimation(mContext, R.anim.right_in));
+                    mViewFlipper.setOutAnimation(AnimationUtils.loadAnimation(mContext,R.anim.right_out));
+                    mViewFlipper.showPrevious();
+                    return true;
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return false;
+        }
     }
 
     private void addListenerOnButton1Click() {

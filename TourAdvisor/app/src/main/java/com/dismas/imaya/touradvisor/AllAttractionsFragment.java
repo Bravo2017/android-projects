@@ -68,7 +68,7 @@ public class AllAttractionsFragment extends Fragment implements SwipeRefreshLayo
                 // Do something after 5s = 5000ms
                 rView.setAdapter(rcAdapter);
             }
-        }, 2000);
+        }, 3000);
 
 
         Toast.makeText(getActivity(), "Swipe down to refresh", Toast.LENGTH_LONG).show();

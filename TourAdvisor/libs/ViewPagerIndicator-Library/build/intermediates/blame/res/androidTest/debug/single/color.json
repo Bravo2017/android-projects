@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/home/imaya/Downloads/SlidingImages_Demo/libs/ViewPagerIndicator-Library/build/intermediates/res/merged/androidTest/debug/color/vpi__dark_theme.xml",
+        "source": "/home/imaya/Downloads/SlidingImages_Demo/libs/ViewPagerIndicator-Library/build/intermediates/bundles/debug/res/color/vpi__dark_theme.xml"
+    },
+    {
+        "merged": "/home/imaya/Documents/Projects/android-projects/TourAdvisor/libs/ViewPagerIndicator-Library/build/intermediates/res/merged/androidTest/debug/color/vpi__light_theme.xml",
+        "source": "/home/imaya/Documents/Projects/android-projects/TourAdvisor/libs/ViewPagerIndicator-Library/build/intermediates/bundles/debug/res/color/vpi__light_theme.xml"
+    },
+    {
+        "merged": "/home/imaya/Documents/Projects/android-projects/TourAdvisor/libs/ViewPagerIndicator-Library/build/intermediates/res/merged/androidTest/debug/color/vpi__dark_theme.xml",
+        "source": "/home/imaya/Documents/Projects/android-projects/TourAdvisor/libs/ViewPagerIndicator-Library/build/intermediates/bundles/debug/res/color/vpi__dark_theme.xml"
+    },
+    {
+        "merged": "/home/imaya/Downloads/SlidingImages_Demo/libs/ViewPagerIndicator-Library/build/intermediates/res/merged/androidTest/debug/color/vpi__light_theme.xml",
+        "source": "/home/imaya/Downloads/SlidingImages_Demo/libs/ViewPagerIndicator-Library/build/intermediates/bundles/debug/res/color/vpi__light_theme.xml"
+    }
+]

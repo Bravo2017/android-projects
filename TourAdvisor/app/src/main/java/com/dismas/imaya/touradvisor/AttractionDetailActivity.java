@@ -7,15 +7,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -70,8 +75,14 @@ public class AttractionDetailActivity extends AppCompatActivity implements View.
     private SessionConfiguration configuration;
     ////////
     Context context;
-    private ImageView mImageView;
+    private ImageView mImageView, mImageView1, mImageView2;
     private TextView mTitle, categories_hrs, titletxt, accommo_title;
+
+    private static final int SWIPE_MIN_DISTANCE = 120;
+    private static final int SWIPE_THRESHOLD_VELOCITY = 200;
+    private ViewFlipper mViewFlipper;
+    private Context mContext;
+    private final GestureDetector detector = new GestureDetector(new SwipeGestureDetector());
 
     Button showinmap;
     String value;
@@ -90,18 +101,32 @@ public class AttractionDetailActivity extends AppCompatActivity implements View.
 
     private ProgressDialog loading;
     Horizontal_RecyclerViewAdapter rcAdapter;
+    private static ViewPager mPager;
+    private static int currentPage = 0;
+    private static int NUM_PAGES = 0;
+    private ArrayList<String> ImagesArray = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attractiondetail);
 
+        mContext = this;
+        mViewFlipper = (ViewFlipper) this.findViewById(R.id.view_flipper);
+        mViewFlipper.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(final View view, final MotionEvent event) {
+                detector.onTouchEvent(event);
+                return true;
+            }
+        });
+
         lLayout = new LinearLayoutManager(this);
         lLayout.setOrientation(LinearLayoutManager.HORIZONTAL);
 
         final RecyclerView rView = (RecyclerView) findViewById(R.id.recycler_view_accommodations);
         rView.setLayoutManager(lLayout);
-        List<ParksAllConstructor> rowListItem = getAllSanctuaries();
+        final List<ParksAllConstructor> rowListItem = getAllSanctuaries();
         rcAdapter = new Horizontal_RecyclerViewAdapter(this, rowListItem);
 
         Handler handler = new Handler();
@@ -111,7 +136,7 @@ public class AttractionDetailActivity extends AppCompatActivity implements View.
                 // Do something after 5s = 5000ms
                 rView.setAdapter(rcAdapter);
             }
-        }, 10000);
+        }, 3000);
 
 
         Bundle bundle = getIntent().getExtras();
@@ -137,6 +162,8 @@ public class AttractionDetailActivity extends AppCompatActivity implements View.
         final ServerTokenSession session = new ServerTokenSession(configuration);
 
         mImageView = (ImageView) findViewById(R.id.placeImage);
+        mImageView1 = (ImageView) findViewById(R.id.placeImage1);
+        mImageView2 = (ImageView) findViewById(R.id.placeImage2);
         mTitle = (TextView) findViewById(R.id.detailstextView);
         titletxt = (TextView) findViewById(R.id.titletxt);
         categories_hrs = (TextView) findViewById(R.id.categories_hrs);
@@ -165,8 +192,79 @@ public class AttractionDetailActivity extends AppCompatActivity implements View.
                 .load(site_image)
                 .placeholder(R.drawable.error)
                 .into(mImageView);
-
+        Picasso.with(context)
+                .load(interior_image)
+                .placeholder(R.drawable.error)
+                .into(mImageView1);
+        Picasso.with(context)
+                .load(attractions_image)
+                .placeholder(R.drawable.error)
+                .into(mImageView2);
+//        ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(AttractionDetailActivity.this));
+//        init();
         addListenerOnButton1Click();
+
+        Horizontal_RecyclerViewAdapter.OnItemClickListener onItemClickListener = new Horizontal_RecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+//                Toast.makeText(getActivity(), "Clicked " + position, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(AttractionDetailActivity.this, DetailsActivity.class);
+                //Create the bundle
+                getFragmentManager().beginTransaction().addToBackStack(null);
+                Bundle bundle = new Bundle();
+                bundle.putString("position", String.valueOf(position));
+                bundle.putString("longitude", rowListItem.get(position).getLongitude());
+                bundle.putString("latitude", rowListItem.get(position).getLatitude());
+                bundle.putString("restaurant_name", rowListItem.get(position).getSite_name());
+                bundle.putString("cost_per_day", rowListItem.get(position).getCost_per_day());
+                bundle.putString("phone", rowListItem.get(position).getPhone());
+                bundle.putString("email", rowListItem.get(position).getEmail());
+                bundle.putString("location_name", rowListItem.get(position).getLocationName());
+                bundle.putString("hotel_image", rowListItem.get(position).getSite_image());
+                intent.putExtras(bundle);
+                startActivity(intent);
+
+
+                //Put the value
+//                DetailsFragment detailsFragment = new DetailsFragment();
+//                Bundle args = new Bundle();
+//                args.putString("position", String.valueOf(position));
+//                detailsFragment.setArguments(args);
+//
+//                //Inflate the fragment
+//                getFragmentManager().beginTransaction().addToBackStack(null).add(R.id.containerView, detailsFragment).commit();
+
+            }
+        };
+
+        rcAdapter.setOnItemClickListener(onItemClickListener);
+
+    }
+
+    class SwipeGestureDetector extends GestureDetector.SimpleOnGestureListener {
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            try {
+                // right to left swipe
+                if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+                    mViewFlipper.setInAnimation(AnimationUtils.loadAnimation(mContext, R.anim.left_in));
+                    mViewFlipper.setOutAnimation(AnimationUtils.loadAnimation(mContext, R.anim.left_out));
+                    mViewFlipper.showNext();
+                    return true;
+                } else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+                    mViewFlipper.setInAnimation(AnimationUtils.loadAnimation(mContext, R.anim.right_in));
+                    mViewFlipper.setOutAnimation(AnimationUtils.loadAnimation(mContext,R.anim.right_out));
+                    mViewFlipper.showPrevious();
+                    return true;
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return false;
+        }
     }
 
     private void addListenerOnButton1Click() {
@@ -199,7 +297,73 @@ public class AttractionDetailActivity extends AppCompatActivity implements View.
 
         });
     }
-
+//    private void init() {
+//        ImageLoader imageLoader = ImageLoader.getInstance();
+////        Bitmap sitebmp = imageLoader.loadImageSync(site_image);
+////        Bitmap interiorbmp = imageLoader.loadImageSync(interior_image);
+////        Bitmap attractionsbmp = imageLoader.loadImageSync(attractions_image);
+//
+//        ImagesArray.add(site_image);
+//        ImagesArray.add(interior_image);
+//        ImagesArray.add(attractions_image);
+//
+//        mPager = (ViewPager) findViewById(R.id.pager);
+//
+//
+//        mPager.setAdapter(new SlidingImage_Adapter(AttractionDetailActivity.this, ImagesArray));
+//
+//
+//        CirclePageIndicator indicator = (CirclePageIndicator)
+//                findViewById(R.id.indicator);
+//
+//        indicator.setViewPager(mPager);
+//
+//        final float density = getResources().getDisplayMetrics().density;
+//
+////Set circle indicator radius
+//        indicator.setRadius(5 * density);
+//
+//        NUM_PAGES =3;
+//
+//        // Auto start of viewpager
+//        final Handler handler = new Handler();
+//        final Runnable Update = new Runnable() {
+//            public void run() {
+//                if (currentPage == NUM_PAGES) {
+//                    currentPage = 0;
+//                }
+//                mPager.setCurrentItem(currentPage++, true);
+//            }
+//        };
+//        Timer swipeTimer = new Timer();
+//        swipeTimer.schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                handler.post(Update);
+//            }
+//        }, 3000, 3000);
+//
+//        // Pager listener over indicator
+//        indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//
+//            @Override
+//            public void onPageSelected(int position) {
+//                currentPage = position;
+//
+//            }
+//
+//            @Override
+//            public void onPageScrolled(int pos, float arg1, int arg2) {
+//
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int pos) {
+//
+//            }
+//        });
+//
+//    }
     @Override
     public void onClick(View v) {
 

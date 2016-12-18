@@ -47,6 +47,8 @@ dependencies {
     compile 'com.mcxiaoke.volley:library-aar:1.0.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.uber.sdk:rides-android:0.5.4'
+    compile project(':libs:ViewPagerIndicator-Library')
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 }
 /**
  * Loads property from gradle.properties and ~/.gradle/gradle.properties

@@ -21,8 +21,7 @@ import java.util.List;
  */
 
 public class Horizontal_RecyclerViewAdapter extends RecyclerView.Adapter<Horizontal_RecyclerViewAdapter.ViewHolder> {
-
-    RecyclerViewAdapter.OnItemClickListener mItemClickListener;
+    OnItemClickListener mItemClickListener;
 
     private List<ParksAllConstructor> parkList;
     private Context context;
@@ -69,7 +68,7 @@ public class Horizontal_RecyclerViewAdapter extends RecyclerView.Adapter<Horizon
         void onItemClick(View view, int position);
     }
 
-    public void setOnItemClickListener(final RecyclerViewAdapter.OnItemClickListener mItemClickListener) {
+    public void setOnItemClickListener(final Horizontal_RecyclerViewAdapter.OnItemClickListener mItemClickListener) {
         this.mItemClickListener = mItemClickListener;
     }
 
