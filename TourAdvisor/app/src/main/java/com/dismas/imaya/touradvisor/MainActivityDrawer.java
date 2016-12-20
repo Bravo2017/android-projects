@@ -65,7 +65,14 @@ public class MainActivityDrawer extends AppCompatActivity {
          * Setup click events on the Navigation View Items.
          */
         String profile = str_getName +" "+ str_getEmail;
-        mNavigationView.getMenu().findItem(R.id.nav_item_profile).setTitle(str_getName);
+        if(!SplashActivity.sh.contains("name"))
+        {
+            mNavigationView.getMenu().findItem(R.id.nav_item_profile).setTitle(str_getEmail);
+        }
+        else
+        {
+            mNavigationView.getMenu().findItem(R.id.nav_item_profile).setTitle(str_getName);
+        }
 
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override

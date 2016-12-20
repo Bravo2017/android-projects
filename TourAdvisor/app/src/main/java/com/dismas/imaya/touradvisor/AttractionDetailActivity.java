@@ -4,7 +4,12 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.provider.Settings;
 import android.support.v4.view.ViewPager;
@@ -13,10 +18,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +53,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,6 +87,7 @@ public class AttractionDetailActivity extends AppCompatActivity implements View.
     ////////
     Context context;
     private ImageView mImageView, mImageView1, mImageView2;
+    ImageButton imageButton, imageButton1, imageButton2;
     private TextView mTitle, categories_hrs, titletxt, accommo_title;
 
     private static final int SWIPE_MIN_DISTANCE = 120;
@@ -192,17 +204,39 @@ public class AttractionDetailActivity extends AppCompatActivity implements View.
                 .load(site_image)
                 .placeholder(R.drawable.error)
                 .into(mImageView);
-        Picasso.with(context)
-                .load(interior_image)
-                .placeholder(R.drawable.error)
-                .into(mImageView1);
-        Picasso.with(context)
-                .load(attractions_image)
-                .placeholder(R.drawable.error)
-                .into(mImageView2);
+        if(!interior_image.isEmpty())
+        {
+            Picasso.with(context)
+                    .load(interior_image)
+                    .placeholder(R.drawable.error)
+                    .into(mImageView1);
+        }
+        else {
+            Picasso.with(context)
+                    .load(R.drawable.error)
+                    .placeholder(R.drawable.error)
+                    .into(mImageView1);
+        }
+        if(!attractions_image.isEmpty())
+        {
+            Picasso.with(context)
+                    .load(attractions_image)
+                    .placeholder(R.drawable.error)
+                    .into(mImageView2);
+        }
+        else {
+            Picasso.with(context)
+                    .load(R.drawable.error)
+                    .placeholder(R.drawable.error)
+                    .into(mImageView2);
+        }
+
 //        ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(AttractionDetailActivity.this));
 //        init();
         addListenerOnButton1Click();
+        addListenerOnButtonShare();
+        addListenerOnButtonAdd();
+        addListenerOnButtonBack();
 
         Horizontal_RecyclerViewAdapter.OnItemClickListener onItemClickListener = new Horizontal_RecyclerViewAdapter.OnItemClickListener() {
             @Override
@@ -298,6 +332,92 @@ public class AttractionDetailActivity extends AppCompatActivity implements View.
             }
 
         });
+    }
+    public void addListenerOnButtonShare(){
+        imageButton=(ImageButton) findViewById(R.id.btn_share);
+
+        //Performing action on Button Click
+        imageButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View arg0) {
+
+                // Get access to the URI for the bitmap
+                mImageView = (ImageView) findViewById(R.id.placeImage);
+                Uri bmpUri = getLocalBitmapUri(mImageView);
+                // Construct a ShareIntent with link to image
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.setType("*/*");
+                shareIntent.putExtra(Intent.EXTRA_STREAM, bmpUri);
+                shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,"Awesome Accommodation");
+                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Check "+site_name+" out on TourAdvisor\nFound in " + location_name+ "\n" +categories+ "\nOpen hours: " + opening_hrs);
+                // Launch sharing dialog for image
+                startActivity(Intent.createChooser(shareIntent, "Share"));
+            }
+
+        });
+
+    }
+    // Returns the URI path to the Bitmap displayed in specified ImageView
+    public Uri getLocalBitmapUri(ImageView imageView) {
+        // Extract Bitmap from ImageView drawable
+        Drawable drawable = imageView.getDrawable();
+        Bitmap bmp = null;
+        if (drawable instanceof BitmapDrawable){
+            bmp = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+        } else {
+            return null;
+        }
+        // Store image to default external storage directory
+        Uri bmpUri = null;
+        try {
+            File file =  new File(Environment.getExternalStoragePublicDirectory(
+                    Environment.DIRECTORY_DOWNLOADS), site_name.toLowerCase() + System.currentTimeMillis() + ".png");
+            file.getParentFile().mkdirs();
+            FileOutputStream out = new FileOutputStream(file);
+            bmp.compress(Bitmap.CompressFormat.PNG, 90, out);
+            out.close();
+            bmpUri = Uri.fromFile(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bmpUri;
+    }
+    public void addListenerOnButtonAdd(){
+        imageButton1 =(ImageButton) findViewById(R.id.action_add_to_my_list);
+
+        //Performing action on Button Click
+        imageButton1.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View arg0) {
+
+                Toast.makeText(AttractionDetailActivity.this, "Add to my list", Toast.LENGTH_LONG).show();
+
+            }
+
+        });
+
+    }
+    public void addListenerOnButtonBack(){
+        imageButton2 =(ImageButton) findViewById(R.id.btn_back);
+
+        //Performing action on Button Click
+        imageButton2.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View arg0) {
+                if (getFragmentManager().getBackStackEntryCount() > 0) {
+                    getFragmentManager().popBackStack();
+                } else {
+                    finish();
+                }
+
+            }
+
+        });
+
     }
 //    private void init() {
 //        ImageLoader imageLoader = ImageLoader.getInstance();
@@ -486,5 +606,36 @@ public class AttractionDetailActivity extends AppCompatActivity implements View.
             e.printStackTrace();
         }
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.add_to_my_list, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_share) {
+            Toast.makeText(AttractionDetailActivity.this, "Share", Toast.LENGTH_LONG).show();
+            Intent i=new Intent(android.content.Intent.ACTION_SEND);
+            i.setType("text/plain");
+            i.putExtra(android.content.Intent.EXTRA_SUBJECT,"Cool Destination");
+            i.putExtra(android.content.Intent.EXTRA_TEXT, "Check it out on TourAdvisor");
+            startActivity(Intent.createChooser(i,"Share via"));
+
+        }
+        else if (id == R.id.action_add_to_my_list) {
+            Toast.makeText(AttractionDetailActivity.this, "Add to My List", Toast.LENGTH_LONG).show();
+
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

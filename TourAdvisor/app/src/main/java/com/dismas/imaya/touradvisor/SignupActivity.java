@@ -1,5 +1,6 @@
 package com.dismas.imaya.touradvisor;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,10 +15,29 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+
+    private static final String REGISTER_URL = "http://touradvisorzone.com/touradvisorphp/register.php";
+
+    public static final String KEY_USERNAME = "name";
+    public static final String KEY_EMAIL = "email";
+    public static final String KEY_PASSWORD = "password";
+    public static final String KEY_CITY = "city";
+    public static final String KEY_COUNTRY = "country";
+
+    private ProgressDialog loading;
 
     Button register;
     TextView login;
@@ -27,8 +47,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
     String label="";
 
-    String str_Name, str_Password, str_RePassword, str_Email, str_City, str_Country,
-            random;
+    String str_Name, str_Password, str_RePassword, str_Email, str_City, str_Country, random;
 
     EditText edt_Name, edt_Password, edt_RePassword, edt_Email, edt_City;
 
@@ -117,6 +136,9 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         edt_City = (EditText) findViewById(R.id.txtCity);
         edt_Email = (EditText) findViewById(R.id.txtEmail);
 
+        SplashActivity.editor.clear();
+        SplashActivity.editor.commit();
+
         // Spinner element
         spinner = (Spinner) findViewById(R.id.spinner);
 
@@ -193,22 +215,48 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 }
 
                 else {
-                    SplashActivity.editor.putString("name", str_Name);
-                    SplashActivity.editor.putString("password", str_RePassword);
-                    SplashActivity.editor.putString("email", str_Email);
-                    SplashActivity.editor.putString("city", str_City);
-                    SplashActivity.editor.putString("country", str_Country);
+                    loading = ProgressDialog.show(SignupActivity.this, "Please wait...", "Registering...", false, false);
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+//                                    commit the changes to the shared preferences
+                                    loading.dismiss();
+                                    SplashActivity.editor.putString("name", str_Name);
+                                    SplashActivity.editor.putString("password", str_RePassword);
+                                    SplashActivity.editor.putString("email", str_Email);
+                                    SplashActivity.editor.putString("city", str_City);
+                                    SplashActivity.editor.putString("country", str_Country);
 
-                    SplashActivity.editor.commit();
+                                    SplashActivity.editor.commit();
+//                                     end of the shared preferences
+                                    Intent sendtoLogin = new Intent(getApplicationContext(),
+                                            LoginActivity.class);
+                                    startActivity(sendtoLogin);
+                                    Toast.makeText(SignupActivity.this,response,Toast.LENGTH_LONG).show();
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Toast.makeText(SignupActivity.this,error.toString(),Toast.LENGTH_LONG).show();
+                                }
+                            }){
+                        @Override
+                        protected Map<String,String> getParams(){
+                            Map<String,String> params = new HashMap<String, String>();
+                            params.put(KEY_USERNAME,str_Name);
+                            params.put(KEY_EMAIL, str_Email);
+                            params.put(KEY_PASSWORD,str_RePassword);
+                            params.put(KEY_CITY,str_City);
+                            params.put(KEY_COUNTRY,str_Country);
+                            return params;
+                        }
 
-                    Intent sendtoLogin = new Intent(getApplicationContext(),
-                            LoginActivity.class);
+                    };
 
-                    Toast.makeText(getApplicationContext(),
-                            "You have successfully registered", Toast.LENGTH_LONG)
-                            .show();
-
-                    startActivity(sendtoLogin);
+                    RequestQueue requestQueue = Volley.newRequestQueue(this);
+                    requestQueue.add(stringRequest);
 
                 }
                 break;

@@ -4,15 +4,23 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -41,6 +49,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,6 +94,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
     RatingBar ratingbar1;
     Button button, showinmap;
+    ImageButton imageButton, imageButton1;
     String value;
     String longitude;
     String latitude;
@@ -175,18 +187,36 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 .load(hotel_image)
                 .placeholder(R.drawable.error)
                 .into(mImageView);
-        Picasso.with(context)
-                .load(interior_image)
-                .placeholder(R.drawable.error)
-                .into(mImageView1);
-        Picasso.with(context)
-                .load(guest_image)
-                .placeholder(R.drawable.error)
-                .into(mImageView2);
-
+        if(!interior_image.isEmpty()){
+            Picasso.with(context)
+                    .load(interior_image)
+                    .placeholder(R.drawable.error)
+                    .into(mImageView1);
+        }
+        else {
+            Picasso.with(context)
+                    .load(R.drawable.error)
+                    .placeholder(R.drawable.error)
+                    .into(mImageView1);
+        }
+        if(!guest_image.isEmpty())
+        {
+            Picasso.with(context)
+                    .load(guest_image)
+                    .placeholder(R.drawable.error)
+                    .into(mImageView2);
+        }
+        else {
+            Picasso.with(context)
+                    .load(R.drawable.error)
+                    .placeholder(R.drawable.error)
+                    .into(mImageView2);
+        }
 
         addListenerOnButtonClick();
+        addListenerOnButtonShare();
         addListenerOnButton1Click();
+        addListenerOnButtonBack();
     }
     class SwipeGestureDetector extends GestureDetector.SimpleOnGestureListener {
         @Override
@@ -255,6 +285,76 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 //Getting the rating and displaying it on the toast
                 String rating=String.valueOf(ratingbar1.getRating());
                 Toast.makeText(getApplicationContext(), rating, Toast.LENGTH_LONG).show();
+            }
+
+        });
+
+    }
+    public void addListenerOnButtonShare(){
+        imageButton=(ImageButton) findViewById(R.id.btn_share);
+
+        //Performing action on Button Click
+        imageButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View arg0) {
+                // Get access to the URI for the bitmap
+                mImageView = (ImageView) findViewById(R.id.placeImage);
+                Uri bmpUri = getLocalBitmapUri(mImageView);
+                // Construct a ShareIntent with link to image
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.setType("*/*");
+                shareIntent.putExtra(Intent.EXTRA_STREAM, bmpUri);
+                shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,"Awesome Accommodation");
+                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Check "+restaurant_name+" out on TourAdvisor\nTheir cost per day ranges " + cost_per_day+ "\n" +phone_no+ "\n" + email_add);
+                // Launch sharing dialog for image
+                startActivity(Intent.createChooser(shareIntent, "Share"));
+            }
+
+        });
+
+    }
+    // Returns the URI path to the Bitmap displayed in specified ImageView
+    public Uri getLocalBitmapUri(ImageView imageView) {
+        // Extract Bitmap from ImageView drawable
+        Drawable drawable = imageView.getDrawable();
+        Bitmap bmp = null;
+        if (drawable instanceof BitmapDrawable){
+            bmp = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+        } else {
+            return null;
+        }
+        // Store image to default external storage directory
+        Uri bmpUri = null;
+        try {
+            File file =  new File(Environment.getExternalStoragePublicDirectory(
+                    Environment.DIRECTORY_DOWNLOADS), restaurant_name.toLowerCase() + System.currentTimeMillis() + ".png");
+            file.getParentFile().mkdirs();
+            FileOutputStream out = new FileOutputStream(file);
+            bmp.compress(Bitmap.CompressFormat.PNG, 90, out);
+            out.close();
+            bmpUri = Uri.fromFile(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bmpUri;
+    }
+    public void addListenerOnButtonBack(){
+        imageButton1 =(ImageButton) findViewById(R.id.btn_back);
+
+        //Performing action on Button Click
+        imageButton1.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View arg0) {
+                if (getFragmentManager().getBackStackEntryCount() > 0) {
+                    getFragmentManager().popBackStack();
+                } else {
+                    finish();
+
+                }
+
             }
 
         });
@@ -380,5 +480,23 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 String.format(sampleError, "Redirect URI"));
         checkState(!configuration.getRedirectUri().equals("insert_your_server_token_here"),
                 String.format(sampleError, "Server Token"));
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.accommodation, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+
+        return super.onOptionsItemSelected(item);
     }
 }

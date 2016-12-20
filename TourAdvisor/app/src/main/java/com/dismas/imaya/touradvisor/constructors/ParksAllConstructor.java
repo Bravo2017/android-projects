@@ -7,7 +7,7 @@ public class ParksAllConstructor {
     int attraction_site_id;
     String location_name;
     String site_name, site_image, cost_per_day;
-    String longitude, latitude, phone, email, interior_image, attraction_image, openinghrs, categories;
+    String longitude, latitude, phone, email, interior_image, attraction_image, openinghrs, categories,name, username, password, city, country;
 
     public int getAttraction_site_id()
     {
@@ -65,7 +65,6 @@ public class ParksAllConstructor {
     {
         this.latitude = latitude;
     }
-
     public String getPhone()
     {
         return phone;
@@ -111,5 +110,49 @@ public class ParksAllConstructor {
     public void setCategories(String categories)
     {
         this.categories = categories;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getLocation_name() {
+        return location_name;
     }
 }
