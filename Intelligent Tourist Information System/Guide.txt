@@ -1,0 +1,43 @@
+1. Cover Page (using standard School format)
+
+2. Clear Project Title
+
+3. Abstract - with carefully written statements covering
+
+Background
+Problem Statement
+Objective
+Method
+Result
+Conclusion
+
+PS: The last two will fully emerge later on but can indicate what is expected
+
+
+4. Table of Contents
+
+Chapter 1 - Introduction
+
+1.1 Background
+1.2 Problem Statement
+1.3 Objectives
+1.4 Scope
+1.5 Justification
+1.6 Expected Outcomes
+
+Chapter 2 - Literature Review
+
+The chapter must be well structured as necessary; this may be  a guide
+
+2.1 Key Concepts (on chosen topic)
+2.2 Use of ICT in Similar Areas as chosen topic
+2.3 Existing Similar Systems (covering several similar systems)
+2.4 The 'Gap' to be filled
+2.5 The Proposed Solution to fill the 'Gap'
+
+Chapter 3 - Systems Analysis and Design
+
+A well structured chapter covering
+
+3.1 System Analysis (and its subsections)
+3.2 System Design (and its subsections)

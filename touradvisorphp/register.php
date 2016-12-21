@@ -14,7 +14,7 @@
 
 
 		if(mysqli_query($con,$sql)){
-			echo "Successfully Registered";
+			echo "SUCCESS";
 		}else{
 			echo "Could not register";
 
