@@ -7,18 +7,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import data.science.com.florensis.Models.Database;
-import data.science.com.florensis.Models.FarmData;
-import data.science.com.florensis.Utils.RestClient;
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
 
 /**
  * Created by tune on 23/02/2017.
@@ -26,10 +20,8 @@ import retrofit.client.Response;
 
 public class CollectActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-    RestClient restClient;
     Database database;
     Spinner house_spinner, bed_spinner;
-    private static int DELAY_TIME_OUT = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,31 +64,6 @@ public class CollectActivity extends AppCompatActivity implements AdapterView.On
         house_spinner.setAdapter(dataAdapter);
     }
 
-
-    private void saveFarmDatatoSQLiteDB() {
-        restClient.getService().getObjectWithNestedArraysAndObject(new Callback<FarmData>() {
-            @Override
-            public void success(FarmData farmdata, Response response) {
-
-                if(farmdata.data != null && farmdata.data.size() >0)
-                {
-                    for (int i = 0; i < farmdata.data.size(); i++) {
-                        database.insertGreenHouse(farmdata.data.get(i).greenhouseid, farmdata.data.get(i).greenhousename);
-                        for(int j=0; j<farmdata.data.get(i).beds.size(); j++)
-                        {
-                            database.insertGreenBeds(farmdata.data.get(i).beds.get(j).bedid, farmdata.data.get(i).beds.get(j).bedname, farmdata.data.get(i).greenhousename);
-                        }
-                    }
-                }
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                Toast.makeText(CollectActivity.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -108,8 +75,6 @@ public class CollectActivity extends AppCompatActivity implements AdapterView.On
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         // On selecting a btnstyle item
         final String greenhouse = adapterView.getItemAtPosition(i).toString();
-        // database handler
-        Database db = new Database(getApplicationContext());
 
         // Spinner Drop down elements
         List<String> beds = database.getGreenHouseBeds(greenhouse);

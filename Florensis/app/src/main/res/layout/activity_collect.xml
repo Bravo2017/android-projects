@@ -32,14 +32,14 @@
                         android:textColor="@android:color/black"
                         android:textStyle="bold"
                         android:layout_marginTop="10dp"
-                        android:textSize="24dp"/>
+                        android:textSize="15dp"/>
 
                     <Spinner
                         android:id="@+id/house_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:textAlignment="center"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="20dp"
                         android:spinnerMode="dropdown"
                         android:layout_centerVertical="true" />
                 </LinearLayout>
@@ -63,14 +63,14 @@
                         android:textColor="@android:color/black"
                         android:textStyle="bold"
                         android:layout_marginTop="10dp"
-                        android:textSize="24dp"/>
+                        android:textSize="15dp"/>
 
                     <Spinner
                         android:id="@+id/bed_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:textAlignment="center"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="80dp"
                         android:spinnerMode="dropdown" />
                 </LinearLayout>
             </RelativeLayout>

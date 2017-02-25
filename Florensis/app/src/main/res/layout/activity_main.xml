@@ -3,32 +3,32 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="30dp"
+    android:padding="70dp"
     android:background="@android:color/white">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+        <Button
+            android:text="Collect Data"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/collect"
+            android:textColor="@android:color/black"
+            android:background="@drawable/btnstyle"
+            android:layout_centerHorizontal="true"
+            android:onClick="userCollect"/>
 
-    <Button
-        android:text="Collect Data"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@+id/collect"
-        android:layout_marginBottom="77dp"
-        android:layout_above="@+id/view"
-        android:textColor="@android:color/black"
-        android:background="@drawable/btnstyle"
-        android:layout_centerHorizontal="true"
-        android:onClick="userCollect"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@+id/view"
-        android:layout_marginBottom="189dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/collect"
-        android:textColor="@android:color/black"
-        android:background="@drawable/btnstyle"
-        android:layout_alignStart="@+id/collect"
-        android:text="View Pending Data"
-        android:onClick="userView"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/view"
+            android:layout_marginTop="50dp"
+            android:textColor="@android:color/black"
+            android:background="@drawable/btnstyle"
+            android:text="View Pending Data"
+            android:layout_below="@id/collect"
+            android:onClick="userView"/>
+    </RelativeLayout>
 </RelativeLayout>
