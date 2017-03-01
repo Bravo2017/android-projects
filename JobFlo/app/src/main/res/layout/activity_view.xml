@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:layout_margin="30dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:background="@color/bgnd"
+                android:layout_height="match_parent"
+                card_view:cardCornerRadius="4dp">
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:orientation="vertical"
+                    android:background="@color/bgnd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="Greenhouse"
+                        android:textStyle="bold"
+                        android:layout_alignParentLeft="true"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:id="@+id/g_name"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="1/3/2017"
+                        android:textSize="10sp"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:id="@+id/t_time"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="Bed Name"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/g_name"
+                        android:layout_alignParentLeft="true"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:id="@+id/b_name"/>
+                    <RelativeLayout
+                        android:layout_below="@+id/b_name"
+                        android:layout_margin="10dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:text="Pest Name"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:id="@+id/p_name"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/p_name"
+                            android:layout_marginLeft="10dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorAccent"
+                            android:id="@+id/v_name"/>
+                    </RelativeLayout>
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+        </RelativeLayout>
+
+    </ScrollView>
+</LinearLayout>

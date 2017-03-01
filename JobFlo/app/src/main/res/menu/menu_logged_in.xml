@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="me.mwongela.skye.userModule.UserHomepage">
+
+    <item
+        android:id="@+id/action_logout"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_logout"
+        android:title="@string/logout" />
+
+
+    <item
+        android:id="@+id/action_about"
+        android:icon="@drawable/ic_info"
+        app:showAsAction="never"
+        android:title="@string/title_about" />
+
+    <item
+        android:id="@+id/action_help"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_help"
+        android:title="@string/title_help"/>
+
+</menu>
