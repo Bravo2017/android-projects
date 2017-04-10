@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="0dp"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:background="@color/bgnd">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="500dp">
+
+            <!-- Spinner Dropdown -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/wrap_spinner">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="Greenhouse"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/greenhouse"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        android:textSize="15dp"/>
+
+                    <Spinner
+                        android:id="@+id/house_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        android:theme="@style/Theme.App.Base"
+                        android:layout_marginLeft="30dp"
+                        android:spinnerMode="dropdown"
+                        android:layout_centerVertical="true" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/pest_spinner"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/wrap_spinner">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="Bed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/bed"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        android:textSize="15dp"/>
+
+                    <Spinner
+                        android:id="@+id/bed_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        android:theme="@style/Theme.App.Base"
+                        android:layout_marginLeft="80dp"
+                        android:spinnerMode="dropdown" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/pest_layout"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/pest_spinner"
+                android:background="@color/bgnd"
+                android:textColor="@android:color/black"
+                android:layout_height="260dp">
+                <include android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    layout="@layout/activity_list"
+                    android:textColor="@android:color/black"/>
+
+
+            </RelativeLayout>
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Record"
+                android:id="@+id/record"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/pest_layout"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/black"
+                android:background="@drawable/btnstyle"
+                android:onClick="saveData"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
