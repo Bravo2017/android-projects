@@ -4,4 +4,6 @@
     android:layout_height="wrap_content"
     android:textAllCaps="true"
     android:textAlignment="center"
-    android:textColor="@color/textColor" />
+    style="?android:attr/spinnerItemStyle"
+    android:maxLines="1"
+    android:textColor="@android:color/black" />

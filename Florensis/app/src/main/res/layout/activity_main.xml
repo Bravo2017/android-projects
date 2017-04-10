@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="70dp"
-    android:background="@android:color/white">
+    android:background="@color/bgnd">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -29,6 +29,6 @@
             android:background="@drawable/btnstyle"
             android:text="View Pending Data"
             android:layout_below="@id/collect"
-            android:onClick="userView"/>
+            android:onClick="userView" />
     </RelativeLayout>
 </RelativeLayout>

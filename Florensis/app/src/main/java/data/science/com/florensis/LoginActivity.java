@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +26,8 @@ import java.util.Map;
 
 import data.science.com.florensis.Models.Database;
 import data.science.com.florensis.Models.FarmData;
+import data.science.com.florensis.Models.PestData;
+import data.science.com.florensis.Utils.PestClient;
 import data.science.com.florensis.Utils.RestClient;
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -38,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
     private StringRequest request;
     private Button btn_login;
     RestClient restClient;
+    PestClient pestClient;
     Database database;
 
 
@@ -47,9 +51,11 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         restClient = new RestClient();
+        pestClient = new PestClient();
         database = new Database(this);
         database.getWritableDatabase();
         saveFarmDatatoSQLiteDB();
+        savePestDatatoSQLiteDB();
 
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
@@ -67,24 +73,24 @@ public class LoginActivity extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response); //create a json object with response as the parameter.
 //
                             if(jsonObject.getString("success") == "true"){
-//                                Toast.makeText(getApplicationContext(),jsonObject.getString("messages"),Toast.LENGTH_SHORT).show();
-//                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                Toast.makeText(getApplicationContext(),jsonObject.getString("messages"),Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
 
                                 //                                shared preference save
                                 SharedPreferences preferences = getSharedPreferences("MYPREFS",MODE_PRIVATE);
                                 String newUser  = jsonObject.getString("userid");
                                 SharedPreferences.Editor editor = preferences.edit();
                                 editor.putString(newUser,newUser);
-                                editor.commit();
+                                editor.apply();
 
                                 editor.putString(newUser + "data", newUser);
                                 editor.commit();
 
-                                String userDetails = preferences.getString(newUser +  "data","No information on that user.");
-                                editor.putString("display",userDetails);
-                                editor.commit();
-                                Intent displayScreen = new Intent(LoginActivity.this, MainActivity.class);
-                                startActivity(displayScreen);
+//                                String userDetails = preferences.getString(newUser +  "data","No information on that user.");
+//                                editor.putString("display",userDetails);
+//                                editor.commit();
+//                                Intent displayScreen = new Intent(LoginActivity.this, MainActivity.class);
+//                                startActivity(displayScreen);
                             }
                             else{
                                 Toast.makeText(getApplicationContext(),jsonObject.getString("messages"),Toast.LENGTH_SHORT).show();
@@ -117,11 +123,31 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    private void savePestDatatoSQLiteDB() {
+        pestClient.getService().getPests(new Callback<PestData>() {
+            @Override
+            public void success(PestData pestdata, retrofit.client.Response response) {
+                Log.e("RESPONSE", String.valueOf(pestdata.data));
+                if(pestdata.data != null && pestdata.data.size() >0)
+                {
+                    for (int i = 0; i < pestdata.data.size(); i++) {
+                        database.insertPest(pestdata.data.get(i).pestid, pestdata.data.get(i).pestname);
+                    }
+                }
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Toast.makeText(LoginActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
     private void saveFarmDatatoSQLiteDB() {
         restClient.getService().getObjectWithNestedArraysAndObject(new Callback<FarmData>() {
             @Override
             public void success(FarmData farmdata, retrofit.client.Response response) {
-
+                Log.e("GREENHOUSE", String.valueOf(farmdata.data));
                 if(farmdata.data != null && farmdata.data.size() >0)
                 {
                     for (int i = 0; i < farmdata.data.size(); i++) {
@@ -136,7 +162,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                Toast.makeText(LoginActivity.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }

@@ -23,4 +23,5 @@ public class MainActivity extends AppCompatActivity {
     public void userView(View view){
         startActivity(new Intent(this, ViewActivity.class));
     }
+
 }

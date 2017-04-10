@@ -4,10 +4,7 @@ import data.science.com.florensis.Models.FarmData;
 import retrofit.Callback;
 import retrofit.http.GET;
 
-/**
- * Created by imaya on 2/21/17.
- */
 public interface FarmService {
-    @GET("/farm_data.txt")
+    @GET("/florensis_v2/php_action/jsonb/greenhouse_bed.php?p=5")
     public void getObjectWithNestedArraysAndObject(Callback<FarmData> farmdata);
 }

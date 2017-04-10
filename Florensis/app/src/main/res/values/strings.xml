@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Florensis</string>
-    <string name="hint_username">Username</string>
-    <string name="hint_password">Password</string>
+    <string name="hint_username"><font color="#000000">Username</font></string>
+    <string name="hint_password"><font color="#000000">Password</font></string>
     <string name="btn_login">Login</string>
+    <string name="login_page_icon">Login Page Icon</string>
 </resources>

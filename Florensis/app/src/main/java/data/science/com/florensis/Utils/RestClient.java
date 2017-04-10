@@ -1,8 +1,10 @@
 package data.science.com.florensis.Utils;
 public class RestClient {
-    private static final String URL = "http://www.mocky.io/v2/58a2ffeb29000093003e48b4";
+    private static final String URL = "http://datascience.co.ke/";
+    private static final String PEST_URL = "http://datascience.co.ke/florensis_v2/php_action/jsonb/pm_retrieve.php?p=5";
     private retrofit.RestAdapter restAdapter;
     private FarmService farmService;
+
 
     public RestClient()
     {
@@ -19,4 +21,6 @@ public class RestClient {
     {
         return farmService;
     }
+
+
 }
